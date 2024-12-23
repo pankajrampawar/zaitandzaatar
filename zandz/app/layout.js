@@ -1,4 +1,5 @@
 import "./globals.css";
+import Navbar from "./components/navbar";
 
 export const metadata = {
   title: "Create Next App",
@@ -9,8 +10,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`bg-background`}
       >
+        <div className="fixed w-full top-0">
+          <Navbar />
+        </div>
         {children}
       </body>
     </html>
