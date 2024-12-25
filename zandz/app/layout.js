@@ -12,10 +12,12 @@ export default function RootLayout({ children }) {
       <body
         className={`bg-background`}
       >
-        <div className="fixed w-full top-0">
+        <div className="fixed w-full top-0 z-50">
           <Navbar />
         </div>
-        {children}
+        <div className="flex justify-center">
+          {children}
+        </div>
       </body>
     </html>
   );

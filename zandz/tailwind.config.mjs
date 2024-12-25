@@ -9,7 +9,7 @@ export default {
     extend: {
       colors: {
         background: "#FFEEE1",
-        foreground: "var(--foreground)",
+        button: "#E4312B"
       },
     },
   },
