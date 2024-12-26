@@ -1,6 +1,6 @@
 export default function RatingCard() {
     return (
-        <div className="bg-[#f9f3ee] p-6 rounded-md max-w-md mx-auto shadow-md">
+        <div className="bg-[#f9f3ee] p-6 rounded-md max-w-md mx-auto shadow-md min-w-[450px]">
             {/* Stars Section */}
             <div className="flex justify-start mb-4">
                 {[...Array(5)].map((_, index) => (
