@@ -30,7 +30,7 @@ export default function Location() {
                 <section className="flex-1 md:max-w-[600px]">
                     <div className="relative w-full pt-[56.25%]"> {/* Aspect ratio 16:9 */}
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2823.866126480928!2d-93.17149412324805!3d44.94638937107001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87f62bfb0f5d5183%3A0x34c82bf799532357!2sSaint%20Wich%20Burgers!5e0!3m2!1sen!2sin!4v1734155015307!5m2!1sen!2sin"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.3938396215713!2d-117.96164560832351!3d33.83851846001258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd2987c74c2565%3A0x21f93e27129d9fdf!2sZait%20and%20Zaatar!5e1!3m2!1sen!2sin!4v1735235253070!5m2!1sen!2sin"
                             allowFullScreen=""
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
@@ -52,7 +52,7 @@ export default function Location() {
 
                     <div>
                         <h3 className={`text-2xl tracking-wide font-bold ${anek_gujarati.className}`}>Contact</h3>
-                        <a href="tel:+16516832722" className="hover:text-red-600 flex cursor-pointer"><span className={`${lato.className} flex items-center w-full gap-3 cursor-pointer`}><img src="/phone.svg" className="max-w-[30px]" /><div>(651) 683-2722</div></span></a>
+                        <a href="tel:+17149919996" className="hover:text-red-600 flex cursor-pointer"><span className={`${lato.className} flex items-center w-full gap-3 cursor-pointer`}><img src="/phone.svg" className="max-w-[30px]" /><div>+1 714-991-9996</div></span></a>
                     </div>
                 </section>
             </div>
