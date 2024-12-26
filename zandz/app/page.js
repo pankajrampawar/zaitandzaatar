@@ -27,11 +27,11 @@ export default function Home() {
         <InfoSection />
       </section>
 
-      <section>
+      <section className="w-full flex justify-center">
         <OrderOnline />
       </section>
 
-      <section>
+      <section className="w-full flex justify-center">
         <SocialProof />
       </section>
 

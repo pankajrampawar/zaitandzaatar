@@ -6,10 +6,10 @@ export default function ImageSection() {
             <Image
                 src="/foodPhoto.png"
                 alt="Food Image"
-                width="760"
-                height="1300"
+                width={760}
+                height={1300}
                 priority={true}
-                className="object-cover w-full rounded-md"
+                className="object-cover w-full h-full rounded-md"
             />
         </div>
     )
