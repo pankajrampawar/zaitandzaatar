@@ -35,23 +35,23 @@ export default function Home() {
         <SocialProof />
       </section>
 
-      <section>
+      <section className="w-full flex justify-center">
         <Catering />
       </section>
 
-      <section>
+      <section className="w-full flex justify-center">
         <GiftCard />
       </section>
 
-      <section>
+      <section className="w-full flex justify-center">
         <Membership />
       </section>
 
-      <section>
+      <section className="w-full flex justify-center">
         <Faq />
       </section>
 
-      <section>
+      <section className="w-full flex justify-center">
         <Location />
       </section>
     </div>

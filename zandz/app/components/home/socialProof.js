@@ -8,7 +8,7 @@ export default function SocialProof() {
                 HEAR WHAT OUR CUSTOMERS <br />
                 <span className="bg-green-700 text-white px-2">LOVE ABOUT US</span>
             </h2>
-            <div className="flex overflow-x-scroll bg-red-200 w-full scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+            <div className="flex overflow-x-scroll w-full scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
                 <div className="flex w-full gap-6">
                     <RatingCard />
                     <RatingCard />
