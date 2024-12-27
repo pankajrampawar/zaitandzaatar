@@ -35,16 +35,18 @@ export default function Home() {
         <SocialProof />
       </section>
 
-      <section className="w-full flex justify-center">
-        <Catering />
-      </section>
+      <section className="w-full flex flex-col items-center">
+        <section className="w-full max-w-[1440px]">
+          <Catering />
+        </section>
 
-      <section className="w-full flex justify-center">
-        <GiftCard />
-      </section>
+        <section className="w-full max-w-[1440px]">
+          <GiftCard />
+        </section>
 
-      <section className="w-full flex justify-center">
-        <Membership />
+        <section className="w-full max-w-[1440px]">
+          <Membership />
+        </section>
       </section>
 
       <section className="w-full flex justify-center">

@@ -10,8 +10,8 @@ export default function ImageTextCard({ imgSource, altProp, title, subTitle, Det
     const isInView = useInView(ref, { once: true });
 
     return (
-        <div className="flex flex-col md:flex-row mx-[5%] items-center justify-between gap-[40px] py-[40px]">
-            <div className={`${!isImageLeft ? "md:order-2" : "md:order-1 justify-start"} flex-1 flex`}>
+        <div className="flex flex-col md:flex-row mx-[5%] items-center justify-between gap-[40px] py-[40px] ">
+            <div className={`${!isImageLeft ? "md:order-2" : "md:order-1 justify-start"} flex-1 flex `}>
                 <div >
                     <Image
                         src={imgSource}

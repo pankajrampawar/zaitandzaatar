@@ -9,9 +9,9 @@ export default function GiftCard() {
         router.push('/rewards')
     }
     return (
-        <div className="max-w-[1560px]">
+        <div className="">
             <ImageTextCard
-                imgSource="/giftCard.png"
+                imgSource="/loyaltyCard.png"
                 altProp="/Gift card of restaurant"
                 title="Share Delight,"
                 subTitle="Buy a Gift Card!"

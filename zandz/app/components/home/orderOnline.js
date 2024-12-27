@@ -60,18 +60,18 @@ export default function BestSeller() {
 
                 <div className="flex flex-row overflow-x-auto snap-x snap-mandatory gap-6 lg:gap-10 xl:gap-16 pt-10 md:pt-16 xl:pt-20 pb-4 w-full px-[10%] sm:px-[5%] lg:justify-center">
                     <div className="snap-center">
-                        <BurgerCard src="/lucyBurger.jpg" alt="Lucy Burger image" name="Signature Saint Lucy Burger" />
+                        <BurgerCard src="/shawarmaPlate.jpeg" alt="Shawarma Plate" name="Shawarma Plate" />
                     </div>
                     <div className="snap-center">
-                        <BurgerCard src="/cheese.png" alt="Double Cheese Burger Image" name="Double Cheese Burger" />
+                        <BurgerCard src="/samosa.jpeg" alt="Samosa" name="Samosa" />
                     </div>
                     <div className="snap-center">
-                        <BurgerCard src="/lassi.png" alt="Lassi Image" name="Lassi" />
+                        <BurgerCard src="/shawarmaFries.jpeg" alt="Shawarma Fries" name="Shawarm Fries" />
                     </div>
                 </div>
 
                 <div className="pt-10">
-                    <button onClick={handleOrder} className="button xl:font-bold hover:text-white hover:rounded-lg transition-all ease-in-out duration-300">Order Online</button>
+                    <button onClick={handleOrder} className={`bg-button hover:bg-transparent border-2 border-button hover:text-black text-white py-2 px-4 lg:min-w-[155px] hover:rounded-xl transition-all ease-in-out duration-300 md:text-xl ${lato.className} font-bold tracking-wide`}>Order Online</button>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@ export default function Catering() {
         router.push('/catering')
     }
     return (
-        <div className="mt-20 sm:mt-[10%]">
+        <div className="mt-20 sm:mt-[10%] max-w-[1440px]">
             <ImageTextCard
                 imgSource="/catering.png"
                 altProp="/catering View of restaurant"
