@@ -17,7 +17,7 @@ export default function Catering() {
                 altProp="/catering View of restaurant"
                 title="We Cater!"
                 subTitle="Flavors to Remember!"
-                Details="Celebrate your special occasions with Saint Wich Burgers catering. Whether it’s a wedding, game night, date night, birthday, corporate event, or casual gathering we deliver juicy burgers, fresh sides, and unbeatable flavors that everyone will love. Every celebration deserves great food."
+                Details="Make your special occasions unforgettable with Zait & Za'atar catering services. From weddings and birthday parties to corporate events and family gatherings, we offer a wide range of Mediterranean and select Indian dishes at affordable prices. Great food creates great memories—let’s make some together."
                 buttonText="Explore"
                 isImageLeft={true}
                 third={false}
