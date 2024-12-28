@@ -9,7 +9,7 @@ export default function InfoSection() {
                 </div>
                 <div className={` ${anek_gujarati.className} text-3xl xl:text-6xl font-semibold leading-snug tracking-wide`}>
                     <h2>
-                        <span className="bg-green-700 text-white px-2">ZAIT & ZA'ATAR</span> <div className="pt-6 text-5xl">MEDITERRANEAN DHABA</div>
+                        <span className="bg-green-700 text-white px-2">ZAIT & ZA'ATAR</span> <div className="pt-6 text-3xl sm:text-5xl">MEDITERRANEAN DHABA</div>
                     </h2>
                 </div>
             </article>

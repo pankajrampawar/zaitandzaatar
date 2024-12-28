@@ -27,7 +27,7 @@ export default function Home() {
         <InfoSection />
       </section>
 
-      <section className="w-full flex justify-center">
+      <section className="w-full sm:flex sm:justify-center">
         <OrderOnline />
       </section>
 
