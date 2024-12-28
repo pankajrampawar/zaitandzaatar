@@ -65,12 +65,12 @@ export default function OrderOnline() {
                     <BurgerCard src="/samosa.jpeg" alt="Samosa Image" name="Samosa" />
                 </div>
                 <div className="snap-center">
-                    <BurgerCard src="/lassi.png" alt="Lassi Image" name="Lassi" />
+                    <BurgerCard src="/shawarmaFries.jpeg" alt="Shawarma Fries Image" name="Shawarma Fries" />
                 </div>
             </div>
 
             <div className="pt-10">
-                <button onClick={handleOrder} className="button xl:font-bold hover:text-white hover:rounded-lg transition-all ease-in-out duration-300">Order Online</button>
+                <button onClick={handleOrder} className={`bg-button hover:bg-transparent border-2 border-button hover:text-black text-white py-2 px-4 lg:min-w-[155px] hover:rounded-xl transition-all ease-in-out duration-300 md:text-xl ${lato.className} font-bold tracking-wide`}>Order Online</button>
             </div>
         </div>
     )

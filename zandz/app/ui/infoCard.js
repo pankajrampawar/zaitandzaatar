@@ -4,7 +4,7 @@ import { anek_gujarati, lato, merienda } from "../fonts"
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-export default function ImageTextCard({ imgSource, altProp, title, subTitle, Details, buttonText, buttonFunction, isImageLeft }) {
+export default function ImageTextCard({ imgSource, altProp, title, subTitle, Details, buttonText, buttonFunction, isImageLeft, third, second }) {
 
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
@@ -24,18 +24,20 @@ export default function ImageTextCard({ imgSource, altProp, title, subTitle, Det
             </div>
 
             <div className={`${!isImageLeft ? "md:order-1" : "md:order-2"} flex-1 flex flex-col gap-6 xl:gap-12`}>
-                <h2 className={`${anek_gujarati.className} text-5xl md:text-6xl md:leading-tight xl:text-7xl xl:leading-tight sm:mx-none w-full tracking-wide font-bold`}>
+                <h2 className={`${anek_gujarati.className} text-5xl leading-tight md:text-6xl md:leading-tight xl:text-7xl xl:leading-tight sm:mx-none w-full tracking-wide font-bold`}>
                     {title}<br />
-                    <span className="text-white relative">
-                        <span className="relative z-10">{subTitle}</span>
-                        <motion.div
-                            ref={ref}
-                            className="absolute bg-foreground h-full w-[105%] top-0 left-1/2 -translate-x-1/2"
-                            initial={{ width: 0 }}
-                            animate={isInView ? { width: "105%" } : {}}
-                            transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
-                        />
-                    </span>
+                    <div className="relative min-[380px]:block">
+                        <span className="text-white min-[380px]:relative whitespace-pre-line">
+                            <span className="relative z-10">{third ? "Become \na member" : second ? "Buy a \nGift Card" : subTitle}</span>
+                            <motion.div
+                                ref={ref}
+                                className="absolute bg-foreground h-full w-[105%] top-0 left-1/2 -translate-x-1/2"
+                                initial={{ width: 0 }}
+                                animate={isInView ? { width: "105%" } : {}}
+                                transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
+                            />
+                        </span>
+                    </div>
                 </h2>
                 <article className={`${lato.className} text-sm sm:text-lg xl:text-[24px] text-gray-800 max-w-[600px]  xl:tracking-wide xl:leading-normal`}>
                     {Details}

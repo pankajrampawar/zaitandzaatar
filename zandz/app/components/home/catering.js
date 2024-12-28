@@ -20,6 +20,8 @@ export default function Catering() {
                 Details="Celebrate your special occasions with Saint Wich Burgers catering. Whether it’s a wedding, game night, date night, birthday, corporate event, or casual gathering we deliver juicy burgers, fresh sides, and unbeatable flavors that everyone will love. Every celebration deserves great food."
                 buttonText="Explore"
                 isImageLeft={true}
+                third={false}
+                second={false}
                 buttonFunction={navigateToCateringPage}
             />
         </div>
