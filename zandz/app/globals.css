@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#breakfastAllDay, #Appetizers, #plates, #drinks, #sandwiches, #soups, #speciality, #kidsMeal, #sides, #desserts {
+    scroll-margin-top: 150px;  /* Adjust the offset as needed */
+  }
