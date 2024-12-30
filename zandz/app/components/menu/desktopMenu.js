@@ -2,10 +2,11 @@
 import { anek_gujarati, merienda, raleway } from "@/app/fonts";
 import MenuItemCard from "@/app/ui/menuItemCard";
 import { useEffect, useState } from "react";
-import { burger, sides, sandwiches, drinks } from "./menuItems";
+import { breakfastAllDay, appetizers, plates, sandwiches, soupsAndSalads, specialty, kidsMeal, sides, desserts, drinks } from "./menuItems";
 
 export default function DesktopMenu() {
     const [currentItem, setCurrentItem] = useState(1);
+    console.log(breakfastAllDay)
 
     const toggleItem = (toggleTo) => {
         setCurrentItem(toggleTo);
@@ -25,7 +26,7 @@ export default function DesktopMenu() {
     const renderItems = () => {
         switch (currentItem) {
             case 1:
-                return burger.map((item, index) => (
+                return breakfastAllDay.map((item, index) => (
                     <MenuItemCard
                         key={index}
                         itemName={item.name}
@@ -35,7 +36,7 @@ export default function DesktopMenu() {
                     />
                 ));
             case 2:
-                return sandwiches.map((item, index) => (
+                return appetizers.map((item, index) => (
                     <MenuItemCard
                         key={index}
                         itemName={item.name}
@@ -45,7 +46,7 @@ export default function DesktopMenu() {
                     />
                 ));
             case 3:
-                return sides.map((item, index) => (
+                return plates.map((item, index) => (
                     <MenuItemCard
                         key={index}
                         itemName={item.name}
@@ -55,6 +56,66 @@ export default function DesktopMenu() {
                     />
                 ));
             case 4:
+                return sandwiches.map((item, index) => (
+                    <MenuItemCard
+                        key={index}
+                        itemName={item.name}
+                        itemPrice={item.price}
+                        itemInfo={item.content || ""}
+                        img={item.speciality ? "/special.jpeg" : item.exclusive ? "/exclusive.jpeg" : undefined}
+                    />
+                ));
+            case 5:
+                return soupsAndSalads.map((item, index) => (
+                    <MenuItemCard
+                        key={index}
+                        itemName={item.name}
+                        itemPrice={item.price}
+                        itemInfo={item.content || ""}
+                        img={item.speciality ? "/special.jpeg" : item.exclusive ? "/exclusive.jpeg" : undefined}
+                    />
+                ));
+            case 6:
+                return specialty.map((item, index) => (
+                    <MenuItemCard
+                        key={index}
+                        itemName={item.name}
+                        itemPrice={item.price}
+                        itemInfo={item.content || ""}
+                        img={item.speciality ? "/special.jpeg" : item.exclusive ? "/exclusive.jpeg" : undefined}
+                    />
+                ));
+            case 7:
+                return kidsMeal.map((item, index) => (
+                    <MenuItemCard
+                        key={index}
+                        itemName={item.name}
+                        itemPrice={item.price}
+                        itemInfo={item.content || ""}
+                        img={item.speciality ? "/special.jpeg" : item.exclusive ? "/exclusive.jpeg" : undefined}
+                    />
+                ));
+            case 8:
+                return sides.map((item, index) => (
+                    <MenuItemCard
+                        key={index}
+                        itemName={item.name}
+                        itemPrice={item.price}
+                        itemInfo={item.content || ""}
+                        img={item.speciality ? "/special.jpeg" : item.exclusive ? "/exclusive.jpeg" : undefined}
+                    />
+                ));
+            case 9:
+                return desserts.map((item, index) => (
+                    <MenuItemCard
+                        key={index}
+                        itemName={item.name}
+                        itemPrice={item.price}
+                        itemInfo={item.content || ""}
+                        img={item.speciality ? "/special.jpeg" : item.exclusive ? "/exclusive.jpeg" : undefined}
+                    />
+                ));
+            case 10:
                 return (
                     <>
                         <div>
@@ -126,11 +187,17 @@ export default function DesktopMenu() {
     return (
         <div className="relative flex flex-col items-center">
             <div className="sticky top-4 bg-background pt-28 w-full z-10">
-                <div className={`flex justify-between text-2xl ${anek_gujarati.className} font-semibold w-full overflow-x-auto gap-4 py-2 px-4 border-b-2 border-button max-w-[700px] mx-auto`}>
-                    <button onClick={() => toggleItem(1)} className={`whitespace-nowrap flex gap-2 items-center ${currentItem === 1 ? 'text-foreground underline' : ''}`}>Burgers</button>
-                    <button onClick={() => toggleItem(2)} className={`whitespace-nowrap ${currentItem === 2 ? 'text-foreground underline' : ''}`}>Sandwiches</button>
-                    <button onClick={() => toggleItem(3)} className={`whitespace-nowrap ${currentItem === 3 ? 'text-foreground underline' : ''}`}>Sides</button>
-                    <button onClick={() => toggleItem(4)} className={`whitespace-nowrap ${currentItem === 4 ? 'text-foreground underline' : ''}`}>Drinks</button>
+                <div className={`flex justify-between text-2xl ${anek_gujarati.className} font-semibold w-full gap-4 py-2 px-4 border-b-2 border-button max-[400px]:max-w-[320px] max-[460px]:max-w-[380px] max-[540px]:max-w-[440px] max-w-[540px] overflow-x-scroll sm:max-w-[700px] mx-auto`}>
+                    <button onClick={() => toggleItem(1)} className={`whitespace-nowrap flex gap-2 items-center ${currentItem === 1 ? 'text-foreground underline' : ''}`}>Breakfast All Day</button>
+                    <button onClick={() => toggleItem(2)} className={`whitespace-nowrap ${currentItem === 2 ? 'text-foreground underline' : ''}`}>Appetizers</button>
+                    <button onClick={() => toggleItem(3)} className={`whitespace-nowrap ${currentItem === 3 ? 'text-foreground underline' : ''}`}>Plates</button>
+                    <button onClick={() => toggleItem(4)} className={`whitespace-nowrap ${currentItem === 4 ? 'text-foreground underline' : ''}`}>Sandwiches</button>
+                    <button onClick={() => toggleItem(5)} className={`whitespace-nowrap ${currentItem === 5 ? 'text-foreground underline' : ''}`}>Soups and Salads</button>
+                    <button onClick={() => toggleItem(6)} className={`whitespace-nowrap ${currentItem === 6 ? 'text-foreground underline' : ''}`}>Speciality</button>
+                    <button onClick={() => toggleItem(7)} className={`whitespace-nowrap ${currentItem === 7 ? 'text-foreground underline' : ''}`}>Kids Meal</button>
+                    <button onClick={() => toggleItem(8)} className={`whitespace-nowrap ${currentItem === 8 ? 'text-foreground underline' : ''}`}>Sides</button>
+                    <button onClick={() => toggleItem(9)} className={`whitespace-nowrap ${currentItem === 9 ? 'text-foreground underline' : ''}`}>Desserts</button>
+                    <button onClick={() => toggleItem(10)} className={`whitespace-nowrap ${currentItem === 10 ? 'text-foreground underline' : ''}`}>Drinks</button>
                 </div>
             </div>
             {currentItem === 1 && (
