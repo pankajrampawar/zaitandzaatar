@@ -1,5 +1,5 @@
 'use client'
-import PopUpCard from "@/app/UI/popUpCard";
+import PopUpCard from "@/app/ui/popUpCard";
 import { useState } from "react";
 import Image from "next/image";
 
