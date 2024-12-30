@@ -10,7 +10,7 @@ export default function Menu() {
     const isInView = useInView(ref, { once: true });
 
     return (
-        <div className="mt-10">
+        <div className="mt-[10%]">
             <section className={`${anek_gujarati.className} text-4xl md:text-5xl xl:text-6xl sm:mx-none w-full text-center font-semibold tracking-wide`}>
                 <div>Explore the Complete Range of</div>
                 <div className="mt-2 xl:mt-4">

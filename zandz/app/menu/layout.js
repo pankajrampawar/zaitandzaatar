@@ -5,7 +5,7 @@ export const metadata = {
 
 export default function MenuLayout({ children }) {
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center w-full">
             {children}
         </div>
     );

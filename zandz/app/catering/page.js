@@ -56,7 +56,7 @@ export default function Catering() {
     };
 
     return (
-        <div className=" max-w-[1440px]">
+        <div className="max-w-[1440px] w-full">
             <section className="">
                 <CateringMenu addItemsInCart={addItemsInCart} updateQuantity={updateQuantity} itemsInCart={itemInCart} />
             </section>
