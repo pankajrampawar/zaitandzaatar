@@ -302,8 +302,8 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
 
     return (
         <div className="flex flex-col items-start relative lg:justify-start w-full">
-            <div className="sticky top-0 pt-24 xl:pt-32 w-full z-10 xl:w-1/2">
-                <div className={`flex justify-between text-2xl lg:text-3xl ${anek_gujarati.className} w-full gap-4 py-2 px-4 border-b-2 border-button max-[400px]:max-w-[320px] max-[460px]:max-w-[380px] max-[540px]:max-w-[440px] max-w-[540px] overflow-x-scroll sm:max-w-[700px] mx-auto font-semibold tracking-wide`}>
+            <div className="sticky top-0 pt-24 xl:pt-40 w-full z-10 xl:w-1/2 ">
+                <div className={`flex justify-between text-2xl ${anek_gujarati.className} font-semibold w-full gap-4 py-2 px-4 border-b-2 border-button max-[400px]:max-w-[320px] max-[460px]:max-w-[380px] max-[540px]:max-w-[440px] max-w-[540px] overflow-x-auto sm:max-w-[700px] mx-auto`}>
                     <a href="#breakfastAllDay" className="whitespace-nowrap">
                         <button>Breakfast All Day</button>
                     </a>
