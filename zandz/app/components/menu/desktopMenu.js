@@ -6,7 +6,6 @@ import { breakfastAllDay, appetizers, plates, sandwiches, soupsAndSalads, specia
 
 export default function DesktopMenu() {
     const [currentItem, setCurrentItem] = useState(1);
-    console.log(breakfastAllDay)
 
     const toggleItem = (toggleTo) => {
         setCurrentItem(toggleTo);
