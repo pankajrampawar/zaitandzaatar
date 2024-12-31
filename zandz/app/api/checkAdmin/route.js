@@ -1,6 +1,6 @@
 import clientPromise from '@/app/lib/mongodb';
 
-export async function POST(req) {
+export const POST = async (req) => {
     try {
         // Step 1: Parse the request body to get admin name and password
         const { adminName, adminPassword } = await req.json();
