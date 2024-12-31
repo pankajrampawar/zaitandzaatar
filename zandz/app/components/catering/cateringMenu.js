@@ -1,10 +1,39 @@
 'use client'
-
 import { anek_gujarati, merienda } from "@/app/fonts"
 import CateringPricingCard from "@/app/ui/cateringPricingCard";
 import { breakfastAllDay, appetizers, plates, sandwiches, soupsAndSalads, specialty, kidsMeal, sides, desserts, drinks } from "../menu/menuItems";
+import { useEffect, useState, useRef } from "react";
 
 export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCart }) {
+
+    const [activeSection, setActiveSection] = useState("");
+    const sectionsRef = useRef([]);
+
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: `-33% 0px -67% 0px`, // Triggers when the section is near 1/3 of the viewport height
+            threshold: 0,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        }, observerOptions);
+
+        sectionsRef.current.forEach((section) => {
+            if (section) observer.observe(section);
+        });
+
+        return () => {
+            sectionsRef.current.forEach((section) => {
+                if (section) observer.unobserve(section);
+            });
+        };
+    }, []);
 
 
     const BreakfastAllDay = ({ id, itemsInCart, addItemsInCart, updateQuantity }) => {
@@ -303,50 +332,59 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
     return (
         <div className="flex flex-col items-start relative lg:justify-start w-full h-screen">
             <div className="sticky top-0 pt-24 xl:pt-40 w-full z-10 xl:w-1/2 ">
-                <div className={`flex justify-between text-2xl ${anek_gujarati.className} font-semibold w-full gap-4 py-2 px-4 border-b-2 border-button max-[400px]:max-w-[320px] max-[460px]:max-w-[380px] max-[540px]:max-w-[440px] max-w-[540px] overflow-x-auto sm:max-w-[700px] mx-auto`}>
-                    <a href="#breakfastAllDay" className="whitespace-nowrap">
-                        <button>Breakfast All Day</button>
-                    </a>
-                    <a href="#Appetizers" className="whitespace-nowrap">
-                        <button>Appetizers</button>
-                    </a>
-                    <a href="#plates" className="whitespace-nowrap">
-                        <button>Plates</button>
-                    </a>
-                    <a href="#sandwiches" className="whitespace-nowrap">
-                        <button>Sandwiches</button>
-                    </a>
-                    <a href="#soups" className="whitespace-nowrap">
-                        <button>Soups & Salads</button>
-                    </a>
-                    <a href="#speciality" className="whitespace-nowrap">
-                        <button>Speciality</button>
-                    </a>
-                    <a href="#kidsMeal" className="whitespace-nowrap">
-                        <button>Kids Meal</button>
-                    </a>
-                    <a href="#sides" className="whitespace-nowrap">
-                        <button>Sides</button>
-                    </a>
-                    <a href="#desserts" className="whitespace-nowrap">
-                        <button>Desserts</button>
-                    </a>
-                    <a href="#drinks" className="whitespace-nowrap">
-                        <button>Drinks</button>
-                    </a>
+                <div
+                    className={`flex justify-between text-2xl font-semibold w-full gap-4 py-2 px-4 border-b-2 border-button max-[400px]:max-w-[320px] max-[460px]:max-w-[380px] max-[540px]:max-w-[440px] max-w-[540px] overflow-x-auto sm:max-w-[700px] mx-auto`}
+                >
+                    {[
+                        { id: "breakfastAllDay", label: "Breakfast All Day" },
+                        { id: "Appetizers", label: "Appetizers" },
+                        { id: "plates", label: "Plates" },
+                        { id: "sandwiches", label: "Sandwiches" },
+                        { id: "soups", label: "Soups & Salads" },
+                        { id: "speciality", label: "Speciality" },
+                        { id: "kidsMeal", label: "Kids Meal" },
+                        { id: "sides", label: "Sides" },
+                        { id: "desserts", label: "Desserts" },
+                        { id: "drinks", label: "Drinks" },
+                    ].map((section) => (
+                        <a
+                            key={section.id}
+                            href={`#${section.id}`}
+                            className={`whitespace-nowrap ${activeSection === section.id
+                                ? "text-foreground border-b-2 border-foreground"
+                                : ""
+                                }`}
+                        >
+                            <button>{section.label}</button>
+                        </a>
+                    ))}
                 </div>
             </div>
             <div className="flex flex-col max-h-[75vh] overflow-y-auto">
-                <BreakfastAllDay id="breakfastAllDay" itemsInCart={itemsInCart} addItemsInCart={addItemsInCart} updateQuantity={updateQuantity} />
-                <AppetizersList id="Appetizers" itemsInCart={itemsInCart} addItemsInCart={addItemsInCart} updateQuantity={updateQuantity} />
-                <PlatesList id="plates" itemsInCart={itemsInCart} addItemsInCart={addItemsInCart} updateQuantity={updateQuantity} />
-                <SandwichesList id="sandwiches" itemsInCart={itemsInCart} addItemsInCart={addItemsInCart} updateQuantity={updateQuantity} />
-                <SoupsList id="soups" itemsInCart={itemsInCart} addItemsInCart={addItemsInCart} updateQuantity={updateQuantity} />
-                <SpecialityList id="speciality" itemsInCart={itemsInCart} addItemsInCart={addItemsInCart} updateQuantity={updateQuantity} />
-                <KidsMealLIst id="kidsMeal" itemsInCart={itemsInCart} addItemsInCart={addItemsInCart} updateQuantity={updateQuantity} />
-                <SidesList id="sides" itemsInCart={itemsInCart} addItemsInCart={addItemsInCart} updateQuantity={updateQuantity} />
-                <DessertsList id="desserts" itemsInCart={itemsInCart} addItemsInCart={addItemsInCart} updateQuantity={updateQuantity} />
-                <DrinksList id="drinks" itemsInCart={itemsInCart} addItemsInCart={addItemsInCart} updateQuantity={updateQuantity} />
+                {[
+                    { id: "breakfastAllDay", Component: BreakfastAllDay },
+                    { id: "Appetizers", Component: AppetizersList },
+                    { id: "plates", Component: PlatesList },
+                    { id: "sandwiches", Component: SandwichesList },
+                    { id: "soups", Component: SoupsList },
+                    { id: "speciality", Component: SpecialityList },
+                    { id: "kidsMeal", Component: KidsMealLIst },
+                    { id: "sides", Component: SidesList },
+                    { id: "desserts", Component: DessertsList },
+                    { id: "drinks", Component: DrinksList },
+                ].map(({ id, Component }, index) => (
+                    <div
+                        key={id}
+                        id={id}
+                        ref={(el) => (sectionsRef.current[index] = el)}
+                    >
+                        <Component
+                            itemsInCart={itemsInCart}
+                            addItemsInCart={addItemsInCart}
+                            updateQuantity={updateQuantity}
+                        />
+                    </div>
+                ))}
             </div>
         </div>
     )

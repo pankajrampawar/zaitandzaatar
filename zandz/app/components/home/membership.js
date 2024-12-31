@@ -13,7 +13,7 @@ export default function Membership() {
     return (
         <div className="w-full">
             <ImageTextCard
-                imgSource="/loyaltyCard.png"
+                imgSource="/membership.png"
                 altProp="/Loyalty Card of restaurant"
                 title="Save More,"
                 subTitle="Become a Member"

@@ -11,7 +11,7 @@ export default function GiftCard() {
     return (
         <div className="">
             <ImageTextCard
-                imgSource="/loyaltyCard.png"
+                imgSource="/giftCard.png"
                 altProp="/Gift card of restaurant"
                 title="Share Delight,"
                 subTitle="Buy a Gift Card!"
