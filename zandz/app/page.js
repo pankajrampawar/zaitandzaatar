@@ -54,7 +54,7 @@ export default function Home() {
         <Faq />
       </section>
 
-      <div className="flex items-center justify-center relative w-full">
+      <div className="flex items-center justify-center relative w-full mt-20 xl:mt-40 xl:mb-20">
         <div
           className="absolute inset-0 bg-cover bg-center bg-[#130902] z-0"
           style={{ backgroundImage: "url('/orderBackground.png')" }}
