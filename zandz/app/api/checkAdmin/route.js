@@ -2,9 +2,10 @@ import clientPromise from '@/app/lib/mongodb';
 
 export async function POST(req) {
     try {
-        // Parse the request body to get admin name and password
+        // Step 1: Parse the request body to get admin name and password
         const { adminName, adminPassword } = await req.json();
-        // Validate input fields
+
+        // Step 2: Validate input fields
         if (!adminName || !adminPassword) {
             return new Response(
                 JSON.stringify({ error: 'Admin name and password are required.' }),
@@ -15,11 +16,15 @@ export async function POST(req) {
             );
         }
 
-        // Connect to MongoDB
+        // Step 3: Connect to MongoDB
         const client = await clientPromise;
+        if (!client) {
+            throw new Error('Failed to connect to the database');
+        }
+
         const db = client.db('your-database-name');
 
-        // Check if the admin credentials are correct
+        // Step 4: Check if the admin credentials are correct
         const admin = await db.collection('Admin').findOne({ name: adminName });
 
         if (!admin) {
@@ -32,35 +37,8 @@ export async function POST(req) {
             );
         }
 
-
-
-        // Verify the password
-        if (admin.password === adminPassword) {
-
-            // Fetch the list of users (clients) from the database
-            const contacts = await db.collection('contacts').find({}).toArray();
-
-            // Format the contacts list
-            const formattedContacts = contacts.map(contact => ({
-                name: contact.name,
-                email: contact.email,
-                contactNumber: contact.contactNumber,
-                messageContent: contact.messages,
-                sentAt: contact.createdAt,
-            }));
-
-            // Send a success response with the contacts list
-            return new Response(
-                JSON.stringify({
-                    message: 'ok',
-                    contacts: formattedContacts,
-                }),
-                {
-                    status: 200,
-                    headers: { 'Content-Type': 'application/json' },
-                }
-            );
-        } else {
+        // Step 5: Verify the password
+        if (admin.password !== adminPassword) {
             return new Response(
                 JSON.stringify({ error: 'Invalid admin name or password.' }),
                 {
@@ -69,11 +47,39 @@ export async function POST(req) {
                 }
             );
         }
+
+        // Step 6: Fetch the list of users (contacts) from the database
+        const contacts = await db.collection('contacts').find().toArray();
+
+        // Step 7: Format the contacts list to avoid undefined or null values
+        const formattedContacts = contacts.map(contact => ({
+            name: contact.name || 'N/A', // Default values if undefined
+            email: contact.email || 'N/A',
+            contactNumber: contact.contactNumber || 'N/A',
+            messageContent: contact.messages || 'N/A',
+            sentAt: contact.createdAt || 'N/A',
+        }));
+
+        // Step 8: Return success response with formatted contacts
+        return new Response(
+            JSON.stringify({
+                message: 'ok',
+                contacts: formattedContacts,
+            }),
+            {
+                status: 200,
+                headers: { 'Content-Type': 'application/json' },
+            }
+        );
+
     } catch (error) {
-        console.error('Error validating admin credentials:', error);
+        // Step 9: Log and return detailed error message
+        console.error('Error in /api/checkAdmin:', error);
 
         return new Response(
-            JSON.stringify({ error: `Failed to validate credentials: ${error.message}` }),
+            JSON.stringify({
+                error: `Failed to process request: ${error.message}`,
+            }),
             {
                 status: 500,
                 headers: { 'Content-Type': 'application/json' },
