@@ -1,7 +1,9 @@
+import OurStory from "../components/about/aboutSection";
+
 export default function About() {
     return (
-        <div>
-            About page
+        <div className=" mt-[10%]">
+            <OurStory />
         </div>
     )
 }
