@@ -2,10 +2,10 @@ import clientPromise from '@/app/lib/mongodb';
 
 export const POST = async (req) => {
     try {
-        // Step 1: Parse the request body to get admin name and password
         const { adminName, adminPassword } = await req.json();
+        console.log('Received adminName:', adminName, 'adminPassword:', adminPassword);
 
-        // Step 2: Validate input fields
+        // Step 1: Validate input fields
         if (!adminName || !adminPassword) {
             return new Response(
                 JSON.stringify({ error: 'Admin name and password are required.' }),
@@ -16,7 +16,7 @@ export const POST = async (req) => {
             );
         }
 
-        // Step 3: Connect to MongoDB
+        // Step 2: Connect to MongoDB
         const client = await clientPromise;
         if (!client) {
             throw new Error('Failed to connect to the database');
@@ -24,10 +24,11 @@ export const POST = async (req) => {
 
         const db = client.db('your-database-name');
 
-        // Step 4: Check if the admin credentials are correct
+        // Step 3: Check if the admin credentials are correct
         const admin = await db.collection('Admin').findOne({ name: adminName });
+        console.log('Admin:', admin);
 
-        if (!admin) {
+        if (!admin || !admin.password) {
             return new Response(
                 JSON.stringify({ error: 'Invalid admin name or password.' }),
                 {
@@ -37,7 +38,6 @@ export const POST = async (req) => {
             );
         }
 
-        // Step 5: Verify the password
         if (admin.password !== adminPassword) {
             return new Response(
                 JSON.stringify({ error: 'Invalid admin name or password.' }),
@@ -48,19 +48,24 @@ export const POST = async (req) => {
             );
         }
 
-        // Step 6: Fetch the list of users (contacts) from the database
+        // Step 4: Fetch the list of users (contacts) from the database
         const contacts = await db.collection('contacts').find().toArray();
+        console.log('Contacts:', contacts);
 
-        // Step 7: Format the contacts list to avoid undefined or null values
+        if (!Array.isArray(contacts)) {
+            throw new Error('Contacts data is not an array');
+        }
+
+        // Step 5: Format the contacts list to avoid undefined or null values
         const formattedContacts = contacts.map(contact => ({
-            name: contact.name || 'N/A', // Default values if undefined
-            email: contact.email || 'N/A',
-            contactNumber: contact.contactNumber || 'N/A',
-            messageContent: contact.messages || 'N/A',
-            sentAt: contact.createdAt || 'N/A',
+            name: contact?.name || 'N/A',
+            email: contact?.email || 'N/A',
+            contactNumber: contact?.contactNumber || 'N/A',
+            messageContent: contact?.messages || 'N/A',
+            sentAt: contact?.createdAt || 'N/A',
         }));
 
-        // Step 8: Return success response with formatted contacts
+        // Step 6: Return success response with formatted contacts
         return new Response(
             JSON.stringify({
                 message: 'ok',
@@ -73,7 +78,6 @@ export const POST = async (req) => {
         );
 
     } catch (error) {
-        // Step 9: Log and return detailed error message
         console.error('Error in /api/checkAdmin:', error);
 
         return new Response(
@@ -86,4 +90,4 @@ export const POST = async (req) => {
             }
         );
     }
-}
+};
