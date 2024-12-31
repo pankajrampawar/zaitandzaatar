@@ -4,12 +4,8 @@ export async function POST(req) {
     try {
         // Parse the request body to get admin name and password
         const { adminName, adminPassword } = await req.json();
-
-
-
         // Validate input fields
         if (!adminName || !adminPassword) {
-
             return new Response(
                 JSON.stringify({ error: 'Admin name and password are required.' }),
                 {
@@ -20,22 +16,13 @@ export async function POST(req) {
         }
 
         // Connect to MongoDB
-
         const client = await clientPromise;
-        const db = client.db('your-database-name'); // Use the correct database name
-
-
-        // Fetch and log all documents in the 'Admin' collection
-
-        const allAdmins = await db.collection('Admin').find({}).toArray();
-
+        const db = client.db('your-database-name');
 
         // Check if the admin credentials are correct
-
         const admin = await db.collection('Admin').findOne({ name: adminName });
 
         if (!admin) {
-
             return new Response(
                 JSON.stringify({ error: 'Invalid admin name or password.' }),
                 {
@@ -50,12 +37,8 @@ export async function POST(req) {
         // Verify the password
         if (admin.password === adminPassword) {
 
-
             // Fetch the list of users (clients) from the database
-
             const contacts = await db.collection('contacts').find({}).toArray();
-            console.log(contacts)
-
 
             // Format the contacts list
             const formattedContacts = contacts.map(contact => ({
@@ -78,7 +61,6 @@ export async function POST(req) {
                 }
             );
         } else {
-
             return new Response(
                 JSON.stringify({ error: 'Invalid admin name or password.' }),
                 {
@@ -90,7 +72,6 @@ export async function POST(req) {
     } catch (error) {
         console.error('Error validating admin credentials:', error);
 
-        // Return a generic error response
         return new Response(
             JSON.stringify({ error: `Failed to validate credentials: ${error.message}` }),
             {
