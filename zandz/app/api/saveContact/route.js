@@ -15,7 +15,7 @@ export async function POST(req) {
 
         // Connect to MongoDB
         const client = await clientPromise;
-        const db = client.db('your-database-name'); // Replace with your database name
+        const db = client.db('Client-List'); // Replace with your database name
 
         // Check if the contact number already exists in the database
         const existingContact = await db.collection('contacts').findOne({ contactNumber });
