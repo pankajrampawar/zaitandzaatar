@@ -6,6 +6,7 @@ export default function PopUpCard(itemsInCart) {
     const [deliveryTime, setDeliveryTime] = useState("");
     const [mobile, setMobile] = useState("");
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("")
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -40,6 +41,7 @@ export default function PopUpCard(itemsInCart) {
                 },
                 body: JSON.stringify({
                     itemsInCart,
+                    name,
                     location,
                     deliveryDate,
                     deliveryTime,
@@ -53,8 +55,20 @@ export default function PopUpCard(itemsInCart) {
                 localStorage.removeItem('cart')
             } else {
                 const errorData = await response.json();
-                setErrorMessage(errorData.error || "Failed to send the order request.");
+                setErrorMessage(errorData.error || "Failed to send the order request, Please try again later.");
             }
+
+            const saveResponse = await fetch('/api/saveContact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name, email: email, contactNumber: mobile }),
+            });
+
+            if (!saveResponse.ok) {
+                const saveError = saveResponse.json();
+                console.log(`Save Error: ${saveError.error}`);
+            }
+
         } catch (error) {
             console.error("Error sending order request:", error);
             setErrorMessage("An error occurred while sending the order request.");
@@ -85,6 +99,17 @@ export default function PopUpCard(itemsInCart) {
             >
                 <h2 className="text-3xl font-semibold mb-6 text-center">Order Request Form</h2>
                 <form onSubmit={handleSubmit} className="w-full space-y-6">
+                    <div>
+                        <label htmlFor="name" className="block text-lg font-medium">Your Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                            className="mt-2 p-3 w-full border bg-background text-black border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
                     <div>
                         <label htmlFor="location" className="block text-lg font-medium">Location (Minnesota only):</label>
                         <input

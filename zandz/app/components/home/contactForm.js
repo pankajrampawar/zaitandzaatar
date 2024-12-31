@@ -44,6 +44,18 @@ const ContactForm = () => {
                 const errorData = await response.json();
                 alert(`ERROR: ${errorData.message || 'Something went wrong!'}`);
             }
+
+            const saveResponse = await fetch('/api/saveContact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (!saveResponse.ok) {
+                const saveError = saveResponse.json();
+                console.log(`Save Error: ${saveError.error}`);
+            }
+
         } catch (error) {
             console.error('Form Submission error: ', error);
             alert('An unexpected error occurred. Please try again later.');

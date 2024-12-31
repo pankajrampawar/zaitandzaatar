@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 export async function POST(req) {
     try {
         // Get the request body
-        const { itemsInCart, location, deliveryDate, deliveryTime, phone, email } = await req.json();
+        const { itemsInCart, name, location, deliveryDate, deliveryTime, phone, email } = await req.json();
 
         // Set up Nodemailer transport
         const transporter = nodemailer.createTransport({
@@ -26,7 +26,7 @@ export async function POST(req) {
         const mailOptions = {
             from: process.env.EMAIL_USER,  // Sender email address (Your email)
             to: process.env.EMAIL_USER,    // Recipient email address (Your email)
-            subject: 'Catering Order Request',
+            subject: `Catering Order Request by ${name}`,
             text: `Order Details:
                    \n\nItems in Cart:
                    ${itemsList}
