@@ -63,7 +63,7 @@ export default function Faq() {
                             className="absolute bg-foreground h-full w-[105%] top-0 left-1/2 -translate-x-1/2"
                             initial={{ width: 0 }}
                             animate={isInView ? { width: "105%" } : {}}
-                            transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
+                            transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
                         />
                     </span>
                 </h2>

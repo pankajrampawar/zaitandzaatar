@@ -15,8 +15,19 @@ export default function RootLayout({ children }) {
         <div className="fixed w-screen top-0 z-50">
           <Navbar />
         </div>
-        <div className="flex justify-center">
-          {children}
+        <div className="flex justify-center w-full relative">
+          <div
+            className="absolute inset-0 w-full z-0"
+            style={{
+              backgroundImage: "url('bg-pattern-2.png')",
+              backgroundRepeat: "repeat-y",
+              backgroundPosition: "center",
+              opacity: 0.04,
+            }}
+          />
+          <div className="flex justify-center w-full relative z-20">
+            {children}
+          </div>
         </div>
       </body>
     </html>

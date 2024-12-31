@@ -1,6 +1,13 @@
+'use client'
 import { anek_gujarati, lato } from "@/app/fonts";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function InfoSection() {
+
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
     return (
         <section className="flex flex-col md:flex-row  justify-between items-start md:items-center gap-4 md:gap-8 max-w-[1560px] px-[5%]">
             <article className="flex-1 max-w-[546px]">
@@ -9,7 +16,17 @@ export default function InfoSection() {
                 </div>
                 <div className={` ${anek_gujarati.className} text-3xl min-[500px]:text-5xl xl:text-6xl font-semibold leading-snug tracking-wide`}>
                     <h2>
-                        <span className="bg-green-700 text-white px-2">ZAIT & ZA'ATAR</span> <div className="pt-4 sm:pt-6 text-2xl min-[500px]:text-4xl sm:text-5xl">MEDITERRANEAN DHABA</div>
+                        <span className=" text-white px-2 relative">
+                            <span className="relative z-10">ZAIT & ZA'ATAR</span>
+                            <motion.div
+                                ref={ref}
+                                className="absolute bg-foreground h-full w-[105%] top-0 left-1/2 -translate-x-1/2"
+                                initial={{ width: 0 }}
+                                animate={isInView ? { width: "102%" } : {}}
+                                transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
+                            />
+                        </span>
+                        <div className="pt-4 sm:pt-6 text-2xl min-[500px]:text-4xl sm:text-5xl">MEDITERRANEAN DHABA</div>
                     </h2>
                 </div>
             </article>
