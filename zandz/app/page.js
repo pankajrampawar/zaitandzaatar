@@ -11,6 +11,7 @@ import GiftCard from "./components/home/giftCard";
 import Membership from "./components/home/membership";
 import Faq from "./components/home/faq";
 import Location from "./components/home/location";
+import ContactForm from "./components/home/contactForm";
 
 export default function Home() {
   return (
@@ -52,6 +53,14 @@ export default function Home() {
       <section className="w-full flex justify-center">
         <Faq />
       </section>
+
+      <div className="flex items-center justify-center relative w-full">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-[#130902] z-0"
+          style={{ backgroundImage: "url('/orderBackground.png')" }}
+        ></div>
+        <ContactForm />
+      </div>
 
       <section className="w-full flex justify-center">
         <Location />
