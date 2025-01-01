@@ -23,7 +23,7 @@ export default function Footer() {
                     <ul className="space-y-2">
                         {['Home', 'Menu', 'About', 'Catering', 'Rewards'].map((item) => (
                             <li key={item}>
-                                <a href={`${item.toLowerCase()}`} className="hover:text-[#E4312B] transition">
+                                <a href={item === 'Home' ? '/' : `${item.toLowerCase()}`} className="hover:text-[#E4312B] transition">
                                     {item}
                                 </a>
                             </li>
@@ -34,8 +34,8 @@ export default function Footer() {
                 {/* Contact Section */}
                 <div className="flex flex-col">
                     <h3 className={`text-2xl tracking-wide font-semibold mb-4 ${anek_gujarati.className}`}>Contact Info</h3>
-                    <p>Email: <a href="mailto:support@stwichburgers.com" className="hover:text-[#E4312B] transition">support@stwichburgers.com</a></p>
-                    <p>Phone: <a href="tel:+16516832722" className="hover:text-[#E4312B] transition">(651) 683-2722</a></p>
+                    <p>Email: <a href="mailto:support@zaitzaatar.com" className="hover:text-[#E4312B] transition">support@zaitzaatar.com</a></p>
+                    <p>Phone: <a href="tel:+16514937438" className="hover:text-[#E4312B] transition">+1 651-493-7438</a></p>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@ export default function Footer() {
                     <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:scale-125 transition-all ease-in-out duration-300 cursor-pointer">
                         <img src="/facebook.svg" alt="Facebook" className="w-8 h-8 cursor-pointer" />
                     </a>
-                    <a href="mailto:support@stwichburgers.com" className="hover:scale-125 transition-all ease-in-out duration-300 cursor-pointer">
+                    <a href="mailto:support@zaitzaatar.com" className="hover:scale-125 transition-all ease-in-out duration-300 cursor-pointer">
                         <img src="/gmail.svg" alt="Gmail" className="w-9 h-9 cursor-pointer" />
                     </a>
                     <a href="tel:+16516832722" className="hover:scale-125 transition-all ease-in-out duration-300 cursor-pointer">
