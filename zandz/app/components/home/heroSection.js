@@ -2,15 +2,34 @@
 import Image from "next/image";
 import { anek_gujarati, lato } from "@/app/fonts";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-
 
 export default function HeroSection() {
 
     const router = useRouter();
     const ref = useRef(null);
+    const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const isInView = useInView(ref, { once: true });
+
+    const handleOverlay = () => {
+        setIsOverlayOpen((prev) => !prev);
+    };
+
+    const navigateFunction = (pageToNavigate) => {
+        handleOverlay();
+        router.push(`/${pageToNavigate}`);
+    };
+
+    const handleDrawerEnter = () => {
+        setIsDrawerOpen(true);
+    };
+
+    const handleDrawerLeave = () => {
+        setIsDrawerOpen(false);
+    };
+
 
     return (
         <div className="xl:max-w-[1560px] w-full max-w-screen mt-[20%] sm:mt-[10%] md:mt-[5%]">
@@ -38,7 +57,27 @@ export default function HeroSection() {
 
                     {/* Call To Action */}
                     <div className="flex gap-6 mt-[8%] sm:mt-[5%] relative z-10">
-                        <button className={`bg-button hover:bg-transparent border-2 border-button hover:text-black text-white py-2 px-4 lg:min-w-[155px] hover:rounded-xl transition-all ease-in-out duration-300 md:text-xl ${lato.className} font-bold tracking-wide`}>Order Online</button>
+
+                        <div
+                            onMouseEnter={handleDrawerEnter}
+                            onMouseLeave={handleDrawerLeave}
+                            className="relative"
+                        >
+                            <button className={`bg-button hover:bg-transparent border-2 border-button hover:text-black text-white py-2 px-4 lg:min-w-[155px] hover:rounded-xl transition-all ease-in-out duration-300 md:text-xl ${lato.className} font-bold tracking-wide`}>Order Online</button>
+
+                            <div className={`${isDrawerOpen ? 'max-h-96' : 'max-h-0'} overflow-hidden bg-white text-2xl absolute top-14 right-0 flex flex-col items-start transition-[max-height] ease-out duration-400 shadow-lg`}>
+                                <button className="py-2 px-4 hover:bg-slate-200 min-w-full flex justify-start">
+                                    <a href="https://www.order.store/store/saint-wich-burgers/FfblFeilXLutIRj0Lu74Kg" target="_blank">DoorDash</a>
+                                </button>
+                                <button className="pt-4 pb-2 px-4 hover:bg-slate-200 min-w-full flex justify-start">
+                                    <a href="https://order.online/business/saint-wich-burgers-11755901" target="_blank" className="hover:cursor-pointer">Uber Eats</a>
+                                </button>
+                                <button className="py-2 pb-4 px-4 hover:bg-slate-200 min-w-full flex justify-start">
+                                    <a href="https://saintwichburgers.dine.online" target="_blank">Grubhub</a>
+                                </button>
+                            </div>
+                        </div>
+
                         <button onClick={() => { router.push('/menu') }} className={`bg-button hover:bg-transparent border-2 border-button hover:text-black text-white py-2 px-4 lg:min-w-[155px] hover:rounded-xl transition-all ease-in-out duration-300 md:text-xl ${lato.className} font-bold tracking-wide`}>View Menu</button>
                     </div>
                 </section>

@@ -2,18 +2,13 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-import { lato, raleway } from "../fonts";
+import { useState } from "react";
+import { lato } from "../fonts";
 
 export default function Navbar() {
     const router = useRouter();
     const [isOverlayOpen, setIsOverlayOpen] = useState(false);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const [isABTest, setIsABTest] = useState(true); // A/B Test State
-
-    useEffect(() => {
-        setIsABTest(Math.random() < 0.5);
-    }, []);
 
     const handleOverlay = () => {
         setIsOverlayOpen((prev) => !prev);
@@ -24,16 +19,12 @@ export default function Navbar() {
         router.push(`/${pageToNavigate}`);
     };
 
-    const toggleDrawer = () => {
-        setIsDrawerOpen((prev) => !prev);
+    const handleDrawerEnter = () => {
+        setIsDrawerOpen(true);
     };
 
-    const handleOrderClick = () => {
-        if (isABTest) {
-            toggleDrawer();
-        } else {
-            router.push('#orderOnline')
-        }
+    const handleDrawerLeave = () => {
+        setIsDrawerOpen(false);
     };
 
     const NavigationItem = () => {
@@ -73,17 +64,28 @@ export default function Navbar() {
             </div>
 
             <div className="hidden md:flex flex-1 justify-end relative">
-                <button
-                    onClick={handleOrderClick}
-                    className="bg-button text-white hover:bg-inherit hover:rounded-2xl transition-all ease-in-out duration-300 hover:text-black hover:border-2 hover:border-black md:p-2 lg:p-3 md:text-base lg:text-xl"
+                <div
+                    onMouseEnter={handleDrawerEnter}
+                    onMouseLeave={handleDrawerLeave}
+                    className="relative"
                 >
-                    Order Online
-                </button>
+                    <button
+                        className="bg-button text-white hover:bg-inherit hover:rounded-2xl transition-all ease-in-out duration-300 hover:text-black hover:border-2 hover:border-black md:p-2 lg:p-3 md:text-base lg:text-xl"
+                    >
+                        Order Online
+                    </button>
 
-                <div className={`${isDrawerOpen ? 'max-h-96' : 'max-h-0'} overflow-hidden bg-white text-2xl absolute top-14 right-0 flex flex-col items-start transition-[max-height] ease-out duration-400 shadow-lg`}>
-                    <button className="pt-4 pb-2 px-4 hover:bg-slate-200 min-w-full flex justify-start"> <a href="https://order.online/business/saint-wich-burgers-11755901" target="_blank" className="hover:cursor-pointer">Uber Eats</a></button>
-                    <button className="py-2 px-4 hover:bg-slate-200 min-w-full flex justify-start"> <a href="https://www.order.store/store/saint-wich-burgers/FfblFeilXLutIRj0Lu74Kg " target="_blank">DoorDash</a></button>
-                    <button className="py-2 pb-4 px-4 hover:bg-slate-200 min-w-full flex justify-start"> <a href="https://saintwichburgers.dine.online " target="_blank">Grubhub</a></button>
+                    <div className={`${isDrawerOpen ? 'max-h-96' : 'max-h-0'} overflow-hidden bg-white text-2xl absolute top-14 right-0 flex flex-col items-start transition-[max-height] ease-out duration-400 shadow-lg`}>
+                        <button className="py-2 px-4 hover:bg-slate-200 min-w-full flex justify-start">
+                            <a href="https://www.order.store/store/saint-wich-burgers/FfblFeilXLutIRj0Lu74Kg" target="_blank">DoorDash</a>
+                        </button>
+                        <button className="pt-4 pb-2 px-4 hover:bg-slate-200 min-w-full flex justify-start">
+                            <a href="https://order.online/business/saint-wich-burgers-11755901" target="_blank" className="hover:cursor-pointer">Uber Eats</a>
+                        </button>
+                        <button className="py-2 pb-4 px-4 hover:bg-slate-200 min-w-full flex justify-start">
+                            <a href="https://saintwichburgers.dine.online" target="_blank">Grubhub</a>
+                        </button>
+                    </div>
                 </div>
             </div>
 

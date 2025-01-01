@@ -3,7 +3,7 @@ import Image from "next/image"
 import { anek_gujarati, lato } from "@/app/fonts"
 import { useRouter } from "next/navigation";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const BurgerCard = ({ name, src, alt }) => {
     return (
@@ -24,14 +24,31 @@ const BurgerCard = ({ name, src, alt }) => {
 };
 
 export default function OrderOnline() {
-
     const router = useRouter();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
+    const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-    const handleOrder = () => {
-        router.push('#orderOnline')
+    const viewMenu = () => {
+        router.push('/menu')
     }
+
+    const toggleDrawer = () => {
+        setIsDrawerOpen((prev) => !prev);
+    };
+
+    const handleOrderClick = () => {
+        toggleDrawer();
+    };
+
+    const handleDrawerEnter = () => {
+        setIsDrawerOpen(true);
+    };
+
+    const handleDrawerLeave = () => {
+        setIsDrawerOpen(false);
+    };
 
     return (
         <div className="mt-20 sm:mt-[10%] flex flex-col items-center bg-[#130902] py-[6%] xl:py-[10%] text-white w-full "
@@ -70,7 +87,21 @@ export default function OrderOnline() {
             </div>
 
             <div className="pt-10">
-                <button onClick={handleOrder} className={`bg-button hover:bg-transparent border-2 border-button hover:text-black text-white py-2 px-4 lg:min-w-[155px] hover:rounded-xl transition-all ease-in-out duration-300 md:text-xl ${lato.className} font-bold tracking-wide`}>Order Online</button>
+                <div className="max-w-fit relative" onMouseEnter={handleDrawerEnter} onMouseLeave={handleDrawerLeave}>
+                    <button onClick={handleOrderClick} className={`bg-button hover:text-white hover:bg-transparent border-2 border-button text-white py-2 px-4 lg:min-w-[155px] hover:rounded-xl transition-all ease-in-out duration-300 md:text-xl ${lato.className} font-bold tracking-wide`}>Order Online</button>
+
+                    <div className={`${isDrawerOpen ? 'max-h-96' : 'max-h-0'} text-black overflow-hidden bg-white font-normal text-2xl absolute top-14 right-0 flex flex-col items-start transition-[max-height] ease-out duration-400 shadow-lg z-40`}>
+                        <button className="py-2 px-4 hover:bg-slate-200 min-w-full flex justify-start">
+                            <a href="https://www.order.store/store/saint-wich-burgers/FfblFeilXLutIRj0Lu74Kg" target="_blank">DoorDash</a>
+                        </button>
+                        <button className="pt-4 pb-2 px-4 hover:bg-slate-200 min-w-full flex justify-start">
+                            <a href="https://order.online/business/saint-wich-burgers-11755901" target="_blank" className="hover:cursor-pointer">Uber Eats</a>
+                        </button>
+                        <button className="py-2 pb-4 px-4 hover:bg-slate-200 min-w-full flex justify-start">
+                            <a href="https://saintwichburgers.dine.online" target="_blank">Grubhub</a>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     )
