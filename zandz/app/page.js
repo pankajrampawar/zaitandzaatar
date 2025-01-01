@@ -12,12 +12,18 @@ import Membership from "./components/home/membership";
 import Faq from "./components/home/faq";
 import Location from "./components/home/location";
 import ContactForm from "./components/home/contactForm";
+import FeaturedIn from "./components/home/featuredIn";
+import OnlineSite from "./components/home/onlineSite";
 
 export default function Home() {
   return (
     <div className="w-full">
       <section className="w-full flex justify-center">
         <HeroSection />
+      </section>
+
+      <section className="w-full flex justify-center">
+        <FeaturedIn />
       </section>
 
       <section className="w-full flex justify-center">
@@ -34,6 +40,10 @@ export default function Home() {
 
       <section className="w-full flex justify-center">
         <SocialProof />
+      </section>
+
+      <section className="w-full flex justify-center">
+        <OnlineSite />
       </section>
 
       <section className="w-full flex flex-col items-center">
@@ -57,7 +67,7 @@ export default function Home() {
       <div className="flex items-center justify-center relative w-full mt-20 xl:mt-40 xl:mb-20">
         <div
           className="absolute inset-0 bg-cover bg-center bg-[#130902] z-0"
-          style={{ backgroundImage: "url('/orderBackground.png')" }}
+          style={{ backgroundImage: "url('bgPattern.png')", backgroundSize: "auto" }}
         ></div>
         <ContactForm />
       </div>

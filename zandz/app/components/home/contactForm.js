@@ -65,7 +65,7 @@ const ContactForm = () => {
     };
 
     return (
-        <div className="py-[10%] max-h-[980px] relative z-10">
+        <div className="py-[10%] max-h-[980px] relative z-10" >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
                     <h2 className={`${anek_gujarati.className} text-white text-5xl md:text-6xl md:leading-normal xl:text-7xl xl:leading-tight text-center mx-[2%] sm:mx-none w-full font-bold tracking-wide`}>

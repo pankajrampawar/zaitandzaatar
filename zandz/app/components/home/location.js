@@ -30,7 +30,7 @@ export default function Location() {
                 <section className="flex-1 md:max-w-[600px]">
                     <div className="relative w-full pt-[56.25%]"> {/* Aspect ratio 16:9 */}
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.3938396215713!2d-117.96164560832351!3d33.83851846001258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd2987c74c2565%3A0x21f93e27129d9fdf!2sZait%20and%20Zaatar!5e1!3m2!1sen!2sin!4v1735235253070!5m2!1sen!2sin"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1065.7740493943295!2d-93.16991541912473!3d44.94649122385986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87f62a1ab7273d75%3A0x6fb85cffbf79f9ec!2sZait%20%26%20Za&#39;atar%3A%20Mediterranean%20Dhaba!5e1!3m2!1sen!2sin!4v1735768260108!5m2!1sen!2sin"
                             allowFullScreen=""
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
@@ -52,7 +52,7 @@ export default function Location() {
 
                     <div>
                         <h3 className={`text-2xl tracking-wide font-bold ${anek_gujarati.className}`}>Contact</h3>
-                        <a href="tel:+17149919996" className="hover:text-red-600 flex cursor-pointer"><span className={`${lato.className} flex items-center w-full gap-3 cursor-pointer`}><img src="/phone.svg" className="max-w-[30px]" /><div>+1 714-991-9996</div></span></a>
+                        <a href="tel:+16514937438" className="hover:text-red-600 flex cursor-pointer"><span className={`${lato.className} flex items-center w-full gap-3 cursor-pointer`}><img src="/phone.svg" className="max-w-[30px]" /><div>+1 651-493-7438</div></span></a>
                     </div>
                 </section>
             </div>
