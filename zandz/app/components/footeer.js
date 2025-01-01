@@ -58,7 +58,7 @@ export default function Footer() {
 
             {/* Copyright Section */}
             <div className="mt-8 text-center text-sm text-gray-300 ">
-                <p>&copy; {new Date().getFullYear()}Saint Wich Burgers. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()}Zait & Za'atar Mediterranean Dhaba. All rights reserved.</p>
             </div>
         </footer>
     );
