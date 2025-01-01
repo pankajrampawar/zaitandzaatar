@@ -12,9 +12,9 @@ export default function Footer() {
                 <div className="flex flex-col items-start">
                     <div className="flex items-center space-x-4">
                         <img src="/logo.png" alt="St. Witch Burgers" className="w-16 h-16 rounded-full" />
-                        <h2 className={`text-3xl font-bold tracking-wide ${anek_gujarati.className}`}>Saint Wich Burgers</h2>
+                        <h2 className={`text-2xl font-bold tracking-wide ${anek_gujarati.className}`}>Zait $ Za'atar Mediterranean Dhaba</h2>
                     </div>
-                    <p className="mt-2">Serving handcrafted gourmet burgers made with love.</p>
+                    <p className="mt-2">Serving best Mediterranean & select Indian food in Saint Paul.</p>
                 </div>
 
                 {/* Quick Links Section */}
@@ -50,7 +50,7 @@ export default function Footer() {
                     <a href="mailto:support@zaitzaatar.com" className="hover:scale-125 transition-all ease-in-out duration-300 cursor-pointer">
                         <img src="/gmail.svg" alt="Gmail" className="w-9 h-9 cursor-pointer" />
                     </a>
-                    <a href="tel:+16516832722" className="hover:scale-125 transition-all ease-in-out duration-300 cursor-pointer">
+                    <a href="tel:+16514937438" className="hover:scale-125 transition-all ease-in-out duration-300 cursor-pointer">
                         <img src="/phone.svg" alt="Phone" className="w-8 h-8 cursor-pointer" />
                     </a>
                 </div>
