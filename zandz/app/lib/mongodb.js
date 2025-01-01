@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-const uri = process.env.MONGODB_URI; // Add your MongoDB connection string in .env.local
+const uri = process.env.MONGODB_URI;
 let client;
 let clientPromise;
 
