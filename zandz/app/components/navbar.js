@@ -38,6 +38,7 @@ export default function Navbar() {
                 <li><button onClick={() => navigateFunction('about')}>About</button></li>
                 <li><button onClick={() => navigateFunction('catering')}>Catering</button></li>
                 <li><button onClick={() => navigateFunction('rewards')}>Rewards</button></li>
+                <li><button onClick={() => router.push('https://www.stwichburgers.com/')}>Sister Restaurant</button></li>
             </ul>
         );
     };
