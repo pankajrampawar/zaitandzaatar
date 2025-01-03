@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { lato } from "../fonts";
+import SignIn from "./sign-in";
 
 export default function Navbar() {
     const router = useRouter();
@@ -75,7 +76,6 @@ export default function Navbar() {
                     >
                         Order Online
                     </button>
-
                     <div className={`${isDrawerOpen ? 'max-h-96' : 'max-h-0'} overflow-hidden bg-white text-2xl absolute top-14 right-0 flex flex-col items-start transition-[max-height] ease-out duration-400 shadow-lg`}>
                         <button className="py-2 px-4 hover:bg-slate-200 min-w-full flex justify-start">
                             <a href="https://www.order.store/store/saint-wich-burgers/FfblFeilXLutIRj0Lu74Kg" target="_blank">DoorDash</a>
@@ -87,6 +87,10 @@ export default function Navbar() {
                             <a href="https://saintwichburgers.dine.online" target="_blank">Grubhub</a>
                         </button>
                     </div>
+                </div>
+
+                <div>
+                    <SignIn />
                 </div>
             </div>
 
