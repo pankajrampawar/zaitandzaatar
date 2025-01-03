@@ -103,9 +103,13 @@ export default function Navbar() {
                     )}
                 </button>
 
-                <div className={`absolute z-40 w-screen top-0 left-0 bg-color backdrop-blur flex items-center justify-center py-[40px] ${isOverlayOpen ? '-translate-y-0 opacity-100' : '-translate-y-full opacity-0'} ease-in-out transition-all duration-300 `}>
+                <div className={`absolute z-40 w-screen top-0 left-0 bg-color backdrop-blur flex flex-col gap-4 items-center justify-center py-[40px] ${isOverlayOpen ? '-translate-y-0 opacity-100' : '-translate-y-full opacity-0'} ease-in-out transition-all duration-300 `}>
                     <div className="mt-5">
                         <NavigationItem />
+                    </div>
+
+                    <div className="text-button font-bold">
+                        <SignIn />
                     </div>
                 </div>
             </div>
