@@ -3,5 +3,5 @@
 import { signIn } from "@/auth";
 
 export async function handleSignIn(provider) {
-    await signIn(provider); // signin
+    await signIn(provider);
 }
