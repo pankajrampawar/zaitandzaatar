@@ -13,7 +13,7 @@ export default function SignIn() {
 
     return (
         <button onClick={handleSignIn} type="button">
-            Sign in with Google
+            Sign in
         </button>
     );
 }

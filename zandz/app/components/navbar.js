@@ -65,7 +65,7 @@ export default function Navbar() {
                 </div>
             </div>
 
-            <div className="hidden md:flex flex-1 justify-end relative">
+            <div className="hidden md:flex flex-1 justify-end relative gap-2">
                 <div
                     onMouseEnter={handleDrawerEnter}
                     onMouseLeave={handleDrawerLeave}
@@ -89,7 +89,7 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                <div>
+                <div className={`text-button p-2 text-xl flex justify-center items-center`}>
                     <SignIn />
                 </div>
             </div>
