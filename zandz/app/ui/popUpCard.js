@@ -1,4 +1,6 @@
-import { useState } from "react";
+'use client'
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 
 export default function PopUpCard(itemsInCart) {
     const [location, setLocation] = useState("");
@@ -10,6 +12,14 @@ export default function PopUpCard(itemsInCart) {
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const { data: session } = useSession();
+
+    useEffect(() => {
+        if (session) {
+            setName(session.user.name);
+            setEmail(session.user.email);
+        }
+    }, [session])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

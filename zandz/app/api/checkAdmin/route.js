@@ -23,6 +23,7 @@ export const POST = async (req) => {
         }
 
         const db = client.db('your-database-name');
+        const db2 = client.db('Client-List');
 
         // Step 3: Check if the admin credentials are correct
         const admin = await db.collection('Admin').findOne({ name: adminName });
@@ -49,7 +50,8 @@ export const POST = async (req) => {
         }
 
         // Step 4: Fetch the list of users (contacts) from the database
-        const contacts = await db.collection('contacts').find().toArray();
+        const contacts = await db2.collection('contacts').find().toArray();
+        console.log("db2", db2)
         console.log('Contacts:', contacts);
 
         if (!Array.isArray(contacts)) {

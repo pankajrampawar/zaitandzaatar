@@ -143,7 +143,17 @@ const AdminLogin = () => {
                                             <td className="border border-gray-300 p-3">
                                                 <details>
                                                     <summary className="cursor-pointer text-blue-600">View Details</summary>
-                                                    <p className="mt-2">{client.message}</p>
+                                                    <ul className="mt-2 space-y-2 list-disc list-inside">
+                                                        {client.messageContent.map((messageObj, msgIndex) => (
+                                                            <li key={msgIndex} className="text-gray-800">
+                                                                <div className="font-semibold">Message:</div>
+                                                                <div>{messageObj.message}</div>
+                                                                <div className="text-sm text-gray-500">
+                                                                    Sent at: {new Date(messageObj.sentAt).toLocaleString()}
+                                                                </div>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
                                                 </details>
                                             </td>
                                         </tr>
