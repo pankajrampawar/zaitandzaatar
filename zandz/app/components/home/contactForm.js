@@ -1,11 +1,13 @@
 'use client'
 import { anek_gujarati, lato } from '@/app/fonts';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from "framer-motion";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const ContactForm = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
+    const { data: session } = useSession();
 
     const [formData, setFormData] = useState({
         name: '',
@@ -15,6 +17,17 @@ const ContactForm = () => {
     });
 
     const [loading, setLoading] = useState(false); // State to manage button disable
+
+    useEffect(() => {
+        if (session) {
+            setFormData((prevData) => ({
+                ...prevData,
+                name: session.user.name || "",
+                email: session.user.email || "",
+                contactNumber: session.user.contactNumber || ""
+            }))
+        }
+    }, [session])
 
     const handleChange = (e) => {
         const { name, value } = e.target;

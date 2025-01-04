@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footeer";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata = {
   title: "Best Mediterranean and select Indian Food in St. Paul Ave Minnesota I Zait & Za'atar Mediterranean Dhaba",
@@ -22,15 +23,18 @@ export default function RootLayout({ children }) {
             opacity: 0.04,
           }}
         />
+        <div>
+          <SessionProvider>
+            <div className="fixed w-screen top-0 z-50">
+              <Navbar />
+            </div>
 
-        <div className="fixed w-screen top-0 z-50">
-          <Navbar />
-        </div>
-
-        <div className="flex justify-center w-full relative">
-          <div className="flex justify-center w-full relative z-20">
-            {children}
-          </div>
+            <div className="flex justify-center w-full relative">
+              <div className="flex justify-center w-full relative z-20">
+                {children}
+              </div>
+            </div>
+          </SessionProvider>
         </div>
 
         <div>

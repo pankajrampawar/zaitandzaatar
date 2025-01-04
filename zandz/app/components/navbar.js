@@ -5,11 +5,13 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { lato } from "../fonts";
 import SignIn from "./sign-in";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Navbar() {
     const router = useRouter();
     const [isOverlayOpen, setIsOverlayOpen] = useState(false);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const { data: session } = useSession();
 
     const handleOverlay = () => {
         setIsOverlayOpen((prev) => !prev);
@@ -89,8 +91,22 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                <div className={`text-button p-2 text-xl flex justify-center items-center`}>
-                    <SignIn />
+                <div>
+                    {session ?
+                        <div>
+                            <img
+                                src={session.user.image}
+                                alt={session.user.name}
+                                width="50"
+                                height="50"
+                                className="rounded-full"
+                            />
+                        </div>
+                        :
+                        <div className={`text-button p-2 text-xl flex justify-center items-center`}>
+                            <SignIn />
+                        </div>
+                    }
                 </div>
             </div>
 
