@@ -103,7 +103,7 @@ export default function PopUpCard(itemsInCart) {
     }
 
     return (
-        <div className="max-h-screen overflow-y-scroll w-full flex justify-center z-[500] absolute ">
+        <div className="max-h-screen overflow-y-scroll w-full flex justify-center z-[40] absolute ">
             <div className="bg-[#130902] rounded-2xl text-white py-[5%] px-[6%] w-full max-w-[700px] flex flex-col items-center justify-center m-5 min-h-fit"
                 style={{ backgroundImage: "url('bgPattern.png')", backgroundSize: "auto" }}
             >

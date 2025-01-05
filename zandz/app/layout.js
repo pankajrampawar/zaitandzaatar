@@ -11,9 +11,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`bg-background relative`}
-      >
+      <body className="bg-background relative">
+        {/* Background layer */}
         <div
           className="absolute inset-0 w-full z-0"
           style={{
@@ -23,23 +22,21 @@ export default function RootLayout({ children }) {
             opacity: 0.04,
           }}
         />
-        <div>
-          <SessionProvider>
-            <div className="fixed w-screen top-0 z-50">
-              <Navbar />
-            </div>
 
-            <div className="flex justify-center w-full relative">
-              <div className="flex justify-center w-full relative z-20">
-                {children}
-              </div>
-            </div>
-          </SessionProvider>
-        </div>
+        {/* Content */}
+        <SessionProvider>
+          <div className="fixed w-screen top-0 z-40">
+            <Navbar />
+          </div>
 
-        <div>
-          <Footer />
-        </div>
+          {/* Children */}
+          <div className="flex justify-center w-full relative">
+            {children}
+          </div>
+        </SessionProvider>
+
+        {/* Footer */}
+        <Footer />
       </body>
     </html>
   );

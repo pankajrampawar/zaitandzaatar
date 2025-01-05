@@ -13,7 +13,7 @@ export default function Checkout({ itemsInCart }) {
 
 
     return (
-        <div className="bg-gray-100 w-full max-w-md p-4 shadow-md rounded-md xl:w-[300px] max-h-[80vh] h-full flex flex-col overflow-hidden">
+        <div className="bg-gray-100 w-full max-w-md p-4 shadow-md rounded-md xl:w-[300px] max-h-[80vh] h-full flex flex-col overflow-hidden ">
             <section className="flex-1 flex flex-col overflow-y-auto">
                 <div className="flex justify-between font-semibold mb-2">
                     <span>Item</span>
@@ -37,22 +37,25 @@ export default function Checkout({ itemsInCart }) {
 
 
             {
-                isPopUpOpen &&
-                <div className="backdrop-blur-xl top-0 left-0 w-screen h-screen z-[100] fixed flex justify-center items-center">
-                    <PopUpCard itemsInCart={itemsInCart} />
-                    <div className="absolute top-0 right-0 m-5">
-                        <button onClick={togglePopUp}>
+                isPopUpOpen && (
+                    <div className="fixed top-0 left-0 w-screen h-screen backdrop-blur-lg flex justify-center items-center z-50">
+                        <PopUpCard itemsInCart={itemsInCart} />
+                        <button
+                            onClick={togglePopUp}
+                            className="absolute top-5 right-5 bg-gray-800 text-white rounded-full p-2 z-50"
+                        >
                             <Image
                                 src="/close.svg"
                                 alt="close"
-                                width="50"
-                                height="50"
-                                className="invert max-w-[20px] sm:invert-0 sm:max-w-none"
+                                width="20"
+                                height="20"
+                                className="invert"
                             />
                         </button>
                     </div>
-                </div>
+                )
             }
+
         </div>
     );
 }

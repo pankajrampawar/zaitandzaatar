@@ -7,7 +7,8 @@ import { useState, useEffect } from "react";
 export default function Catering() {
     const [itemInCart, setItemsInCart] = useState([]);
     const [cartLoaded, setCartLoaded] = useState(false);
-    const [showCheckout, setShowCheckout] = useState(false); // State to control the checkout visibility
+    const [showCheckout, setShowCheckout] = useState(false);
+    const [showCallUs, setShowCallUs] = useState(false);
 
     const saveCartToLocalStorage = (cartItems) => {
         localStorage.setItem('cart', JSON.stringify(cartItems));
@@ -21,6 +22,19 @@ export default function Catering() {
             setItemsInCart(JSON.parse(savedCart));
         }
         setCartLoaded(true);  // Indicate cart is loaded
+    }, []);
+
+    const toggleCallUs = () => {
+        setShowCallUs(prev => !prev);
+    }
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            toggleCallUs();
+        }, 15000);
+
+        // Clear the timer if the component unmounts
+        return () => clearTimeout(timer);
     }, []);
 
     // Save cart after initial load
@@ -62,9 +76,11 @@ export default function Catering() {
                 <CateringMenu addItemsInCart={addItemsInCart} updateQuantity={updateQuantity} itemsInCart={itemInCart} />
             </section>
 
-            <section className="absolute top-1/2 right-20">
-                <CallUs />
-            </section>
+            {showCallUs && (
+                <section className="fixed top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 z-50">
+                    <CallUs toggleCallUs={toggleCallUs} />
+                </section>
+            )}
 
             <button
                 onClick={() => setShowCheckout(!showCheckout)}

@@ -1,8 +1,20 @@
 import { anek_gujarati, lato } from "@/app/fonts";
+import Image from "next/image";
 
-export default function CallUs() {
+export default function CallUs({ toggleCallUs }) {
     return (
         <div className={`bg-[#130902] text-white ${anek_gujarati.className} font-semibold p-[10%] hidden xl:block min-w-fit rounded-lg`}>
+            <div className="flex justify-end w-full">
+                <button onClick={toggleCallUs}>
+                    <Image
+                        src="/close.svg"
+                        alt="close button"
+                        width="20"
+                        height="20"
+                        className="invert"
+                    />
+                </button>
+            </div>
             <div className="w-fit flex flex-col gap-2">
                 <div className="text-3xl">
                     Confused on what to order?

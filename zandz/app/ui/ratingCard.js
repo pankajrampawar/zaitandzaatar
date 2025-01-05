@@ -1,6 +1,7 @@
-export default function RatingCard() {
+import Image from "next/image";
+export default function RatingCard({ review, name, src }) {
     return (
-        <div className="bg-[#f9f3ee] p-6 rounded-md max-w-md mx-auto shadow-md sm:min-w-[450px] min-w-[300px]">
+        <div className="bg-[#f9f3ee] p-6 rounded-md mx-auto shadow-md sm:min-w-[450px] min-w-[300px] flex flex-col justify-center max-w-fit">
             {/* Stars Section */}
             <div className="flex justify-start mb-4">
                 {[...Array(5)].map((_, index) => (
@@ -22,13 +23,21 @@ export default function RatingCard() {
 
             {/* Text Section */}
             <p className="text-gray-700 text-sm leading-relaxed mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lobortis accumsan mi, sit amet tincidunt turpis elementum vel. In id justo ut neque eleifend efficitur eget eget mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+                {review}
             </p>
 
             {/* User Section */}
             <div className="flex items-center">
-                <div className="w-8 h-8 bg-gray-500 rounded-full mr-4"></div>
-                <span className="text-gray-800 text-sm font-semibold">Name Here</span>
+                <div className="w-8 h-8 rounded-full mr-4 bg-gray-500">
+                    {src && <Image
+                        src={src}
+                        alt="person image"
+                        width="50"
+                        height="50"
+                        className="rounded-full"
+                    />}
+                </div>
+                <span className="text-gray-800 text-sm font-semibold">{name}</span>
             </div>
         </div>
     );
