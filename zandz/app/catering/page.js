@@ -1,4 +1,5 @@
 'use client'
+import CallUs from "../components/catering/callUs";
 import CateringMenu from "../components/catering/cateringMenu";
 import Checkout from "../components/catering/checkout";
 import { useState, useEffect } from "react";
@@ -59,6 +60,10 @@ export default function Catering() {
         <div className="max-w-[1440px] w-full">
             <section className="">
                 <CateringMenu addItemsInCart={addItemsInCart} updateQuantity={updateQuantity} itemsInCart={itemInCart} />
+            </section>
+
+            <section className="absolute top-1/2 right-20">
+                <CallUs />
             </section>
 
             <button
