@@ -48,7 +48,7 @@ export default function OnlineSite() {
             </div>
 
             <div className="relative flex flex-col md:flex-row px-[10%] justify-evenly w-full items-center gap-4">
-                <a href="https://www.doordash.com/store/zait-&-za'atar-saint-paul-24509526/" target="_blank" className="hover:cursor-pointer">
+                <a href="order.online/store/24509526?slug=-11399864&pickup=true&hideModal=true&redirected=true" target="_blank" className="hover:cursor-pointer">
                     <div>
                         <Image
                             src="/doordash.png"
@@ -59,7 +59,7 @@ export default function OnlineSite() {
                         />
                     </div>
                 </a>
-                <a className="cursor-pointer" href="https://www.ubereats.com/store/zait-%26-zaatar/AkhJK0DPUuqNMNVUqNjsfg" target="_blank">
+                <a className="cursor-pointer" href="https://www.order.store/store/zait-%26-zaatar/AkhJK0DPUuqNMNVUqNjsfg" target="_blank">
                     <div>
                         <Image
                             src="/uberEats.png"
@@ -70,7 +70,7 @@ export default function OnlineSite() {
                         />
                     </div>
                 </a>
-                <a className="cursor-pointer" href="https://www.grubhub.com/restaurant/zait--zaatar-1626-selby-ave-saint-paul/5307024" target="_blank">
+                <a className="cursor-pointer" href="https://zaitzaatar.dine.online" target="_blank">
                     <div>
                         <Image
                             src="/grubhub.png"
