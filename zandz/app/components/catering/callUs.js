@@ -27,12 +27,12 @@ export default function CallUs({ toggleCallUs }) {
             <div className="mt-4">
                 <p className="font-normal">We're just a call away—let us help you pick your favorites!</p>
                 <button className={`${lato.className} mt-3 p-2 bg-button text-xl border border-button hover:bg-transparent hover:rounded-xl`}>
-                    <a href="tel:+16514937438">
+                    <a href="tel:+16124714638">
                         Place a Call!
                     </a>
                 </button>
                 <div className="text-xl mt-3 font-normal tracking-wide">
-                    +1 651-493-7438
+                    +1 612-471-4638
                 </div>
             </div>
         </div>
