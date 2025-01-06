@@ -41,10 +41,10 @@ export default function Footer() {
 
             <div>
                 <div className="border-t border-b border-gray-500 py-4 flex justify-center space-x-8 mt-6 invert">
-                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:scale-125 transition-all ease-in-out duration-300 cursor-pointer">
+                    <a href="https://www.instagram.com/zaitzaatar_stp/" target="_blank" rel="noopener noreferrer" className="hover:scale-125 transition-all ease-in-out duration-300 cursor-pointer">
                         <img src="/instagram.svg" alt="Instagram" className="w-8 h-8 cursor-pointer" />
                     </a>
-                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:scale-125 transition-all ease-in-out duration-300 cursor-pointer">
+                    <a href="https://www.facebook.com/zaitzaatarStP/" target="_blank" rel="noopener noreferrer" className="hover:scale-125 transition-all ease-in-out duration-300 cursor-pointer">
                         <img src="/facebook.svg" alt="Facebook" className="w-8 h-8 cursor-pointer" />
                     </a>
                     <a href="mailto:support@zaitzaatar.com" className="hover:scale-125 transition-all ease-in-out duration-300 cursor-pointer">
