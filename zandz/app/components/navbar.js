@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { lato } from "../fonts";
 import SignIn from "./sign-in";
 import { useSession, signIn, signOut } from "next-auth/react";
@@ -11,10 +11,37 @@ export default function Navbar() {
     const router = useRouter();
     const [isOverlayOpen, setIsOverlayOpen] = useState(false);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Dropdown state
     const { data: session } = useSession();
+    const dropdownRef = useRef(null); // Reference for dropdown
+    const profileImageRef = useRef(null); // Reference for profile image
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            // Close dropdown if click is outside the image or dropdown
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target) &&
+                profileImageRef.current &&
+                !profileImageRef.current.contains(event.target)
+            ) {
+                setIsDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
 
     const handleOverlay = () => {
         setIsOverlayOpen((prev) => !prev);
+    };
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen((prev) => !prev);
     };
 
     const navigateFunction = (pageToNavigate) => {
@@ -91,22 +118,37 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                <div>
-                    {session ?
+                <div className="relative">
+                    {session ? (
                         <div>
                             <img
                                 src={session.user.image}
                                 alt={session.user.name}
                                 width="50"
                                 height="50"
-                                className="rounded-full"
+                                className="rounded-full cursor-pointer"
+                                onClick={toggleDropdown}
+                                ref={profileImageRef} // Add ref to the image
                             />
+                            {isDropdownOpen && (
+                                <div
+                                    className="absolute right-0 mt-2 bg-white border rounded-md shadow-lg"
+                                    ref={dropdownRef} // Add ref to the dropdown
+                                >
+                                    <button
+                                        className="block px-4 py-2 text-black hover:bg-gray-200"
+                                        onClick={() => signOut()}
+                                    >
+                                        Log Out
+                                    </button>
+                                </div>
+                            )}
                         </div>
-                        :
-                        <div className={`text-button p-2 text-xl flex justify-center items-center`}>
+                    ) : (
+                        <div className="text-button p-2 text-xl flex justify-center items-center">
                             <SignIn />
                         </div>
-                    }
+                    )}
                 </div>
             </div>
 
@@ -125,7 +167,16 @@ export default function Navbar() {
                     </div>
 
                     <div className="text-button font-bold">
-                        <SignIn />
+                        {
+                            session ?
+                                <div className="text-black">
+                                    <button onClick={() => signOut()}>
+                                        Log Out
+                                    </button>
+                                </div>
+                                :
+                                <SignIn />
+                        }
                     </div>
                 </div>
             </div>

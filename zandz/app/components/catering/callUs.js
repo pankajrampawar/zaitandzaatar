@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function CallUs({ toggleCallUs }) {
     return (
-        <div className={`bg-[#130902] text-white ${anek_gujarati.className} font-semibold p-[10%] hidden xl:block min-w-fit rounded-lg`}>
+        <div className={`bg-[#130902] text-white ${anek_gujarati.className} font-semibold p-[10%]  min-w-fit rounded-lg`}>
             <div className="flex justify-end w-full">
                 <button onClick={toggleCallUs}>
                     <Image
@@ -16,16 +16,17 @@ export default function CallUs({ toggleCallUs }) {
                 </button>
             </div>
             <div className="w-fit flex flex-col gap-2">
-                <div className="text-3xl">
-                    Confused on what to order?
+                <div className="text-2xl sm:text-3xl">
+                    Not sure what to order?
                 </div>
-                <div className="text-5xl whitespace-nowrap bg-foreground p-2">
+                <div className="text-3xl sm:text-5xl whitespace-nowrap bg-foreground p-2">
                     GIVE US A CALL!
                 </div>
             </div>
 
             <div className="mt-4">
-                <button className={`${lato.className} p-2 bg-button text-xl border border-button hover:bg-transparent hover:rounded-xl`}>
+                <p className="font-normal">We're just a call away—let us help you pick your favorites!</p>
+                <button className={`${lato.className} mt-3 p-2 bg-button text-xl border border-button hover:bg-transparent hover:rounded-xl`}>
                     <a href="tel:+16514937438">
                         Place a Call!
                     </a>
