@@ -17,7 +17,7 @@ export default function OnlineSite() {
             {/* Background Image */}
             <div
                 className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: "url('/orderBackground.png')" }}
+                style={{ backgroundImage: "url('/bg3.png')" }}
             ></div>
 
             {/* Overlay */}
