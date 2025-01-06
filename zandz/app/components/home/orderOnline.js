@@ -76,7 +76,7 @@ export default function OrderOnline() {
 
             <div className="flex flex-row overflow-x-auto snap-x snap-mandatory gap-6 lg:gap-10 xl:gap-16 pt-10 md:pt-16 xl:pt-20 pb-4 w-full px-[10%] sm:px-[5%] lg:justify-center">
                 <div className="snap-center">
-                    <BurgerCard src="/shawarmaPlate.jpeg" alt="shawarma Plate image" name="shawarma Plate" />
+                    <BurgerCard src="/shawarmaPlate.jpeg" alt="shawarma Plate image" name="Shawarma Plate" />
                 </div>
                 <div className="snap-center">
                     <BurgerCard src="/samosa.jpeg" alt="Samosa Image" name="Samosa" />
