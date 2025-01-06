@@ -26,15 +26,17 @@ export default function OurStory() {
                         </span>
                     </h2>
                     <p className={`${lato.className} xl:px-[5%] xl:pb-20 xl:pt-20 tracking-wide text-base sm:text-lg lg:text-xl xl:text-2xl mt-[2%]`}>
-                        Welcome to Zait & Za’atar: Mediterranean Dhaba, located on Selby Avenue in Saint Paul Minnesota. This is where the rich culinary traditions of Mediterranean and some handpicked Indian cuisine come together, offering a unique and flavorful dining experience right in the heart of your neighborhood.
+                        Located on Selby Avenue in Saint Paul, Minnesota, Zait & Za’atar is a unique fusion of Mediterranean and Indian street food traditions, inspired by the warmth and vibrancy of a traditional dhaba. A "dhaba" is a rustic roadside eatery, deeply rooted in South Asian culture, celebrated for its simple yet flavorful dishes served in a welcoming, homely atmosphere. At Zait & Za’atar, we bring this spirit to life while incorporating the rich culinary traditions of the Mediterranean and Middle East.
                         <br /> <br />
-                        The name "Zait" is Arabic for "olive oil," a fundamental ingredient in Mediterranean cooking. It's a symbol of purity and flavor. "Za’atar" is a fragrant Middle Eastern spice blend made from dried herbs like thyme, sumac, and sesame seeds. "Zait" and "Za’atar" capture the true essence of Middle Eastern flavors. We also blend aromatic Indian spices into our menu, offering a unique fusion of flavors that cater to every taste.
+                        The name "Zait" is Arabic for "olive oil," symbolizing purity and flavor in Mediterranean cooking. "Za’atar" is a fragrant Middle Eastern spice blend made with thyme, sumac, and sesame seeds. Together, "Zait" and "Za’atar" reflect the authentic flavors of the Middle East while blending seamlessly with Indian spices and recipes, creating a one-of-a-kind dining experience that honors both traditions.
                         <br /> <br />
-                        At Zait & Za’atar, we offer Mediterranean and Indian street food, blending the best of both worlds. Our dishes include savory Chicken Shawarma Sandwiches, crispy Samosa Appetizers, tender Butter Chicken, fluffy Garlic Naans, and flavorful Falafel Wraps. With our unique fusion dishes, there’s something for everyone.
+                        At Zait & Za’atar: Mediterranean Dhaba, you’ll find a menu filled with dishes that bridge continents. From savory Chicken Shawarma Sandwiches and crispy Samosa Appetizers to tender Butter Chicken, fluffy Garlic Naans, and flavorful Falafel Wraps, every bite showcases the comfort and authenticity of dhaba-style cooking paired with the freshness and vibrancy of Mediterranean cuisine.
                         <br /> <br />
-                        Zait & Za’atar stands out for its commitment to authenticity and innovation. We blend Mediterranean and Indian flavors to create a unique and flavorful experience. Every dish is made fresh with high-quality ingredients, served in a welcoming atmosphere that feels like home.
+                        We pride ourselves on offering freshly prepared dishes made from high-quality ingredients. Whether you’re stopping by for a quick bite or celebrating a special occasion, our cozy atmosphere captures the spirit of a traditional dhaba, making you feel right at home.
                         <br /> <br />
-                        Dine with us and enjoy a warm, welcoming experience, or choose our easy pickup and delivery options to enjoy your favorite dishes at home. Make your events special with our catering services. Whether it’s a wedding, birthday, corporate event, or family gathering, we offer a variety of dishes to please every guest. We’ll work with you to create a menu that suits your event, so you can relax and enjoy the celebration while we take care of the food.
+                        Enjoy dining in, or take advantage of our convenient pickup and delivery options to savor our fusion flavors wherever you are. Hosting an event? Let us bring the charm of a dhaba to your celebration with our catering services, designed to delight every guest with a custom menu.
+                        <br /> <br />
+                        Experience the perfect blend of Mediterranean vibrancy and the heartfelt hospitality of a dhaba at Zait & Za’atar—where tradition meets innovation on your plate.
                     </p>
                 </article>
             </section>
