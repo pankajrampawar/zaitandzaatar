@@ -79,6 +79,7 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                                 key={index}
                                 name={drink.name}
                                 price={drink.price}
+                                content={drink.content}
                                 image={drink.image}
                                 alt={drink.alt}
                                 quantity={quantity}
@@ -103,6 +104,7 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                                             name={drink.name}
                                             price={drink.price}
                                             image={drink.image}
+                                            content={drink.content}
                                             alt={drink.alt}
                                             quantity={quantity}
                                             addItemsInCart={addItemsInCart}
@@ -159,6 +161,7 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                                 key={index}
                                 name={side.name}
                                 price={side.price}
+                                content={side.content}
                                 image={side.image}
                                 alt={side.alt}
                                 quantity={quantity}
@@ -185,6 +188,7 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                                 key={index}
                                 name={side.name}
                                 price={side.price}
+                                content={side.content}
                                 image={side.image}
                                 alt={side.alt}
                                 quantity={quantity}
@@ -211,6 +215,7 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                                 key={index}
                                 name={side.name}
                                 price={side.price}
+                                content={side.content}
                                 image={side.image}
                                 alt={side.alt}
                                 quantity={quantity}
@@ -239,6 +244,7 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                                 price={side.price}
                                 image={side.image}
                                 alt={side.alt}
+                                content={side.content}
                                 quantity={quantity}
                                 addItemsInCart={addItemsInCart}
                                 updateQuantity={updateQuantity}
@@ -263,6 +269,7 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                                 key={index}
                                 name={side.name}
                                 price={side.price}
+                                content={side.content}
                                 image={side.image}
                                 alt={side.alt}
                                 quantity={quantity}
@@ -289,6 +296,7 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                                 key={index}
                                 name={side.name}
                                 price={side.price}
+                                content={side.content}
                                 image={side.image}
                                 alt={side.alt}
                                 quantity={quantity}
@@ -315,6 +323,7 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                                 key={index}
                                 name={side.name}
                                 price={side.price}
+                                content={side.content}
                                 image={side.image}
                                 alt={side.alt}
                                 quantity={quantity}

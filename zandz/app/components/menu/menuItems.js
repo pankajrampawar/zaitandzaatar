@@ -1,4 +1,4 @@
-const breakfastAllDay = [
+export const breakfastAllDay = [
     {
         name: "Foul Mudammas w Pita Bread",
         price: "11.99",
