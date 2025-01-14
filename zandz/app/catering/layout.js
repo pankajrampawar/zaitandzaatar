@@ -1,6 +1,6 @@
 export const metadata = {
-    title: "Zait & Za'atar Mediterranean Dhaba Catering | Best Mediterranean and limited Indian Food in St. Paul Mn",
-    description: "Explore the Zait & Za'atar menu! Discover the best Mediterranean and limited Indian dishes in Saint Paul, MN. From shawarmas to samosas, every bite is freshly prepared and full of flavor.",
+    title: "Mediterranean and Limited Indian Food  Catering in St. Paul, MN",
+    description: "Elevate your event with the best Mediterranean & limited Indian Food catering in St. Paul, MN. Perfect for parties, weddings, and corporate events.",
 };
 
 export default function CateringLayout({ children }) {

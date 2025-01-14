@@ -17,14 +17,14 @@ export default function Rewards() {
             <div className="flex flex-col text-center mb-[30px] xl:mb-[90px] max-w-[1840px] w-full">
                 <div className="flex h-[100vh]  max-h-[900px] items-center relative overflow-x-clip">
                     <article className="sm:max-w-[60%] md:ml-[2%] xl:ml-[5%]">
-                        <h2 className={`${anek_gujarati.className} font-bold text-4xl md:text-5xl md:leading-snug xl:leading-snug xl:text-6xl tracking-whide sm:mx-none w-full`}>Loyalty has its Perks, <br className="hidden sm:block" /><span className="relative"><span className="relative z-10 text-white">JOIN US!</span><motion.div
+                        <h1 className={`${anek_gujarati.className} font-bold text-4xl md:text-5xl md:leading-snug xl:leading-snug xl:text-6xl tracking-whide sm:mx-none w-full`}>Loyalty has its Perks, <br className="hidden sm:block" /><span className="relative"><span className="relative z-10 text-white">JOIN US!</span><motion.div
                             ref={ref1}
                             className="absolute bg-foreground h-full w-[105%] top-0 left-1/2 -translate-x-1/2"
                             initial={{ width: 0 }}
                             animate={isInView1 ? { width: "105%" } : {}}
                             transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
                         />
-                        </span></h2>
+                        </span></h1>
                         <p className={`${lato.className} text-sm mt-4 sm:text-lg xl:text-[24px] text-gray-800 max-w-[600px]  xl:tracking-wide xl:leading-normal`}>Earn rewards and exclusive perks with our Loyalty Program. Rack up points to redeem for discounts, gifts, and VIP treatment. Stay in the know about our latest launches and offers.</p>
                         <button className="bg-button hover:bg-transparent hover:border-2 hover:text-black text-white py-2 px-4 lg:min-w-[155px] md:text-xl font-bold mt-[5%]">
                             <a href="https://www.toasttab.com/zait-za-atar-1626-selby-avenue/rewardsSignup">Become a Member</a>

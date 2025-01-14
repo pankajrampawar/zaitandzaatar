@@ -1,6 +1,6 @@
 export const metadata = {
-    title: "Zait & Za'atar Mediterranean Dhaba Menu I Best Mediterranean and limited Indian Food in St. Paul Mn",
-    description: "Explore the Zait & Za'atar menu! Discover the best Mediterranean and limited Indian dishes in St. Paul, MN. From shawarmas to samosas, every bite is freshly prepared and full of flavor.",
+    title: "Mediterranean restaurant in st paul Menu",
+    description: "Zait & Za'atar, a Mediterranean restaurant in St. Paul, MN, offering an irresistible menu of Mediterranean and limited Indian dishes. Try our dishes today!",
 };
 
 export default function MenuLayout({ children }) {
