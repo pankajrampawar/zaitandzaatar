@@ -12,10 +12,10 @@ export default function Menu() {
     return (
         <div className="mt-[10%]">
             <section className={`${anek_gujarati.className} text-4xl md:text-5xl xl:text-6xl sm:mx-none w-full text-center font-semibold tracking-wide`}>
-                <div>Authentic Flavors at a Mediterranean Restaurant in St. Paul – Explore</div>
+                <div>Authentic Flavors at a Mediterranean Restaurant in Saint Paul</div>
                 <div className="mt-2 xl:mt-4">
                     <span className="text-white px-2 relative">
-                        <span className="relative z-10">OUR MENU</span>
+                        <span className="relative z-10">Explore OUR MENU</span>
                         <motion.div
                             ref={ref}
                             className="absolute bg-foreground h-full w-[105%] top-0 left-1/2 -translate-x-1/2"
