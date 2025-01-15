@@ -4,7 +4,7 @@ import Footer from "./components/footeer";
 import { SessionProvider } from "next-auth/react";
 
 export const metadata = {
-  title: "Best Mediterranean and select Indian Food in St. Paul Ave Minnesota I Zait & Za'atar Mediterranean Dhaba",
+  title: "Zait & Za'atar",
   description: "Craving Mediterranean and limited Indian Food in St Paul Ave, Mn? Enjoy exceptional service, with convenient pickup and delivery options near you.",
 };
 
