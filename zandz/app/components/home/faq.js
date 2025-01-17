@@ -49,6 +49,10 @@ export default function Faq() {
         {
             question: "Do you host private evesnts or catering? ",
             answer: "Yes, we love hosting special occasions and offer catering services for your events. Reach out to us, and we'll make your gathering delicious and memorable!"
+        },
+        {
+            question: "How can I provide feedback?",
+            answer: `We value your feedback and it means the world to us! Share your favorite food experience by leaving a review on <a href="https://g.page/r/Cez5eb__XLhvEBM/review" style="color: red; text-decoration: underline;">Google</a> & <a href="https://www.yelp.com/writeareview/biz/EjMjgTfBYY_pkY5kZDi1Tw?return_url=%2Fbiz%2FEjMjgTfBYY_pkY5kZDi1Tw&review_origin=biz-details-war-button" style="color: red; text-decoration: underline;">Yelp</a>.`
         }
     ];
 
@@ -71,7 +75,7 @@ export default function Faq() {
             <div>
                 {faqs.map((faq, index) => {
                     return (
-                        <FaqHolder key={index} question={faq.question} answer={faq.answer} />
+                        <FaqHolder key={index} question={faq.question} answer={<span dangerouslySetInnerHTML={{ __html: faq.answer }} />} />
                     )
                 })}
             </div>
