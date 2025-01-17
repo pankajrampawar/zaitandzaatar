@@ -12,6 +12,32 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: `{
+  "@context": "http://www.schema.org",
+  "@type": "Restaurant",
+  "name": "Zait & Za'atar: Mediterranean Dhaba",
+  "url": "https://www.zaitzaatar.com/",
+  "sameAs": [
+    "https://www.facebook.com/zaitzaatarStP/",
+    "https://www.instagram.com/zaitzaatar_stp/"
+  ],
+  "logo": "https://www.zaitzaatar.com/logo.png",
+  "description": "Discover the magic of Mediterranean cuisine at Zait & Za'atar: Mediterranean Dhaba on Selby Avenue, Saint Paul. Our unique fusion of Mediterranean and Indian street food offers a mouth-watering range of dishes, freshly prepared to deliver bursts of exquisite flavors. From our delightful Chicken Shawarma Sandwich to Samosa Appetizers and Garlic Naans every meal is designed to satisfy and indulge your culinary cravings. So come on in and experience the warmth of our welcoming atmosphere.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1626 Selby Ave St Paul MN 55104",
+    "addressLocality": "Saint Paul",
+    "addressRegion": "Minnesota",
+    "postalCode": "55104",
+    "addressCountry": "united states of america"
+  },
+  "hasMap": "https://maps.app.goo.gl/3LGZKWRE76QTMnew8",
+  "openingHours": "Mo, Tu, We, Th, Fr, Sa, Su 10:00-21:00"
+}`}}
+        ></script>
         {/* GOOGLE TAG MANAGER HEAD CODE*/}
         <script
           dangerouslySetInnerHTML={{
