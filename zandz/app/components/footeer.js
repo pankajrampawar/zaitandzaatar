@@ -28,6 +28,9 @@ export default function Footer() {
                                 </a>
                             </li>
                         ))}
+                        <li>
+                            <a href="/privacyPolicy" className="hover:text-[#E4312B] transition">Privacy Policy</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -58,7 +61,7 @@ export default function Footer() {
 
             {/* Copyright Section */}
             <div className="mt-8 text-center text-sm text-gray-300 ">
-                <p>&copy; {new Date().getFullYear()}Zait & Za'atar Mediterranean Dhaba. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()} Zait & Za'atar Mediterranean Dhaba. All rights reserved.</p>
             </div>
         </footer>
     );
