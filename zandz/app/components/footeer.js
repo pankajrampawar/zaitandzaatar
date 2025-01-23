@@ -12,7 +12,7 @@ export default function Footer() {
                 <div className="flex flex-col items-start">
                     <div className="flex items-center space-x-4">
                         <img src="/logo.png" alt="St. Witch Burgers" className="w-16 h-16 rounded-full" />
-                        <h2 className={`text-2xl font-bold tracking-wide ${anek_gujarati.className}`}>Zait $ Za'atar Mediterranean Dhaba</h2>
+                        <h2 className={`text-2xl font-bold tracking-wide ${anek_gujarati.className}`}>Zait & Za'atar Mediterranean Dhaba</h2>
                     </div>
                     <p className="mt-2">Serving best Mediterranean & select Indian food in Saint Paul.</p>
                 </div>
