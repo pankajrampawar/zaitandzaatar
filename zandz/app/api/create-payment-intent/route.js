@@ -11,7 +11,7 @@ export async function POST(request) {
             currency: "usd",
             automatic_payment_methods: { enabled: true },
             metadata: {
-                items: JSON.stringify(items), // Add items as a JSON string
+                items: JSON.stringify(items),
                 name: userInfo.name,
                 email: userInfo.email,
                 location: userInfo.address,
