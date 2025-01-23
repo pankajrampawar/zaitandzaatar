@@ -37,25 +37,25 @@ export default function Ramadan() {
             <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 <RamadanCard
                     name="Middle Eastern Rice Box"
-                    image="/box3.png"
+                    image="/box3.jpeg"
                     description="Chicken Over Yellow Rice, Salad & Samosas"
                     price="11.99"
                 />
                 <RamadanCard
                     name="Middle Eastern Shawarma Box"
-                    image="/box2.png"
+                    image="/box2.jpeg"
                     description="Chicken Shawarma Wrap, Samosa & Drink"
                     price="10.99"
                 />
                 <RamadanCard
                     name="Homestyle Iftar Box"
-                    image="/box4.png"
+                    image="/box4.jpeg"
                     description="Rice Daal, Tandoori Chicken & Samosas"
                     price="12.49"
                 />
                 <RamadanCard
                     name="Indian Iftar Box"
-                    image="/box1.png"
+                    image="/box1.jpeg"
                     description="Description of Indian Iftar Box"
                     price="12.99"
                 />
