@@ -5,6 +5,7 @@ import convertToSubcurrency from "@/app/lib/convertToSubcurrency";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useCart } from "@/app/context/cart";
+import { useEffect, useState } from "react";
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
     throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined");
@@ -13,7 +14,15 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 export default function Home() {
 
-    const { finalTotal } = useCart();
+    const [user, setUser] = useState();
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('userInfo')
+        const userInfo = JSON.parse(storedUser)
+        setUser(userInfo)
+    }, [])
+
+    const { items, finalTotal } = useCart();
     const amount = finalTotal
     const finalAmount = convertToSubcurrency(amount)
 
@@ -35,7 +44,7 @@ export default function Home() {
                     currency: "usd",
                 }}
             >
-                <CheckoutPage amount={finalAmount / 100} />
+                <CheckoutPage amount={finalAmount / 100} userInfo={user} items={items} />
             </Elements>
         </main>
     );

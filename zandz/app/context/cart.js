@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 // Create the CartContext
 const CartContext = createContext();
@@ -65,9 +65,9 @@ export function CartProvider({ children }) {
         });
     };
 
-    const clearCart = () => {
+    const clearCart = useCallback(() => {
         setItems([]);
-    };
+    }, []);
 
     // Calculate the subtotal
     const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);

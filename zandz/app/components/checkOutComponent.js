@@ -8,7 +8,7 @@ import {
 } from "@stripe/react-stripe-js";
 import convertToSubcurrency from "@/app/lib/convertToSubcurrency";
 
-const CheckoutPage = ({ amount }) => {
+const CheckoutPage = ({ amount, userInfo, items }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [errorMessage, setErrorMessage] = useState();
@@ -17,18 +17,23 @@ const CheckoutPage = ({ amount }) => {
 
     useEffect(() => {
         const subcurrencyAmount = convertToSubcurrency(amount); // Ensure it's an integer
-        console.log(subcurrencyAmount);  // Check what value you're sending
+        console.log(userInfo, items); // Log to verify items and userInfo
 
+        // Send the amount, items, and userInfo to the server to create the payment intent
         fetch("/api/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ amount: subcurrencyAmount }),
+            body: JSON.stringify({
+                amount: subcurrencyAmount,
+                items: items,
+                userInfo: userInfo,
+            }),
         })
             .then((res) => res.json())
             .then((data) => setClientSecret(data.clientSecret));
-    }, [amount]);
+    }, [amount, items, userInfo]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -38,15 +43,16 @@ const CheckoutPage = ({ amount }) => {
             return;
         }
 
+        // Call elements.submit() to handle payment method collection before confirming payment
         const { error: submitError } = await elements.submit();
 
         if (submitError) {
             setErrorMessage(submitError.message);
-            console.log(submitError.message)
             setLoading(false);
             return;
         }
 
+        // After submit, confirm payment
         const { error } = await stripe.confirmPayment({
             elements,
             clientSecret,
@@ -56,13 +62,8 @@ const CheckoutPage = ({ amount }) => {
         });
 
         if (error) {
-            // This point is only reached if there's an immediate error when
-            // confirming the payment. Show the error to your customer (for example, payment details incomplete)
             setErrorMessage(error.message);
-            console.log(error.message)
-        } else {
-            // The payment UI automatically closes with a success animation.
-            // Your customer is redirected to your `return_url`.
+            console.log(error.message);
         }
 
         setLoading(false);
