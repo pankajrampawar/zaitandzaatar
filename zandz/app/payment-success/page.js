@@ -63,7 +63,7 @@ export default function PaymentSuccessPage() {
                 </div>
 
                 <button className="w-full bg-button text-white py-3 rounded-lg hover:bg-red-700 transition-colors">
-                    Continue Shopping
+                    Continue Ordering
                 </button>
             </div>
         </div>
