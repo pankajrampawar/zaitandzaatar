@@ -90,7 +90,7 @@ const GuestForm = ({ onClose, onSubmit }) => {
 
                     <div className="space-y-2">
                         <label htmlFor="address" className="block text-lg text-gray-700">
-                            Address
+                            Delivery Address
                         </label>
                         <textarea
                             id="address"
