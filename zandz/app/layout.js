@@ -2,6 +2,7 @@ import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footeer";
 import { SessionProvider } from "next-auth/react";
+import { CartProvider } from "./context/cart";
 
 export const metadata = {
   title: "Zait & Za'atar",
@@ -94,14 +95,16 @@ export default function RootLayout({ children }) {
 
         {/* Content */}
         <SessionProvider>
-          <div className="fixed w-screen top-0 z-40">
-            <Navbar />
-          </div>
+          <CartProvider>
+            <div className="fixed w-screen top-0 z-40">
+              <Navbar />
+            </div>
 
-          {/* Children */}
-          <div className="flex justify-center w-full relative">
-            {children}
-          </div>
+            {/* Children */}
+            <div className="flex justify-center w-full relative">
+              {children}
+            </div>
+          </CartProvider>
         </SessionProvider>
 
         {/* Footer */}

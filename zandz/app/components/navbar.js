@@ -61,7 +61,7 @@ export default function Navbar() {
         return (
             <ul
                 className={`flex flex-col md:flex-row gap-4 text-lg items-center
-                md:text-base md:gap-6 lg:text-xl xl:text-2xl xl:font-bold ${lato.className}`}
+                md:text-sm md:gap-6 lg:text-lg xl:text-xl xl:font-bold ${lato.className}`}
             >
                 <li><button onClick={() => navigateFunction('')}>Home</button></li>
                 <li><button onClick={() => navigateFunction('menu')}>Menu</button></li>
@@ -69,6 +69,7 @@ export default function Navbar() {
                 <li><button onClick={() => navigateFunction('catering')}>Catering</button></li>
                 <li><button onClick={() => navigateFunction('rewards')}>Rewards</button></li>
                 <li><button onClick={() => router.push('https://www.stwichburgers.com/')}>Sister Restaurant</button></li>
+                <li><button onClick={() => { router.push('ramadan') }}>Ramadan Orders</button></li>
             </ul>
         );
     };
@@ -89,19 +90,19 @@ export default function Navbar() {
             </div>
 
             <div className="hidden md:flex">
-                <div className="py-4 px-4 backdrop-blur-sm bg-[#ffeee175] rounded-xls rounded-xl">
+                <div className="py-4 px-4 backdrop-blur-sm bg-[#f0ba9028] rounded-xls rounded-xl">
                     <NavigationItem />
                 </div>
             </div>
 
-            <div className="hidden md:flex flex-1 justify-end relative gap-2">
+            <div className="hidden md:flex flex-1 justify-end items-center relative gap-2">
                 <div
                     onMouseEnter={handleDrawerEnter}
                     onMouseLeave={handleDrawerLeave}
                     className="relative"
                 >
                     <button
-                        className="bg-button text-white hover:bg-inherit hover:rounded-2xl transition-all ease-in-out duration-300 hover:text-black hover:border-2 hover:border-black md:p-2 lg:p-3 md:text-base lg:text-xl"
+                        className="bg-button text-white hover:bg-inherit hover:rounded-2xl transition-all ease-in-out duration-300 hover:text-black hover:border-2 hover:border-black md:p-1 lg:p-2 md:text-sm lg-text-base xl:text-lg"
                     >
                         Order Online
                     </button>
@@ -145,7 +146,7 @@ export default function Navbar() {
                             )}
                         </div>
                     ) : (
-                        <div className="text-button p-2 text-xl flex justify-center items-center">
+                        <div className="text-button p-2 text-sm lg:text-base xl:text-xl flex justify-center items-center">
                             <SignIn />
                         </div>
                     )}
