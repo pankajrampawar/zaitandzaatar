@@ -16,16 +16,13 @@ export default function PaymentSuccessPage() {
 
     // Redirect after 5 seconds and clear the cart
     useEffect(() => {
-        // Clear localStorage cart and context cart state
         localStorage.removeItem('cart');
         clearCart();
 
-        // Redirect after 5 seconds
         const timeoutId = setTimeout(() => {
             router.push('/');
         }, 5000);
 
-        // Cleanup on component unmount
         return () => clearTimeout(timeoutId);
     }, [clearCart, router]);
 
