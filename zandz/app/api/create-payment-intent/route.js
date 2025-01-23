@@ -13,8 +13,9 @@ export async function POST(request) {
             metadata: {
                 items: JSON.stringify(items), // Add items as a JSON string
                 name: userInfo.name,
-                location: userInfo.location,
-                phone: userInfo.phone,
+                email: userInfo.email,
+                location: userInfo.address,
+                phone: userInfo.phoneNumber,
             },
         });
 

@@ -13,18 +13,31 @@ if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 export default function Home() {
-
-    const [user, setUser] = useState();
+    const [user, setUser] = useState(null); // Initializing user as null instead of undefined
 
     useEffect(() => {
-        const storedUser = localStorage.getItem('userInfo')
-        const userInfo = JSON.parse(storedUser)
-        setUser(userInfo)
-    }, [])
+        const storedUser = localStorage.getItem('userInfo');
+        if (storedUser) {
+            const userInfo = JSON.parse(storedUser);
+            setUser(userInfo);
+        }
+    }, []);
 
     const { items, finalTotal } = useCart();
-    const amount = finalTotal
-    const finalAmount = convertToSubcurrency(amount)
+    const amount = finalTotal;
+    const finalAmount = convertToSubcurrency(amount);
+
+    // Only render the Elements component if user is loaded
+    if (user === null) {
+        return (
+            <main className="max-w-6xl mt-[10%] w-full mx-auto p-10 text-white text-center border m-10 rounded-md bg-[#130902]" style={{ backgroundImage: "url('/bgPattern.png')", backgroundSize: "auto" }}>
+                <div className="mb-10">
+                    <h1 className="text-4xl font-extrabold mb-2">Zait & Za'atar</h1>
+                    <h2 className="text-2xl">Loading user information...</h2>
+                </div>
+            </main>
+        );
+    }
 
     return (
         <main className="max-w-6xl mt-[10%] w-full mx-auto p-10 text-white text-center border m-10 rounded-md bg-[#130902]" style={{ backgroundImage: "url('/bgPattern.png')", backgroundSize: "auto" }}>
