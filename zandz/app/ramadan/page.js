@@ -39,7 +39,7 @@ export default function Ramadan() {
                     name="Middle Eastern Rice Box"
                     image="/catering.png"
                     description="Chicken Over Yellow Rice, Salad & Samosas"
-                    price="10.99"
+                    price="11.99"
                 />
                 <RamadanCard
                     name="Middle Eastern Shawarma Box"
@@ -51,13 +51,13 @@ export default function Ramadan() {
                     name="Homestyle Iftar Box"
                     image="/catering.png"
                     description="Rice Daal, Tandoori Chicken & Samosas"
-                    price="10.99"
+                    price="12.49"
                 />
                 <RamadanCard
                     name="Indian Iftar Box"
                     image="/catering.png"
                     description="Description of Indian Iftar Box"
-                    price="10.99"
+                    price="12.99"
                 />
             </div>
 
