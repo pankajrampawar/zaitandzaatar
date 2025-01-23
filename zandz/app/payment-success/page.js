@@ -1,15 +1,16 @@
-'use client'
-import { useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
-import { CheckCircle2, Gift, CreditCard } from 'lucide-react'
-import { useRouter } from 'next/navigation'
-import { useCart } from '../context/cart'
+'use client';
 
-export default function PaymentSuccessPage() {
+import { useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { CheckCircle2, Gift, CreditCard } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useCart } from '../context/cart';
+import { Suspense } from 'react';
 
+function PaymentSuccessContent() {
     const router = useRouter();
-    const searchParams = useSearchParams()
-    const amount = searchParams.get('amount')
+    const searchParams = useSearchParams();
+    const amount = searchParams.get('amount');
 
     // Use Cart Context to clear cart state
     const { clearCart } = useCart();
@@ -64,5 +65,13 @@ export default function PaymentSuccessPage() {
                 </button>
             </div>
         </div>
-    )
+    );
+}
+
+export default function PaymentSuccessPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+            <PaymentSuccessContent />
+        </Suspense>
+    );
 }
