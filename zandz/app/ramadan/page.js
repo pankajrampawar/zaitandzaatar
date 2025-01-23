@@ -49,7 +49,7 @@ export default function Ramadan() {
                 />
                 <RamadanCard
                     name="Homestyle Iftar Box"
-                    image="/catering.png"
+                    image="/box4.png"
                     description="Rice Daal, Tandoori Chicken & Samosas"
                     price="12.49"
                 />
