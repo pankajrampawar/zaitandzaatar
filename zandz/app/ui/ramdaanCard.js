@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function RamdaanCard() {
     return (
-        <a href="tel:+16124714638" className="cursor-pointer">
+        <a href="tel:+16124714638" className="cursor-pointer shadow-3xl">
             <Image
                 src="/popup.png"
                 priority="true"
