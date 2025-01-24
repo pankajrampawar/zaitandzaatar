@@ -2,16 +2,32 @@
 import RamadanCard from "../ui/ramadanCard";
 import { useCart } from "../context/cart";
 import { motion, useInView } from "framer-motion";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { anek_gujarati } from "../fonts";
 import { useRouter } from "next/navigation";
+import RamdaanCard from "../ui/ramdaanCard";
 
 export default function Ramadan() {
     const { items } = useCart();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
+    const [popup, setPopup] = useState(false);
     const router = useRouter();
-    console.log(items)
+    const cardRef = useRef(null);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setPopup(true);
+        }, 5555);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    const handleBackdropClick = (e) => {
+        if (cardRef.current && !cardRef.current.contains(e.target)) {
+            setPopup(false);
+        }
+    };
 
     return (
         <div className="my-[10%] px-6 lg:px-12">
@@ -74,7 +90,7 @@ export default function Ramadan() {
                         whileTap={{ scale: 0.95 }}
                         animate={{
                             boxShadow: [
-                                "0 0 0px rgba(255,   255, 255, 0)",
+                                "0 0 0px rgba(255, 255, 255, 0)",
                                 "0 0 15px rgba(255, 0, 0, 1)",
                                 "0 0 0px rgba(255, 255, 255, 0)"
                             ]
@@ -84,7 +100,6 @@ export default function Ramadan() {
                             repeatType: "loop",
                             duration: 1.5
                         }}
-
                         onClick={() => { router.push('/ramadan/cart') }}
                     >
                         Go To Cart
@@ -106,6 +121,20 @@ export default function Ramadan() {
                         ></motion.div>
                     </motion.button>
                 </motion.div>
+            )}
+
+            {popup && (
+                <div
+                    className="fixed h-screen w-screen bg-black/30 top-0 left-0 z-10"
+                    onClick={handleBackdropClick}
+                >
+                    <div
+                        ref={cardRef}
+                        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50"
+                    >
+                        <RamdaanCard />
+                    </div>
+                </div>
             )}
         </div>
     );
