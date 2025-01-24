@@ -1,23 +1,23 @@
 export const breakfastAllDay = [
     {
-        name: "Foul Mudammas w Pita Bread",
+        name: "Foul Mudammas with Pita Bread",
         price: "11.99",
         image: "/foulMudammas.jpeg",
-        alt: "Best Foul Mudammas w Pita Bread in Saint Paul",
+        alt: "Best Foul Mudammas with Pita Bread in Saint Paul",
         content: "Slow-cooked fava beans seasoned with garlic, lemon, and olive oil, served warm with fluffy pita bread for a hearty, authentic Mediterranean experience."
     },
     {
-        name: "Shakusha w Garlic Toast",
+        name: "Shakshuka with Garlic Toast",
         price: "11.99",
         image: "/shakushaGarlic.jpeg",
-        alt: "Best Shakusha w Garlic Toast in Saint Paul",
+        alt: "Best Shakshuka with Garlic Toast in Saint Paul",
         content: "Savory shakshuka with perfectly poached eggs in a spiced tomato sauce, served with crispy garlic toast for dipping—a comforting Mediterranean classic."
     },
     {
-        name: "Poached Egss w English Muffins & Crushed Falafels",
+        name: "Poached Eggs with English Muffins and Crushed Falafels",
         price: "11.99",
         image: "/poachedEgss.jpeg",
-        alt: "Best Poached Egss w English Muffins & Crushed Falafels in Saint Paul",
+        alt: "Best Poached Eggs with English Muffins and Crushed Falafels in Saint Paul",
         content: "Poached eggs nestled on toasted English muffins, topped with golden crushed falafels, a drizzle of tahini sauce, and a hint of fresh herbs."
     },
     {
@@ -42,24 +42,24 @@ export const breakfastAllDay = [
         content: "Fluffy scrambled eggs spiced with aromatic herbs, wrapped in a warm, flaky paratha—an irresistible fusion of comfort and bold Mediterranean flavors."
     },
     {
-        name: "PB & J Sandwich",
+        name: "Peanut Butter and Jelly Sandwich",
         price: "7.99",
         image: "/pbJ.jpeg",
-        alt: "Best PB & J Sandwich in Saint Paul",
+        alt: "Best Peanut Butter and Jelly Sandwich in Saint Paul",
         content: "Creamy peanut butter and sweet berry jam layered between soft, freshly baked bread—simple, satisfying, and perfect for a quick bite or a nostalgic treat."
     },
     {
-        name: "Elvis PB & J",
+        name: "Elvis Peanut Butter and Jelly",
         price: "8.99",
         image: "/elvisPb.jpeg",
-        alt: "Best Elvis PB & J in Saint Paul",
+        alt: "Best Elvis Peanut Butter and Jelly in Saint Paul",
         content: "A twist on the classic, with creamy peanut butter, sweet jam, and crispy bacon, all sandwiched between soft, toasted bread for a unique, mouthwatering Mediterranean-inspired treat."
     },
     {
-        name: "Nutrela Toast",
+        name: "Nutella Toast",
         price: "5.99",
         image: "/nutrelaToast.jpeg",
-        alt: "Best Nutrela Toast in Saint Paul",
+        alt: "Best Nutella Toast in Saint Paul",
         content: "Toasted bread topped with seasoned Nutrela soya, fresh herbs, and a drizzle of olive oil—packed with protein and bursting with Mediterranean flavors."
     }
 ];
@@ -174,10 +174,10 @@ export const plates = [
         content: "A flavorful twist on the classic, featuring spiced ground beef (keema) mixed with rice, lentils, pasta, and topped with crispy fried onions and a rich tomato sauce—comforting and satisfying."
     },
     {
-        name: "Panner Butter Masala & White Rice",
+        name: "Paneer Butter Masala & White Rice",
         price: "13.99",
         image: "/pannerButterMasala.jpeg",
-        alt: "Best Panner Butter Masala & White Rice in Saint Paul",
+        alt: "Best Paneer Butter Masala & White Rice in Saint Paul",
         content: "Creamy paneer cooked in a rich, spiced tomato gravy, served with fragrant white rice—an indulgent and comforting dish full of bold, savory Mediterranean flavors."
     },
     {
@@ -198,24 +198,24 @@ export const plates = [
 
 export const sandwiches = [
     {
-        name: "Chicken Shawarma",
+        name: "Chicken Shawarma Sandwich",
         price: "9.99",
         image: "/chickenShawarma.jpeg",
-        alt: "Best Chicken Shawarma in Saint Paul",
+        alt: "Best Chicken Shawarma Sandwich in Saint Paul",
         content: "Juicy, marinated chicken grilled to perfection, wrapped in warm pita with fresh veggies and a drizzle of garlic sauce—an irresistible Mediterranean sandwich bursting with savory flavors and tender goodness."
     },
     {
-        name: "Beef Keema",
+        name: "Beef Keema Sandwich",
         price: "9.99",
         image: "/beefKeema.jpeg",
-        alt: "Best Beef Keema in Saint Paul",
+        alt: "Best Beef Keema Sandwich in Saint Paul",
         content: "Spiced ground beef, cooked with aromatic herbs and vegetables, stuffed in warm pita bread with fresh toppings—creating a savory and satisfying Mediterranean sandwich packed with rich flavors."
     },
     {
-        name: "Falafel",
+        name: "Falafel Sandwich",
         price: "8.99",
         image: "/falafel.jpeg",
-        alt: "Best Falafel in Saint Paul",
+        alt: "Best Falafel Sandwich in Saint Paul",
         content: "Crunchy, golden falafel served in warm pita bread with fresh veggies, pickles, and a drizzle of creamy tahini sauce—delivering a perfect blend of crispy, savory, and refreshing Mediterranean flavors."
     },
     {
@@ -226,24 +226,24 @@ export const sandwiches = [
         content: "Tender, seasoned gyro meat wrapped in warm pita with crisp lettuce, tomatoes, onions, and a dollop of creamy tzatziki sauce—offering a delicious, savory Mediterranean sandwich with every bite."
     },
     {
-        name: "Beef Shawarma",
+        name: "Beef Shawarma Sandwich",
         price: "9.99",
         image: "/beefShawarma.jpeg",
-        alt: "Best Beef Shawarma in Saint Paul",
+        alt: "Best Beef Shawarma Sandwich in Saint Paul",
         content: "Marinated beef shawarma wrapped in warm pita with fresh veggies, tangy pickles, and a generous drizzle of garlic sauce—creating a delicious, savory Mediterranean sandwich full of bold flavors."
     },
     {
-        name: "Msakhan Chicken",
+        name: "Musakhan Chicken Sandwich",
         price: "9.99",
         image: "/msakhanChicken.jpeg",
-        alt: "Best Msakhan Chicken in Saint Paul",
-        content: "Juicy, marinated Msakhan chicken, seasoned with sumac and olive oil, served in warm pita with caramelized onions—offering a flavorful, aromatic Mediterranean sandwich with a perfect balance of spices."
+        alt: "Best Musakhan Chicken Sandwich in Saint Paul",
+        content: "Juicy, marinated Musakhan Chicken, seasoned with sumac and olive oil, served in warm pita with caramelized onions—offering a flavorful, aromatic Mediterranean sandwich with a perfect balance of spices."
     },
     {
-        name: "Veggies",
+        name: "Veggie Sandwich",
         price: "7.99",
         image: "/veggies.jpeg",
-        alt: "Best Veggies in Saint Paul",
+        alt: "Best Veggie Sandwich in Saint Paul",
         content: "Fresh, flavorful mix of seasonal vegetables, layered with crisp greens, and drizzled with olive oil and tangy dressing, all wrapped in soft pita for a light, satisfying Mediterranean sandwich."
     },
     {
@@ -322,7 +322,7 @@ export const kidsMeal = [
         alt: "Best Mac and Cheese in Saint Paul",
         content: ""
     }, {
-        name: "Shawarma Meat (chicken, beef or msakhan)",
+        name: "Shawarma Meat (Chicken, Beef or Musakhan)",
         price: "9.99",
         image: "/shawarmaMeat.jpeg",
         alt: "Best Shawarma Meat in Saint Paul",
@@ -332,10 +332,10 @@ export const kidsMeal = [
 
 export const sides = [
     {
-        name: "Msakhan Fries",
+        name: "Musakhan Fries",
         price: "10.99",
         image: "/msakhanFries.jpeg",
-        alt: "Best Msakhan Fries in Saint Paul",
+        alt: "Best Musakhan Fries in Saint Paul",
         content: ""
     },
     {
@@ -346,10 +346,10 @@ export const sides = [
         content: ""
     },
     {
-        name: "Veggies Fries",
+        name: "Veggie Fries",
         price: "9.99",
         image: "/veggiesFries.jpeg",
-        alt: "Best Veggies Fries in Saint Paul",
+        alt: "Best Veggie Fries in Saint Paul",
         content: ""
     },
     {
