@@ -16,7 +16,7 @@ export const breakfastAllDay = [
     {
         name: "Poached Eggs with English Muffins and Crushed Falafels",
         price: "11.99",
-        image: "/poachedEgss.jpeg",
+        image: "/poachedEggs.jpeg",
         alt: "Best Poached Eggs with English Muffins and Crushed Falafels in Saint Paul",
         content: "Poached eggs nestled on toasted English muffins, topped with golden crushed falafels, a drizzle of tahini sauce, and a hint of fresh herbs."
     },
@@ -51,14 +51,14 @@ export const breakfastAllDay = [
     {
         name: "Elvis Peanut Butter and Jelly",
         price: "8.99",
-        image: "/elvisPb.jpeg",
+        image: "/pbJ.jpeg",
         alt: "Best Elvis Peanut Butter and Jelly in Saint Paul",
         content: "A twist on the classic, with creamy peanut butter, sweet jam, and crispy bacon, all sandwiched between soft, toasted bread for a unique, mouthwatering Mediterranean-inspired treat."
     },
     {
         name: "Nutella Toast",
         price: "5.99",
-        image: "/nutrelaToast.jpeg",
+        image: "/nutellaToast.jpeg",
         alt: "Best Nutella Toast in Saint Paul",
         content: "Toasted bread topped with seasoned Nutrela soya, fresh herbs, and a drizzle of olive oil—packed with protein and bursting with Mediterranean flavors."
     }
@@ -146,10 +146,10 @@ export const plates = [
         content: "Savory, spiced ground beef cooked with aromatic herbs and tender vegetables, offering a rich, flavorful Mediterranean dish that's perfect on its own or paired with flatbread."
     },
     {
-        name: "Msakhan Chicken",
+        name: "Musakhan Chicken",
         price: "13.99",
         image: "/msakhanChicken.jpeg",
-        alt: "Best Msakhan Chicken in Saint Paul",
+        alt: "Best Musakhan Chicken in Saint Paul",
         content: "Succulent chicken marinated in olive oil, sumac, and spices, roasted to perfection and served on flatbread with caramelized onions—an aromatic and flavorful Palestinian dish that’s both hearty and comforting."
     },
     {
@@ -183,7 +183,7 @@ export const plates = [
     {
         name: "Chicken Kushari",
         price: "13.99",
-        image: "/chickenKushari.jpeg",
+        image: "/beefKeemaKushari.jpeg",
         alt: "Best Chicken Kushari in Saint Paul",
         content: "A delicious variation of the classic Kushari, featuring tender chicken atop a bed of rice, lentils, and pasta, topped with crispy onions and a rich tomato sauce—comforting and flavorful."
     },
@@ -200,7 +200,7 @@ export const sandwiches = [
     {
         name: "Chicken Shawarma Sandwich",
         price: "9.99",
-        image: "/chickenShawarma.jpeg",
+        image: "/shawarma.jpeg",
         alt: "Best Chicken Shawarma Sandwich in Saint Paul",
         content: "Juicy, marinated chicken grilled to perfection, wrapped in warm pita with fresh veggies and a drizzle of garlic sauce—an irresistible Mediterranean sandwich bursting with savory flavors and tender goodness."
     },
@@ -228,7 +228,7 @@ export const sandwiches = [
     {
         name: "Beef Shawarma Sandwich",
         price: "9.99",
-        image: "/beefShawarma.jpeg",
+        image: "/shawarma.jpeg",
         alt: "Best Beef Shawarma Sandwich in Saint Paul",
         content: "Marinated beef shawarma wrapped in warm pita with fresh veggies, tangy pickles, and a generous drizzle of garlic sauce—creating a delicious, savory Mediterranean sandwich full of bold flavors."
     },
@@ -290,7 +290,7 @@ export const specialty = [
     , {
         name: "Chaat",
         price: "14.99",
-        image: "/chaat.jpeg",
+        image: "/dahipuri.jpeg",
         alt: "Best Chaat in Saint Paul",
         content: "Samosa with lentil patty crushed puris, chickpeas, yogurt sauce, tamarind sauce, jalapeno sauce, herbs and spices."
     }, {
@@ -367,7 +367,7 @@ export const sides = [
         content: "Crispy, golden fries, seasoned just right for a flavorful, crunchy bite. A simple and satisfying classic that’s perfect for any meal or as a tasty snack."
     },
     {
-        name: "Jalapeno Peppers w Cream Cheese",
+        name: "Jalapeno Peppers with Cream Cheese",
         price: "6.99",
         image: "/jalapenoPeppers.jpeg",
         alt: "Best Jalapeno Peppers w Cream Cheese in Saint Paul",
@@ -574,14 +574,14 @@ export const drinks = {
                 name: 'Sweety & Salty Lassi (Specialty)',
                 price: '4.99',
                 content: "This specialty lassi combines the rich creaminess of yogurt with both sweet and salty flavors, creating a refreshing & balanced drink.",
-                image: "/sweetySaltyLassi.jpeg",
+                image: "/lassi.jpeg",
                 alt: "Best Sweety & Salty Lassi in Saint Paul"
             },
             {
                 name: 'Rose Lassi (Specialty)',
                 price: '4.99',
                 content: "Indulge in the sweet, floral notes of rose, blended with creamy yogurt to create a refreshing drink. Light, fragrant, and cool, this specialty drink offers a soothing experience.",
-                image: "/roseLassi.jpeg",
+                image: "/rosePistachio.jpeg",
                 alt: "Best Rose Lassi in Saint Paul"
             },
             {
