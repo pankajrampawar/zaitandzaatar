@@ -50,7 +50,6 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                             <CateringPricingCard
                                 key={index}
                                 name={burger.name}
-                                price={burger.price}
                                 content={burger.content}
                                 image={burger.image}
                                 alt={burger.alt}
@@ -78,7 +77,6 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                             return (<CateringPricingCard
                                 key={index}
                                 name={drink.name}
-                                price={drink.price}
                                 content={drink.content}
                                 image={drink.image}
                                 alt={drink.alt}
@@ -102,7 +100,6 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                                         <CateringPricingCard
                                             key={index}
                                             name={drink.name}
-                                            price={drink.price}
                                             image={drink.image}
                                             content={drink.content}
                                             alt={drink.alt}
@@ -133,7 +130,6 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                             <CateringPricingCard
                                 key={index}
                                 name={sandwich.name}
-                                price={sandwich.price}
                                 content={sandwich.content}
                                 image={sandwich.image}
                                 alt={sandwich.alt}
@@ -160,7 +156,6 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                             <CateringPricingCard
                                 key={index}
                                 name={side.name}
-                                price={side.price}
                                 content={side.content}
                                 image={side.image}
                                 alt={side.alt}
@@ -187,7 +182,6 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                             <CateringPricingCard
                                 key={index}
                                 name={side.name}
-                                price={side.price}
                                 content={side.content}
                                 image={side.image}
                                 alt={side.alt}
@@ -214,7 +208,6 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                             <CateringPricingCard
                                 key={index}
                                 name={side.name}
-                                price={side.price}
                                 content={side.content}
                                 image={side.image}
                                 alt={side.alt}
@@ -241,7 +234,6 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                             <CateringPricingCard
                                 key={index}
                                 name={side.name}
-                                price={side.price}
                                 image={side.image}
                                 alt={side.alt}
                                 content={side.content}
@@ -268,7 +260,6 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                             <CateringPricingCard
                                 key={index}
                                 name={side.name}
-                                price={side.price}
                                 content={side.content}
                                 image={side.image}
                                 alt={side.alt}
@@ -295,7 +286,6 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                             <CateringPricingCard
                                 key={index}
                                 name={side.name}
-                                price={side.price}
                                 content={side.content}
                                 image={side.image}
                                 alt={side.alt}
@@ -322,7 +312,6 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                             <CateringPricingCard
                                 key={index}
                                 name={side.name}
-                                price={side.price}
                                 content={side.content}
                                 image={side.image}
                                 alt={side.alt}

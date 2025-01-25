@@ -22,8 +22,9 @@ export default function CateringPricingCard({ name, price, content, image, alt, 
             {/* Content Section */}
             <div className="flex flex-1 flex-col justify-between w-full">
                 {/* Title and Price */}
-                <div className="flex justify-between items-start mb-2">
+                <div className="flex justify-between items-start mb-2 gap-2">
                     <h3 className="text-lg font-semibold">{name}</h3>
+                    {price && <span>${price}</span>}
                 </div>
 
                 {/* Description (Optional Placeholder) */}
