@@ -13,7 +13,7 @@ export default function OurStory() {
         <div className="max-w-[1440px]">
             <section className="px-[2%]">
                 <article className="flex flex-col  border-2 border-foreground text-center p-[5%]">
-                    <h2 className={`${anek_gujarati.className} font-bold text-5xl md:text-6xl md:leading-normal xl:text-7xl xl:leading-relaxed sm:mx-none w-full leading-snug tracking-wide`}>
+                    <h1 className={`${anek_gujarati.className} font-bold text-5xl md:text-6xl md:leading-normal xl:text-7xl xl:leading-relaxed sm:mx-none w-full leading-snug tracking-wide`}>
                         <span className="relative">
                             <span className="relative z-10 text-white">Our Story</span>
                             <motion.div
@@ -24,7 +24,7 @@ export default function OurStory() {
                                 transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
                             />
                         </span>
-                    </h2>
+                    </h1>
                     <p className={`${lato.className} xl:px-[5%] xl:pb-20 xl:pt-20 tracking-wide text-base sm:text-lg lg:text-xl xl:text-2xl mt-[2%]`}>
                         Located on Selby Avenue in Saint Paul, Minnesota, Zait & Za’atar is a unique fusion of Mediterranean and Indian street food traditions, inspired by the warmth and vibrancy of a traditional dhaba. A "dhaba" is a rustic roadside eatery, deeply rooted in South Asian culture, celebrated for its simple yet flavorful dishes served in a welcoming, homely atmosphere. At Zait & Za’atar, we bring this spirit to life while incorporating the rich culinary traditions of the Mediterranean and Middle East.
                         <br /> <br />

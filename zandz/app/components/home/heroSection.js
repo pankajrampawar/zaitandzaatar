@@ -37,8 +37,8 @@ export default function HeroSection() {
                 <section className="">
                     {/* text */}
                     <div>
-                        <p className="text-xs sm:text-sm mb-[2%]">Best Mediterranean & Select Indian Food In Saint Paul</p>
-                        <h1 className={`${anek_gujarati.className} text-4xl sm:text-5xl md:text-6xl min-[1480px]:text-7xl md:leading-normal text-start sm:mx-none w-full font-bold tracking-wide`}><span>MEDITERRANEAN SOUL,</span>
+                        <h1 className="text-xs sm:text-sm mb-[2%]">Best Mediterranean & Select Indian Food In Saint Paul</h1>
+                        <h2 className={`${anek_gujarati.className} text-4xl sm:text-5xl md:text-6xl min-[1480px]:text-7xl md:leading-normal text-start sm:mx-none w-full font-bold tracking-wide`}><span>MEDITERRANEAN SOUL,</span>
                             <br />
                             <div className="relative mt-3 p-1 sm:py-2 sm:mt-0">
                                 <span className="text-white sm:mt-0 relative">
@@ -52,7 +52,7 @@ export default function HeroSection() {
                                     />
                                 </span>
                             </div>
-                        </h1>
+                        </h2>
                     </div>
 
                     {/* Call To Action */}

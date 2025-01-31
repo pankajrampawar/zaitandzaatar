@@ -12,7 +12,7 @@ export default function Menu() {
     return (
         <div className="mt-[10%]">
             <section className={`${anek_gujarati.className} text-4xl md:text-5xl xl:text-6xl sm:mx-none w-full text-center font-semibold tracking-wide`}>
-                <div>Authentic Flavors at a Mediterranean Restaurant in Saint Paul</div>
+                <h1>Authentic Flavors at a Mediterranean Restaurant in Saint Paul</h1>
                 <div className="mt-2 xl:mt-4">
                     <span className="text-white px-2 relative">
                         <span className="relative z-10">Explore OUR MENU</span>
