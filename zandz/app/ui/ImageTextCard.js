@@ -3,11 +3,13 @@ import Image from "next/image"
 import { anek_gujarati, lato, merienda } from "../fonts"
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
-export default function ImageTextCardVariant({ imgSource, altProp, title, subTitle, Details, buttonText, buttonFunction, isImageLeft, third, second }) {
+export default function ImageTextCardVariant({ imgSource, altProp, title, subTitle, Details, buttonText, buttonFunction, isImageLeft, third, second, cta }) {
 
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
+    const router = useRouter();
 
     return (
         <div className={`flex flex-col md:flex-row mx-[5%] items-center justify-between gap-[40px] py-[40px]`}>
@@ -57,7 +59,7 @@ export default function ImageTextCardVariant({ imgSource, altProp, title, subTit
                 {/* Button Section */}
                 <div className={`${lato.className}`}>
                     <button
-                        onClick={() => buttonFunction()}
+                        onClick={cta}
                         className={`bg-button hover:bg-transparent border-2 border-button hover:text-black text-white py-2 px-4 lg:min-w-[155px] hover:rounded-xl transition-all ease-in-out duration-300 md:text-xl ${lato.className} font-bold tracking-wide`}
                     >
                         {buttonText}

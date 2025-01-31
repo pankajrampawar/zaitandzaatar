@@ -42,7 +42,7 @@ export default function Home() {
         <SocialProof />
       </section>
 
-      <section className="w-full flex justify-center">
+      <section href="#orderOnline" className="w-full flex justify-center">
         <OnlineSite />
       </section>
 
