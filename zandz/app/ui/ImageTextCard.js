@@ -2,14 +2,43 @@
 import Image from "next/image"
 import { anek_gujarati, lato, merienda } from "../fonts"
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function ImageTextCardVariant({ imgSource, altProp, title, subTitle, Details, buttonText, buttonFunction, isImageLeft, third, second, cta }) {
 
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const router = useRouter();
+    const dropdownRef = useRef(null); // Reference for dropdown
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            // Close dropdown if click is outside the image or dropdown
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target) &&
+                profileImageRef.current &&
+                !profileImageRef.current.contains(event.target)
+            ) {
+                setIsDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    const handleDrawerEnter = () => {
+        setIsDrawerOpen(true);
+    };
+
+    const handleDrawerLeave = () => {
+        setIsDrawerOpen(false);
+    };
 
     return (
         <div className={`flex flex-col md:flex-row mx-[5%] items-center justify-between gap-[40px] py-[40px]`}>
@@ -57,14 +86,41 @@ export default function ImageTextCardVariant({ imgSource, altProp, title, subTit
                 </article>
 
                 {/* Button Section */}
-                <div className={`${lato.className}`}>
+                {cta && <div className={`${lato.className}`}>
                     <button
                         onClick={cta}
                         className={`bg-button hover:bg-transparent border-2 border-button hover:text-black text-white py-2 px-4 lg:min-w-[155px] hover:rounded-xl transition-all ease-in-out duration-300 md:text-xl ${lato.className} font-bold tracking-wide`}
                     >
                         {buttonText}
                     </button>
-                </div>
+                </div>}
+
+                {!cta &&
+                    <div>
+                        <div
+                            onMouseEnter={handleDrawerEnter}
+                            onMouseLeave={handleDrawerLeave}
+                            className="relative inline-block"
+                        >
+                            <button
+                                className="bg-button text-white hover:bg-inherit hover:rounded-2xl transition-all ease-in-out duration-300 hover:text-black hover:border-2 hover:border-black md:p-1 lg:p-2 md:text-sm lg-text-base xl:text-lg"
+                            >
+                                Order Online
+                            </button>
+                            <div className={`${isDrawerOpen ? 'max-h-96' : 'max-h-0'} overflow-hidden bg-white text-2xl absolute top-14 right-0 flex flex-col items-start transition-[max-height] ease-out duration-400 shadow-lg`}>
+                                <button className="py-2 px-4 hover:bg-slate-200 min-w-full flex justify-start">
+                                    <a href="https://order.online/store/24509526?slug=-11399864&pickup=true&hideModal=true&redirected=true" target="_blank">DoorDash</a>
+                                </button>
+                                <button className="pt-4 pb-2 px-4 hover:bg-slate-200 min-w-full flex justify-start">
+                                    <a href="https://www.order.store/store/zait-%26-zaatar/AkhJK0DPUuqNMNVUqNjsfg" target="_blank" className="hover:cursor-pointer">Uber Eats</a>
+                                </button>
+                                <button className="py-2 pb-4 px-4 hover:bg-slate-200 min-w-full flex justify-start">
+                                    <a href="https://zaitzaatar.dine.online" target="_blank">Grubhub</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     );

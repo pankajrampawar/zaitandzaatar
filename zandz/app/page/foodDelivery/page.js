@@ -14,6 +14,7 @@ export default function BestBreakfast() {
                 Details="Looking for food delivery in St. Paul, MN? Whether you're in the mood for Mediterranean flavors, comfort food, or something fresh and healthy, our delivery service brings the best dishes directly to your doorstep. With quick, reliable delivery and a menu full of delicious options, you can enjoy a great meal without leaving the comfort of your home or office. Perfect for busy days, special occasions, or just a cozy meal in!"
                 buttonText="Order Now"
                 isImageLeft={false}
+                cta={false}
             />
         </div>
     )
