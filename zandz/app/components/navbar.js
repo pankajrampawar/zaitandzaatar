@@ -6,8 +6,11 @@ import { useState, useEffect, useRef } from "react";
 import { lato } from "../fonts";
 import SignIn from "./sign-in";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+
+    const pathname = usePathname();
     const router = useRouter();
     const [isOverlayOpen, setIsOverlayOpen] = useState(false);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -73,6 +76,14 @@ export default function Navbar() {
             </ul>
         );
     };
+
+    if (pathname === '/h4h') {
+        return (
+            <div className="hidden">
+
+            </div>
+        )
+    }
 
     return (
         <section className="flex w-full items-center justify-between px-[2%] xl:px-[1%] py-[1%]">

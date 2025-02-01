@@ -10,7 +10,9 @@ export default {
       colors: {
         background: "#FFEEE1",
         foreground: "#149954",
-        button: "#E4312B"
+        button: "#E4312B",
+        secondary: "#F3FCF4",
+        primary: "#103A12",
       },
     },
   },
