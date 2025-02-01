@@ -6,12 +6,13 @@ import { useState, useRef, useEffect } from "react";
 import { anek_gujarati } from "../fonts";
 import { useRouter } from "next/navigation";
 import RamdaanCard from "../ui/ramdaanCard";
+import { XIcon } from "lucide-react";
 
 export default function Ramadan() {
     const { items } = useCart();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
-    const [popup, setPopup] = useState(false);
+    const [popup, setPopup] = useState(true);
     const router = useRouter();
     const cardRef = useRef(null);
 
@@ -34,16 +35,18 @@ export default function Ramadan() {
             <div className="text-center mb-12 flex flex-col gap-4">
                 <p className="text-lg font-semibold">Celebrate Ramadan with Our</p>
                 <h1 className={`text-4xl font-extrabold text-white ${anek_gujarati.className} text-5xl`}>
-                    <span className="relative">
-                        <span className="text-white relative z-10">Specially Curated Iftar Box</span>
-                        <motion.div
-                            ref={ref}
-                            className="absolute bg-foreground h-full w-[105%] top-0 left-1/2 -translate-x-1/2"
-                            initial={{ width: 0 }}
-                            animate={isInView ? { width: "105%" } : {}}
-                            transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
-                        />
-                    </span>
+                    <div className="w-full flex justify-center">
+                        <div className="relative w-fit p-[10px]">
+                            <span className="text-white relative z-10">Specially Curated Iftar Box</span>
+                            <motion.div
+                                ref={ref}
+                                className="absolute bg-foreground h-full w-[105%] top-0 left-1/2 -translate-x-1/2"
+                                initial={{ width: 0 }}
+                                animate={isInView ? { width: "105%" } : {}}
+                                transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
+                            />
+                        </div>
+                    </div>
                 </h1>
                 <h2 className="text-lg md:text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
                     Fresh, delicious, and thoughtfully prepared – perfect for making your Iftar gatherings truly special.
@@ -125,9 +128,13 @@ export default function Ramadan() {
 
             {popup && (
                 <div
-                    className="fixed h-screen w-screen bg-black/30 top-0 left-0 z-10"
+                    className="fixed h-screen w-screen bg-black/60 top-0 left-0 z-50"
                     onClick={handleBackdropClick}
                 >
+
+                    <button onClick={handleBackdropClick} className="absolute bg-white top-10 right-6 md:right-10 w-fit p-2 rounded-full">
+                        <XIcon height={30} width={30} />
+                    </button>
                     <div
                         ref={cardRef}
                         className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50"
