@@ -4,7 +4,6 @@ import Image from "next/image";
 import UiCard from "@/app/h4h/uiCard";
 import { poppins } from "@/app/fonts";
 import { animate, motion } from "framer-motion";
-import { easeInOut } from "motion";
 
 export default function BuyAMeal() {
     // Animation variants

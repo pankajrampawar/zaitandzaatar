@@ -69,7 +69,7 @@ const H4hHeroSection = () => {
                         custom={0.9} // Delay for the button
                     >
                         <button
-                            onClick={() => { router.push('/buyAMeal') }}
+                            onClick={() => { router.push('/h4h/buyAMeal') }}
                             className={`${poppins.className} bg-primary text-secondary p-2 rounded-md text-lg mt-2`}
                         >
                             Buy a Meal
