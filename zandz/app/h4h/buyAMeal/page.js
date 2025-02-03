@@ -147,7 +147,7 @@ export default function BuyAMeal() {
             >
                 <div className="flex items-center justify-center gap-2 sm:gap-4">
                     <h1 className={`text-3xl sm:text-4xl md:text-5xl ${poppins.className} font-medium`}>
-                        Feed a Soul Today
+                        Your kindness feeds many.
                     </h1>
                     <motion.div
                         initial={{ scale: 0 }}

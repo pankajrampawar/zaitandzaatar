@@ -51,7 +51,7 @@ export function MealCard({
                                 <button onClick={addMeal} className="font-bold">+</button>
                             </div>
                             :
-                            <button onClick={addMeal} className={`bg-primary text-secondary p-3 text-lg w-full rounded-lg ${poppins.className}`}>Donate Individual Meal</button>
+                            <button onClick={addMeal} className={`bg-primary text-secondary p-3 text-lg w-full rounded-lg ${poppins.className}`}>{buttonText}</button>
                     }
                 </div>
             </div>
