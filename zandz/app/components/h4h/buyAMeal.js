@@ -109,10 +109,10 @@ export default function BuyAMeal() {
                         number: "1",
                     },
                     {
-                        title: "We Deliver to Those Who Need",
+                        title: "We serve to Those Who Need",
                         img: "/plate.svg",
                         alt: "hand with heart",
-                        description: "We bring hope to their doorstep, Your Meal Our Mission",
+                        description: "We bring food to there table, Your Meal Our Mission",
                         number: "2",
                     },
                     {
