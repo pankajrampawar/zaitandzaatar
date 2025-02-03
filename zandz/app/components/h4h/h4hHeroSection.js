@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 const H4hHeroSection = () => {
-
     const router = useRouter();
 
     // Animation Variants
@@ -33,29 +32,29 @@ const H4hHeroSection = () => {
     };
 
     return (
-        <div className="h-screen flex justify-center items-center text-primary mx-[5%]">
+        <div className="min-h-screen flex justify-center items-center text-primary px-4 sm:px-6 md:px-[5%] py-20 md:pt-12">
             <motion.div
-                className="w-full flex justify-between items-center"
+                className="w-full flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-4"
                 initial="hidden"
                 animate="visible"
             >
                 {/* Left Section */}
-                <section className="flex-1 flex flex-col gap-4">
+                <section className="flex-1 flex flex-col gap-4 text-center lg:text-left">
                     <motion.div
-                        className={`${poppins.className} text-[64px] font-light text-primary tracking-wide leading-tight`}
+                        className={`${poppins.className} text-4xl sm:text-5xl md:text-[64px] font-light text-primary tracking-wide leading-tight`}
                         variants={textVariants}
-                        custom={0.5} // Delay for this section
+                        custom={0.5}
                     >
                         <h1>
-                            Nourishing <span className="italic font-normal tracking-normal">Lives,</span> <br />
+                            Nourishing <span className="italic font-normal tracking-normal">Lives,</span> <br className="hidden sm:block" />
                             Igniting <span className="italic tracking-normal font-normal">Hopes.</span>
                         </h1>
                     </motion.div>
 
                     <motion.div
-                        className={`${lora.className} text-lg tracking-wide leading-relaxed flex flex-col gap-2`}
+                        className={`${lora.className} text-base sm:text-lg tracking-wide leading-relaxed flex flex-col gap-2 max-w-2xl lg:max-w-none mx-auto lg:mx-0`}
                         variants={textVariants}
-                        custom={0.7} // Delay for this section
+                        custom={0.7}
                     >
                         <p>
                             Hunger knows no boundaries, but neither does kindness. Your support turns empathy into action, one meal at a time.
@@ -66,11 +65,12 @@ const H4hHeroSection = () => {
 
                     <motion.div
                         variants={textVariants}
-                        custom={0.9} // Delay for the button
+                        custom={0.9}
+                        className="flex justify-center lg:justify-start"
                     >
                         <button
                             onClick={() => { router.push('/h4h/buyAMeal') }}
-                            className={`${poppins.className} bg-primary text-secondary p-2 rounded-md text-lg mt-2`}
+                            className={`${poppins.className} bg-primary text-secondary px-6 py-3 rounded-md text-lg mt-2 hover:opacity-90 transition-opacity`}
                         >
                             Buy a Meal
                         </button>
@@ -79,11 +79,11 @@ const H4hHeroSection = () => {
 
                 {/* Right Section */}
                 <motion.section
-                    className="flex-1 p-10 flex justify-end"
+                    className="flex-1 p-4 sm:p-6 lg:p-10 flex justify-center lg:justify-end"
                     variants={containerVariants}
                 >
                     <motion.div
-                        className="bg-zinc-800/40 min-w-[430px] max-w-[430px] min-h-[500px] rounded-xl"
+                        className="bg-zinc-800/40 w-full max-w-[350px] sm:max-w-[430px] min-h-[400px] sm:min-h-[500px] rounded-xl"
                     >
                         <Image
                             src="/childFood.jpg"
@@ -93,7 +93,7 @@ const H4hHeroSection = () => {
                             quality={100}
                             width={430}
                             height={500}
-                            className="rounded-xl"
+                            className="rounded-xl w-full h-full object-cover"
                         />
                     </motion.div>
                 </motion.section>

@@ -17,16 +17,12 @@ const fadeIn = {
 };
 
 export default function BuyAMeal() {
-
     const router = useRouter();
-
     const { data: session, status } = useSession();
     const [checkOut, setCheckout] = useState(false);
     const [mealCount, setMealCount] = useState({ individual: 0, family: 0 });
     const [totalAmount, setTotalAmount] = useState(0);
     const [popupForm, setShowPopupForm] = useState(false);
-
-    console.log(mealCount)
 
     const addMeal = (type) => {
         const newMealCount = {
@@ -42,7 +38,6 @@ export default function BuyAMeal() {
             ...mealCount,
             [type]: mealCount[type] > 0 ? mealCount[type] - 1 : 0
         }
-
         setMealCount(newMealCount);
         setTotalAmount(Number((newMealCount.individual * 10.99 + newMealCount.family * 39.99).toFixed(2)));
     }
@@ -67,24 +62,22 @@ export default function BuyAMeal() {
 
     if (checkOut) {
         return (
-            <div className="bg-secondary text-primary min-h-screen absolute w-screen left-0 top-0 p-[3%]">
-                <button className="flex" onClick={() => { setCheckout(false) }}>
+            <div className="bg-secondary text-primary min-h-screen absolute w-full left-0 top-0 p-4 sm:p-6 md:p-[3%]">
+                <button className="flex items-center gap-2" onClick={() => { setCheckout(false) }}>
                     <ArrowLeftIcon />
-                    <span>
-                        Go Back
-                    </span>
+                    <span>Go Back</span>
                 </button>
 
-                <div className="flex items-center justify-center gap-4 my-14 mb-6">
-                    <h1 className={`text-2xl ${poppins.className} font-medium text-center leading-relaxed tracking-wide`}>
-                        Your donation will help us serve {mealCount.individual + mealCount.family * 4} souls <br /> Thank you for making a difference!
+                <div className="flex items-center justify-center gap-4 my-8 sm:my-14 px-4">
+                    <h1 className={`text-xl sm:text-2xl ${poppins.className} font-medium text-center leading-relaxed tracking-wide`}>
+                        Your donation will help us serve {mealCount.individual + mealCount.family * 4} souls <br className="hidden sm:block" /> Thank you for making a difference!
                     </h1>
                 </div>
 
-                <div className="w-full flex justify-center items-cneter p-4 font-medium tracking-wide">
-                    <section className={`bg-white shadow-lg hover:shadow-xl p-6 gap-4 rounded-xl w-full flex items-start flex-col max-w-[420px] ${lora.className}`}>
+                <div className="w-full flex justify-center items-center p-4">
+                    <section className={`bg-white shadow-lg hover:shadow-xl p-4 sm:p-6 gap-4 rounded-xl w-full flex items-start flex-col max-w-[420px] ${lora.className}`}>
                         <div className="mb-2">
-                            <h2 className={`${poppins.className} font-medium text-2xl`}>Your Donation Summary</h2>
+                            <h2 className={`${poppins.className} font-medium text-xl sm:text-2xl`}>Your Donation Summary</h2>
                         </div>
 
                         <div className="flex flex-col w-full gap-1 pb-3 border-b">
@@ -127,7 +120,7 @@ export default function BuyAMeal() {
                                 <p>${(Number(totalAmount) + Number(calculateTax())).toFixed(2)}</p>
                             </div>
 
-                            <button onClick={handleCheckOut} className={`bg-primary text-secondary ${poppins.className} text-xl p-3 rounded-lg w-full`}>
+                            <button onClick={handleCheckOut} className={`bg-primary text-secondary ${poppins.className} text-lg sm:text-xl p-3 rounded-lg w-full`}>
                                 Proceed To Checkout
                             </button>
                         </div>
@@ -140,8 +133,9 @@ export default function BuyAMeal() {
             </div>
         )
     }
+
     return (
-        <div className="bg-secondary text-primary min-h-screen absolute top-0 w-screen pb-60">
+        <div className="bg-secondary text-primary min-h-screen absolute top-0 w-full pb-32 sm:pb-60">
             <H4hNavbar />
 
             {/* Header Section */}
@@ -149,10 +143,10 @@ export default function BuyAMeal() {
                 initial="hidden"
                 animate="visible"
                 variants={fadeIn}
-                className="flex flex-col items-center justify-center text-center gap-4 mt-40"
+                className="flex flex-col items-center justify-center text-center gap-4 mt-20 sm:mt-40 px-4"
             >
-                <div className="flex items-center justify-center gap-4">
-                    <h1 className={`text-5xl ${poppins.className} font-medium`}>
+                <div className="flex items-center justify-center gap-2 sm:gap-4">
+                    <h1 className={`text-3xl sm:text-4xl md:text-5xl ${poppins.className} font-medium`}>
                         Feed a Soul Today
                     </h1>
                     <motion.div
@@ -168,9 +162,7 @@ export default function BuyAMeal() {
                     </motion.div>
                 </div>
 
-                <p
-                    className={`${lora.className} text-xl tracking-wide max-w-[800px]`}
-                >
+                <p className={`${lora.className} text-lg sm:text-xl tracking-wide max-w-[800px] px-4`}>
                     Your generosity can make a difference. Choose a meal package below to
                     help someone in need enjoy a warm, nutritious meal.
                 </p>
@@ -181,9 +173,9 @@ export default function BuyAMeal() {
                 initial="hidden"
                 animate="visible"
                 variants={fadeIn}
-                className="flex gap-4 justify-center items-center mt-20 relative flex-col"
+                className="flex gap-4 justify-center items-center mt-10 sm:mt-20 relative flex-col px-4"
             >
-                <div className="flex justify-center gap-20 w-[80vw] max-w-[880px]">
+                <div className="flex flex-col lg:flex-row justify-center gap-8 lg:gap-20 w-full max-w-[880px]">
                     <MealCard
                         title="Individual Meal"
                         description="Provide a nutritious meal for one person"
@@ -216,17 +208,16 @@ export default function BuyAMeal() {
                     />
                 </div>
 
-
-                { /* Donation summary */}
+                {/* Donation summary */}
                 {totalAmount > 0 && (
                     <motion.div
-                        className="fixed right-24 bottom-20"
+                        className="fixed bottom-6 sm:bottom-20 left-4 right-4 sm:left-auto sm:right-24 flex justify-center"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, ease: "easeOut" }}
                     >
                         <button
-                            className={`bg-primary text-white tracking-wide font-medium text-xl p-3 rounded-lg relative overflow-hidden ${poppins.className}`}
+                            className={`bg-primary text-white tracking-wide font-medium text-lg sm:text-xl p-3 rounded-lg relative overflow-hidden w-full sm:w-auto ${poppins.className}`}
                             onClick={() => setCheckout(true)}
                         >
                             <span className="absolute inset-0 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 opacity-0 transition-opacity duration-1000 hover:opacity-50 animate-shimmer"></span>

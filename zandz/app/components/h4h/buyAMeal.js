@@ -21,19 +21,20 @@ export default function BuyAMeal() {
     };
 
     return (
-        <div className="bg-primary text-secondary h-screen px-[5%] py-10 leading-normal relative">
-
-            <div className="absolute top-0 right-0">
+        <div className="bg-primary text-secondary min-h-screen px-4 sm:px-6 md:px-[5%] py-8 md:py-10 leading-normal relative overflow-hidden">
+            {/* Background decorations */}
+            <div className="absolute top-0 right-0 -z-0">
                 <Image
                     src="/circles.svg"
                     alt="illustrations of circle"
                     width={400}
                     height={400}
-                    className="opacity-60"
+                    className="opacity-60 w-[200px] sm:w-[300px] md:w-[400px]"
                 />
             </div>
 
-            <motion.div className="absolute bottom-0 right-32"
+            <motion.div
+                className="absolute bottom-0 right-8 sm:right-16 md:right-32 -z-0"
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 1 }}
@@ -44,38 +45,41 @@ export default function BuyAMeal() {
                     alt="Illustration of plant"
                     width={100}
                     height={100}
+                    className="w-[60px] sm:w-[80px] md:w-[100px]"
                 />
             </motion.div>
 
-            <div>
-                <h2 className={`text-5xl ${poppins.className} font-thin`}>
+            {/* Main content */}
+            <div className="relative z-10">
+                <h2 className={`text-3xl sm:text-4xl md:text-5xl ${poppins.className} font-thin`}>
                     How Your Generosity <br />
-                    <span className="relative flex items-center">
-                        Feeds <span className="italic font-medium ml-3"> Hope.</span>
+                    <span className="relative flex flex-wrap items-center gap-3">
+                        Feeds <span className="italic font-medium">Hope.</span>
 
-                        <div>
+                        <div className="ml-auto sm:ml-0">
                             <Image
                                 src="/handHeart.svg"
                                 alt="Hand with a heart above it depicting kindness and sharing love"
-                                width="100"
-                                height="100"
+                                width={100}
+                                height={100}
+                                className="w-[60px] sm:w-[80px] md:w-[100px]"
                             />
                         </div>
 
                         <motion.div
                             initial={{ width: 0 }}
-                            whileInView={{ width: 280 }}
+                            whileInView={{ width: "100%" }}
                             transition={{ delay: 0.3, duration: 0.8 }}
-                            viewport={{ once: true, amount: 0.3, }}
-                            className="absolute bg-secondary/60 min-h-[4px] top-[90px] w-[280px] left-0">
-
-                        </motion.div>
+                            viewport={{ once: true, amount: 0.3 }}
+                            className="absolute bg-secondary/60 min-h-[4px] top-[60px] sm:top-[70px] md:top-[90px] w-full max-w-[280px] left-0"
+                        />
                     </span>
                 </h2>
             </div>
 
-            <div className="flex justify-between mt-[200px]">
-                {[ // Array for easier mapping
+            {/* Cards section */}
+            <div className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-4 mt-20 sm:mt-32 lg:mt-[200px]">
+                {[
                     {
                         title: "Share Your Generosity",
                         img: "/donation.svg",
@@ -101,12 +105,14 @@ export default function BuyAMeal() {
                     <motion.div
                         key={card.number}
                         className="relative"
-                        custom={index} // Pass index to variants
+                        custom={index}
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true, amount: 0.3, }}
+                        viewport={{ once: true, amount: 0.3 }}
                         variants={cardVariant}
-                        style={{ bottom: index * 70 }} // Adjust positions dynamically
+                        style={{
+                            bottom: index * (window.innerWidth >= 1024 ? 70 : 0)
+                        }}
                     >
                         <UiCard
                             title={card.title}
@@ -118,6 +124,6 @@ export default function BuyAMeal() {
                     </motion.div>
                 ))}
             </div>
-        </div >
+        </div>
     );
 }
