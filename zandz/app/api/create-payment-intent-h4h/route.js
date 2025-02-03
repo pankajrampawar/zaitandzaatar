@@ -11,12 +11,10 @@ export async function POST(request) {
             currency: "usd",
             automatic_payment_methods: { enabled: true },
             metadata: {
-                restaurant: true,
+                restaurant: false,
                 items: JSON.stringify(items),
                 name: userInfo.name,
                 email: userInfo.email,
-                location: userInfo.address,
-                phone: userInfo.phoneNumber,
             },
         });
 

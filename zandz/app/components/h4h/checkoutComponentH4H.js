@@ -8,7 +8,7 @@ import {
 } from "@stripe/react-stripe-js";
 import convertToSubcurrency from "@/app/lib/convertToSubcurrency";
 
-const CheckoutPage = ({ amount, userInfo, items }) => {
+const CheckoutPageH4h = ({ amount, userInfo, items }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [errorMessage, setErrorMessage] = useState();
@@ -20,7 +20,7 @@ const CheckoutPage = ({ amount, userInfo, items }) => {
         console.log(userInfo, items); // Log to verify items and userInfo
 
         // Send the amount, items, and userInfo to the server to create the payment intent
-        fetch("/api/create-payment-intent", {
+        fetch("/api/create-payment-intent-h4h", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -100,4 +100,4 @@ const CheckoutPage = ({ amount, userInfo, items }) => {
     );
 };
 
-export default CheckoutPage;
+export default CheckoutPageH4h;

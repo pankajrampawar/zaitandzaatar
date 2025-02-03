@@ -47,14 +47,15 @@ export async function POST(req) {
             console.log(`PaymentIntent for ${paymentIntent.amount_received} was successful!`);
 
             // Extract payment details
+            const isRestaurant = paymentIntent.metadata.restaurant === 'true';
             const userEmail = paymentIntent.metadata.email
             const amount = paymentIntent.amount_received / 100; // Convert amount to dollars
             const items = paymentIntent.metadata.items; // Items sent in metadata
-
+            console.log(paymentIntent.metadata);
             const userInfo = {
                 name: paymentIntent.metadata.name,
-                location: paymentIntent.metadata.location,
-                phone: paymentIntent.metadata.phone,
+                location: paymentIntent.metadata.location || 'none',
+                phone: paymentIntent.metadata.phone || 'none',
             };
 
             const itemsArray = JSON.parse(items)
@@ -70,42 +71,86 @@ export async function POST(req) {
                 .map(item => `- ${item.name} (Price: $${item.price}, Quantity: ${item.quantity})`)
                 .join('\n');
 
-            const orderMailOptions = {
-                from: process.env.EMAIL_USER,
-                to: process.env.EMAIL_USER, // Admin email
-                subject: `New Order Received: ${userInfo.name}`,
-                text: `Order Details:\n\n
+            if (isRestaurant) {
+                const orderMailOptions = {
+                    from: process.env.EMAIL_USER,
+                    to: process.env.EMAIL_USER, // Admin email
+                    subject: `New Order Received: ${userInfo.name}`,
+                    text: `Order Details:\n\n
                    Items:\n${updatedItemsText}\n\n
                    Location: ${userInfo.location}\n
                    Phone: ${userInfo.phone}\n
                    Total Amount: $${amount}`,
-            };
+                };
 
-            try {
-                // Send Order Email to Admin
-                await transporter.sendMail(orderMailOptions);
-            } catch (error) {
-                console.error("Error sending admin order email:", error);
+                try {
+                    // Send Order Email to Admin
+                    await transporter.sendMail(orderMailOptions);
+                } catch (error) {
+                    console.error("Error sending admin order email:", error);
+                }
+            } else {
+                const charityMailOptions = {
+                    from: process.env.EMAIL_USER,
+                    to: process.env.EMAIL_USER,
+                    subject: `H4H meal donation received from ${userInfo.name}`,
+                    text: `Donation Details: \n\n
+                    Items:\n${updatedItemsText}\n\n
+                    Donor Email: ${userEmail}\n\n
+                    `
+                }
+
+                try {
+                    await transporter.sendMail(charityMailOptions);
+                } catch (error) {
+                    console.error("Error sending admin order email:", error);
+                }
             }
 
             // Send Payment Confirmation Email to User
-            const paymentMailOptions = {
-                from: process.env.EMAIL_USER,
-                to: userEmail,
-                subject: "Payment Confirmation - Order Received",
-                text: `Dear ${userInfo.name},\n\n
-                       Thank you for your payment. We have successfully processed your order of $${amount}.
-                       Your order includes the following items:\n
-                       ${updatedItemsText}\n\n
-                       We will notify you once your order is ready for delivery.\n\n
-                       Best regards, Zait & Zaatar`,
-            };
+            if (isRestaurant) {
+                const paymentMailOptions = {
+                    from: process.env.EMAIL_USER,
+                    to: userEmail,
+                    subject: "Payment Confirmation - Order Received",
+                    text: `Dear ${userInfo.name},\n\n
+                    Thank you for your payment. We have successfully processed your order of $${amount}.
+                    Your order includes the following items:\n
+                    ${updatedItemsText}\n\n
+                    We will notify you once your order is ready for delivery.\n\n
+                    Best regards, Zait & Zaatar`,
+                };
 
-            try {
-                // Send Payment Confirmation Email to User
-                await transporter.sendMail(paymentMailOptions);
-            } catch (error) {
-                console.error("Error sending user payment confirmation email:", error);
+                try {
+                    // Send Payment Confirmation Email to User
+                    await transporter.sendMail(paymentMailOptions);
+                } catch (error) {
+                    console.error("Error sending user payment confirmation email:", error);
+                }
+            } else {
+                const charityMailOptions = {
+                    from: process.env.EMAIL_USER,
+                    to: userEmail,  // Donor's email
+                    subject: "Thank You for Your Generosity! ",
+                    text: `Dear ${userInfo.name},
+                
+                We are incredibly grateful for your generous donation to *Humans for Humanity Meal*! Your support will have a direct and meaningful impact on individuals and families in need across our community.
+                
+                Because of compassionate donors like you, we are able to provide nourishing meals to those facing hunger. Your gift helps ensure that no one has to go to bed hungry, and your kindness will help create a brighter future for so many.
+                
+                We truly believe that together, we can make our world a better place, and your donation is a vital part of that change. We are honored to have you as a partner in this mission.
+                
+                Thank you once again for your kindness and generosity. Your support makes all the difference.
+                
+                Warm regards,  
+                The Humans for Humanity Meal Team`,
+                };
+
+                try {
+                    await transporter.sendMail(charityMailOptions);
+                } catch (error) {
+                    console.error("Error sending user payment confirmation email: ", error)
+                }
             }
 
             break;
