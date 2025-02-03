@@ -1,10 +1,14 @@
 'use client';
 
 import { anek_gujarati, raleway } from "../fonts";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+
+    const pathname = usePathname();
+
     return (
-        <footer className={`bg-[#130902] text-white pt-8 pb-2 ${raleway.className} mt-[100px] xl:mt-[120px] w-screen relative flex flex-col`}
+        <footer className={`bg-[#130902] text-white pt-8 pb-2 ${raleway.className} mt-[100px] xl:mt-[120px] w-screen relative flex flex-col ${pathname === "/h4h" ? "hidden" : pathname === "/h4h/buyAMeal" ? "hidden" : ""}`}
             style={{ backgroundImage: "url('bgPattern.png')", backgroundSize: "auto" }}
         >
             <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1240px]">

@@ -1,4 +1,5 @@
 'use client'
+import Image from "next/image";
 import { useRouter } from "next/navigation"
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
@@ -9,11 +10,18 @@ export default function H4hNavbar() {
     const router = useRouter();
 
     return (
-        <div className="flex justify-between px-[5%] w-screen text-xl my-5 fixed top-0 text-primary">
-            <div>H4H</div>
+        <div className="flex justify-between px-[5%] w-screen text-xl py-2 fixed top-0 text-primary z-50 bg-secondary/20 backdrop-blur-sm">
+            <div>
+                <Image
+                    src="/logoh4h.png"
+                    alt="Logo for h4h"
+                    width={100}
+                    height={100}
+                />
+            </div>
             <div className="flex gap-4">
                 <button
-                    onClick={(() => { router.push('/h4h') })}
+                    onClick={(() => { router.push('/h4h') })} className={`${pathname === '/h4h' ? "hidden" : "flex"}`}
                 >
                     Home
                 </button>

@@ -12,8 +12,6 @@ export default function H4h() {
             <BuyAMeal />
             <Hope />
             <Contact />
-
-            <div className="min-h-screen"></div>
         </div>
     );
 }

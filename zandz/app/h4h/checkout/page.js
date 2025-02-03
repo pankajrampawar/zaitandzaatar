@@ -6,6 +6,7 @@ import convertToSubcurrency from "@/app/lib/convertToSubcurrency";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
     throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined");
@@ -48,7 +49,15 @@ export default function Home() {
         return (
             <main className="max-w-6xl mt-[10%] w-full mx-auto p-10 text-white text-center border m-10 rounded-md bg-[#130902]" style={{ backgroundImage: "url('/bgPattern.png')", backgroundSize: "auto" }}>
                 <div className="mb-10">
-                    <h1 className="text-4xl font-extrabold mb-2">Zait & Za'atar</h1>
+                    <h1 className="text-4xl font-extrabold mb-2 flex justify-center">
+                        <h1 className="text-4xl font-extrabold mb-2"><span>
+                            <Image
+                                src="/logoh4h.png"
+                                alt="Logo for h4h"
+                                width={150}
+                                height={150}
+                            /></span></h1>
+                    </h1>
                     <h2 className="text-2xl">Loading user and donation information...</h2>
                 </div>
             </main>
@@ -60,8 +69,14 @@ export default function Home() {
 
     return (
         <main className="max-w-6xl mt-[10%] w-full mx-auto p-10 text-white text-center border m-10 rounded-md bg-primary" >
-            <div className="mb-10">
-                <h1 className="text-4xl font-extrabold mb-2"><span>H4H</span></h1>
+            <div className="mb-10 flex justify-center flex-col items-center">
+                <h1 className="text-4xl font-extrabold mb-2"><span>
+                    <Image
+                        src="/logoh4h.png"
+                        alt="Logo for h4h"
+                        width={150}
+                        height={150}
+                    /></span></h1>
                 <h2 className="text-2xl">
                     has requested
                     <span className="font-bold"> ${finalAmount / 100}</span>
