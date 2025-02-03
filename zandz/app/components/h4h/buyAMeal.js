@@ -4,8 +4,29 @@ import Image from "next/image";
 import UiCard from "@/app/h4h/uiCard";
 import { poppins } from "@/app/fonts";
 import { animate, motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function BuyAMeal() {
+    const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+    useEffect(() => {
+        // Determine screen size on client side
+        const handleResize = () => {
+            setIsLargeScreen(window.innerWidth >= 1024);
+        };
+
+        // Initial check
+        handleResize();
+
+        // Add event listener
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            // Cleanup event listener
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     // Animation variants
     const cardVariant = {
         hidden: { blur: 10, opacity: 0, y: 50 },
@@ -111,7 +132,7 @@ export default function BuyAMeal() {
                         viewport={{ once: true, amount: 0.3 }}
                         variants={cardVariant}
                         style={{
-                            bottom: index * (window.innerWidth >= 1024 ? 70 : 0)
+                            bottom: index * (isLargeScreen ? 70 : 0),
                         }}
                     >
                         <UiCard
