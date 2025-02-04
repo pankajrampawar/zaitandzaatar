@@ -32,7 +32,16 @@ const H4hHeroSection = () => {
     };
 
     return (
-        <div className="min-h-screen flex justify-center items-center text-primary px-4 sm:px-6 md:px-[5%] py-20 md:pt-12">
+        <div className="min-h-screen flex justify-center items-center text-primary px-4 sm:px-6 md:px-[5%] py-20 md:pt-12 relative">
+            <div
+                className="absolute inset-0 w-full h-full -z-10"
+                style={{
+                    backgroundImage: "url('h4hBgPattern.png')",
+                    backgroundSize: "auto",
+                    backgroundPosition: "center",
+                    opacity: 0.5
+                }}
+            ></div>
             <motion.div
                 className="w-full flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-4"
                 initial="hidden"
@@ -98,7 +107,7 @@ const H4hHeroSection = () => {
                     </motion.div>
                 </motion.section>
             </motion.div>
-        </div>
+        </div >
     );
 };
 
