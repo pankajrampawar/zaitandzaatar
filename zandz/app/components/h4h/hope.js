@@ -86,7 +86,7 @@ export default function Hope() {
                     viewport={{ once: true }}
                 >
                     <button onClick={() => { router.push('/h4h/buyAMeal') }} className="bg-primary text-secondary text-xl p-3 rounded-md shadow-md hover:shadow-lg">
-                        Buy a Meal
+                        Gift a Meal
                     </button>
                 </motion.div>
             </div>

@@ -72,7 +72,7 @@ const H4hHeroSection = () => {
                             onClick={() => { router.push('/h4h/buyAMeal') }}
                             className={`${poppins.className} bg-primary text-secondary px-6 py-3 rounded-md text-lg mt-2 hover:opacity-90 transition-opacity`}
                         >
-                            Buy a Meal
+                            Gift a Meal
                         </button>
                     </motion.div>
                 </section>

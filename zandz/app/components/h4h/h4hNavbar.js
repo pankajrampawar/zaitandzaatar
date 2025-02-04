@@ -29,7 +29,7 @@ export default function H4hNavbar() {
                     onClick={() => { router.push('/h4h/buyAMeal') }} className={`underline underline-offset-4 ${pathname === '/h4h/buyAMeal' ? "hidden" : ""}`}
 
                 >
-                    Buy a Meal
+                    Gift a Meal
                 </button>
             </div>
         </div>

@@ -105,7 +105,7 @@ export default function BuyAMeal() {
                         title: "Share Your Generosity",
                         img: "/donation.svg",
                         alt: "hand with heart",
-                        description: "Your giving starts here, you buy a meal of your choice. Donate a meal and spread kindness",
+                        description: "Your giving starts here, you gift a meal of your choice. Donate a meal and spread kindness",
                         number: "1",
                     },
                     {
