@@ -12,6 +12,9 @@ export default function H4h() {
             <BuyAMeal />
             <Hope />
             <Contact />
+            <div className="text-center text-sm text-gray-500">
+                © {new Date().getFullYear()} H4H (Humans for Humanity). A project by Zait & Zaatar. All Rights Reserved.
+            </div>
         </div>
     );
 }

@@ -51,10 +51,10 @@ export default function Contact() {
                     </div>
                 </div>
 
-                <div className={`my-10 w-full max-w-[600px] px-4 rounded-[16px] ${poppins.className}`}>
+                <div className={`my-10 w-full max-w-[600px] sm:px-4 rounded-[16px] ${poppins.className}`}>
                     <section className="bg-secondary p-6 rounded-lg shadow-md">
                         <form onSubmit={handleSubmit} className="space-y-6 py-6 text-primary/70">
-                            <div className="flex justify-between gap-2">
+                            <div className="flex flex-col sm:flex-row justify-between gap-2">
                                 <div className="flex-1">
                                     <label htmlFor="name" className="block text-base font-medium">Your Name</label>
                                     <input

@@ -28,7 +28,7 @@ export default function Hope() {
             opacity: 1,
             y: 0,
             transition: {
-                delay: 2, // Delay to ensure text animation completes
+                delay: 1.5, // Delay to ensure text animation completes
                 duration: 0.6,
                 ease: "easeOut",
             },
@@ -40,9 +40,18 @@ export default function Hope() {
     const secondSentence = "Needs Today".split(" ");
 
     return (
-        <div className="h-screen flex justify-center items-center bg-secondary">
+        <div className="h-screen flex justify-center items-center bg-secondary relative">
             <div
-                className={`text-6xl ${poppins.className} text-center text-primary leading-normal flex flex-col gap-1`}
+                className="absolute inset-0 w-full h-full"
+                style={{
+                    backgroundImage: "url('h4hBgPattern.png')",
+                    backgroundSize: "auto",
+                    backgroundPosition: "center",
+                    opacity: 0.5
+                }}
+            ></div>
+            <div
+                className={`text-4xl leading-tight sm:text-5xl sm:leading-normal lg:text-6xl ${poppins.className} text-center text-primary lg:leading-normal flex flex-col gap-1`}
             >
                 {/* Animated First Sentence */}
                 <div>
@@ -62,7 +71,7 @@ export default function Hope() {
                 </div>
 
                 {/* Animated Second Sentence */}
-                <div>
+                <div className="mb-4 sm:mb-0 lg:-mb-2">
                     {secondSentence.map((word, index) => (
                         <motion.span
                             key={index}
