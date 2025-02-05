@@ -65,7 +65,11 @@ export default function Home() {
     }
 
     // Proceed with the checkout flow
-    const finalAmount = convertToSubcurrency(items.reduce((acc, item) => acc + item.price * item.quantity, 0));
+    const subTotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    const taxRate = 9.875 / 100;
+    const taxAmount = taxRate * subTotal;
+    const totalAmountWithTax = subTotal + taxAmount;
+    const finalAmount = convertToSubcurrency(totalAmountWithTax);
 
     return (
         <main className="max-w-6xl mt-[10%] w-full mx-auto p-10 text-white text-center border m-10 rounded-md bg-primary" >
