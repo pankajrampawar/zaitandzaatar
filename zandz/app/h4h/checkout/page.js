@@ -1,6 +1,5 @@
 "use client";
 
-import CheckoutPage from "@/app/components/checkOutComponent";
 import CheckoutPageH4h from "@/app/components/h4h/checkoutComponentH4H";
 import convertToSubcurrency from "@/app/lib/convertToSubcurrency";
 import { Elements } from "@stripe/react-stripe-js";

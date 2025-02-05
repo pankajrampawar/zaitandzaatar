@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { lora, poppins } from "@/app/fonts";
-import HeartSvg from "@/app/components/h4h/heart";
+import { HeartSvg } from "@/app/components/h4h/heart";
 import { MealCard } from "@/app/components/h4h/mealCard";
 import { ArrowLeftIcon } from "lucide-react";
 import H4hNavbar from "@/app/components/h4h/h4hNavbar";
