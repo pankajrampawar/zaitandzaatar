@@ -46,9 +46,9 @@ export default function Home() {
     // Only render the Elements component if the user and donation data are loaded
     if (!user || !donation) {
         return (
-            <main className="max-w-6xl mt-[10%] w-full mx-auto p-10 text-white text-center border m-10 rounded-md bg-[#130902]" style={{ backgroundImage: "url('/bgPattern.png')", backgroundSize: "auto" }}>
+            <main className="max-w-6xl mt-[10%] w-full mx-auto p-10 text-white text-center border m-10 rounded-md bg-primary" >
                 <div className="mb-10">
-                    <h1 className="text-4xl font-extrabold mb-2 flex justify-center">
+                    <div className="text-4xl font-extrabold mb-2 flex justify-center">
                         <h1 className="text-4xl font-extrabold mb-2"><span>
                             <Image
                                 src="/logoh4h.png"
@@ -56,7 +56,7 @@ export default function Home() {
                                 width={150}
                                 height={150}
                             /></span></h1>
-                    </h1>
+                    </div>
                     <h2 className="text-2xl">Loading user and donation information...</h2>
                 </div>
             </main>
@@ -71,7 +71,17 @@ export default function Home() {
     const finalAmount = convertToSubcurrency(totalAmountWithTax);
 
     return (
-        <main className="max-w-6xl mt-[10%] w-full mx-auto p-10 text-white text-center border m-10 rounded-md bg-primary" >
+        <main className="max-w-6xl mt-[10%] w-full mx-auto p-10 text-white text-center border m-10 rounded-md bg-primary relative" >
+            <div
+                className="absolute inset-0 w-full h-full invert"
+                style={{
+                    backgroundImage: "url('/h4hBgPattern.png')",
+                    backgroundSize: "auto",
+                    backgroundPosition: "center",
+                    opacity: 0.5,
+                }}
+            ></div>
+
             <div className="mb-10 flex justify-center flex-col items-center">
                 <h1 className="text-4xl font-extrabold mb-2"><span>
                     <Image

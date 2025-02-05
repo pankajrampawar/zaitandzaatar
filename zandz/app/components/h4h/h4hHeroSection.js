@@ -2,11 +2,39 @@
 
 import Image from "next/image";
 import { lora, poppins } from "@/app/fonts";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { useRef } from "react";
+import { useEffect, useState } from "react";
 
 const H4hHeroSection = () => {
     const router = useRouter();
+    const ref = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"],
+    });
+
+    // State to track screen size
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+    // Update screen size on resize
+    useEffect(() => {
+        const updateScreenSize = () => {
+            setIsSmallScreen(window.innerWidth < 1024); // lg breakpoint
+        };
+        updateScreenSize(); // Initial check
+        window.addEventListener("resize", updateScreenSize);
+        return () => window.removeEventListener("resize", updateScreenSize);
+    }, []);
+
+    // Transform width based on scrollYProgress only for small screens
+    const dynamicWidth = useTransform(
+        scrollYProgress,
+        [0, 1],
+        isSmallScreen ? ["10%", "150%"] : ["100%", "100%"] // Only animate width on small screens
+    );
 
     // Animation Variants
     const containerVariants = {
@@ -14,7 +42,7 @@ const H4hHeroSection = () => {
         visible: {
             opacity: 1,
             scale: 1,
-            transition: { duration: 1, ease: "easeOut" }
+            transition: { duration: 1, ease: "easeOut" },
         },
     };
 
@@ -26,7 +54,7 @@ const H4hHeroSection = () => {
             transition: {
                 duration: 0.8,
                 delay,
-                ease: "easeOut"
+                ease: "easeOut",
             },
         }),
     };
@@ -34,12 +62,12 @@ const H4hHeroSection = () => {
     return (
         <div className="min-h-screen flex justify-center items-center text-primary px-4 sm:px-6 md:px-[5%] py-20 md:pt-12 relative">
             <div
-                className="absolute inset-0 w-full h-full -z-10"
+                className="absolute inset-0 w-full h-full -z-20"
                 style={{
-                    backgroundImage: "url('h4hBgPattern.png')",
+                    backgroundImage: "url('/h4hBgPattern.png')",
                     backgroundSize: "auto",
                     backgroundPosition: "center",
-                    opacity: 0.5
+                    opacity: 0.5,
                 }}
             ></div>
             <motion.div
@@ -78,7 +106,9 @@ const H4hHeroSection = () => {
                         className="flex justify-center lg:justify-start"
                     >
                         <button
-                            onClick={() => { router.push('/h4h/buyAMeal') }}
+                            onClick={() => {
+                                router.push("/h4h/buyAMeal");
+                            }}
                             className={`${poppins.className} bg-primary text-secondary px-6 py-3 rounded-md text-lg mt-2 hover:opacity-90 transition-opacity`}
                         >
                             Gift a Meal
@@ -87,12 +117,15 @@ const H4hHeroSection = () => {
                 </section>
 
                 {/* Right Section */}
-                <motion.section
-                    className="flex-1 p-4 sm:p-6 lg:p-10 flex justify-center lg:justify-end"
+                <motion.section ref={ref}
+                    className="flex-1 p-4 sm:p-6 lg:p-10 flex justify-center lg:justify-end w-full overflow-hidden"
                     variants={containerVariants}
                 >
                     <motion.div
-                        className="bg-zinc-800/40 w-full max-w-[350px] sm:max-w-[430px] min-h-[400px] sm:min-h-[500px] rounded-xl"
+                        style={{
+                            width: dynamicWidth,
+                        }}
+                        className="bg-zinc-800/40 max-w-[350px] sm:max-w-[430px] min-h-[400px] sm:min-h-[500px] rounded-xl"
                     >
                         <Image
                             src="/childFood.jpg"
@@ -107,7 +140,7 @@ const H4hHeroSection = () => {
                     </motion.div>
                 </motion.section>
             </motion.div>
-        </div >
+        </div>
     );
 };
 

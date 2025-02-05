@@ -1,9 +1,20 @@
 'use client'
 import { lora, poppins } from "../fonts";
 import { PhoneIcon, MailIcon } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Contact() {
+
+    const ref = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
+
+    const yTransform = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -25,10 +36,10 @@ export default function Contact() {
     };
 
     return (
-        <div className="flex justify-center items-center flex-col">
+        <div ref={ref} className="flex justify-center items-center flex-col">
             <div className="w-full h-[50vh] bg-gradient-to-b from-[#E8F5E9] to-[#81C784]"></div>
-
-            <div className={`${lora.className} bg-primary flex gap-4 w-[90vw] text-secondary p-8 py-4 rounded-[20px] max-w-[960px] -translate-y-1/3 flex-col items-center lg:flex-row lg:items-stretch`}>
+            {/* this below div should move up when we scroll */}
+            <motion.div style={{ y: yTransform }} className={`${lora.className} bg-primary flex gap-4 w-[90vw] text-secondary p-8 py-4 rounded-[20px] max-w-[960px] -translate-y-1/3 flex-col items-center lg:flex-row lg:items-stretch`}>
                 <div className="my-10 justify-evenly flex flex-col">
                     <div className="mb-6">
                         <h2 className={`${poppins.className} text-4xl font-medium tracking-wide my-3 mb-3`}>Get in Touch</h2>
@@ -111,7 +122,7 @@ export default function Contact() {
                         </form>
                     </section>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 }

@@ -63,6 +63,15 @@ export default function BuyAMeal() {
     if (checkOut) {
         return (
             <div className="bg-secondary text-primary min-h-screen absolute w-full left-0 top-0 p-4 sm:p-6 md:p-[3%]">
+                <div
+                    className="absolute inset-0 w-full h-full "
+                    style={{
+                        backgroundImage: "url('/h4hBgPattern.png')",
+                        backgroundSize: "auto",
+                        backgroundPosition: "center",
+                        opacity: 0.5,
+                    }}
+                ></div>
                 <button className="flex items-center gap-2" onClick={() => { setCheckout(false) }}>
                     <ArrowLeftIcon />
                     <span>Go Back</span>
@@ -74,7 +83,7 @@ export default function BuyAMeal() {
                     </h1>
                 </div>
 
-                <div className="w-full flex justify-center items-center p-4">
+                <div className="w-full flex justify-center items-center p-4 relative z-20">
                     <section className={`bg-white shadow-lg hover:shadow-xl p-4 sm:p-6 gap-4 rounded-xl w-full flex items-start flex-col max-w-[420px] ${lora.className}`}>
                         <div className="mb-2">
                             <h2 className={`${poppins.className} font-medium text-xl sm:text-2xl`}>Your Donation Summary</h2>
@@ -137,6 +146,15 @@ export default function BuyAMeal() {
     return (
         <div className="bg-secondary text-primary min-h-screen absolute top-0 w-full pb-32 sm:pb-60">
             <H4hNavbar />
+            <div
+                className="absolute inset-0 w-full h-full"
+                style={{
+                    backgroundImage: "url('/h4hBgPattern.png')",
+                    backgroundSize: "auto",
+                    backgroundPosition: "center",
+                    opacity: 0.5,
+                }}
+            ></div>
 
             {/* Header Section */}
             <motion.article
@@ -175,7 +193,7 @@ export default function BuyAMeal() {
                 variants={fadeIn}
                 className="flex gap-4 justify-center items-center mt-10 sm:mt-20 relative flex-col px-4"
             >
-                <div className="flex flex-col lg:flex-row justify-center gap-8 lg:gap-20 w-full max-w-[880px]">
+                <div className="flex flex-col md:flex-row justify-center gap-8 lg:gap-20 w-full max-w-[880px]">
                     <MealCard
                         title="Individual Meal"
                         description="Provide a nutritious meal for one person"
