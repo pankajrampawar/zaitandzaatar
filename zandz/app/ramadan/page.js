@@ -12,14 +12,14 @@ export default function Ramadan() {
     const { items } = useCart();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
-    const [popup, setPopup] = useState(true);
+    const [popup, setPopup] = useState(false);
     const router = useRouter();
     const cardRef = useRef(null);
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setPopup(true);
-        }, 5555);
+        }, 12000);
 
         return () => clearTimeout(timer);
     }, []);
