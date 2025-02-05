@@ -3,10 +3,11 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { lato } from "../fonts";
+import { lato, poppins } from "../fonts";
 import SignIn from "./sign-in";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import { DonationPopup } from "./donationPopup";
 
 export default function Navbar() {
 
@@ -100,7 +101,7 @@ export default function Navbar() {
                 </button>
             </div>
 
-            <div className="hidden md:flex">
+            <div className="hidden md:flex relative">
                 <div className="py-4 px-4 backdrop-blur-sm bg-[#f0ba9028] rounded-xls rounded-xl">
                     <NavigationItem />
                 </div>
@@ -192,6 +193,11 @@ export default function Navbar() {
                     </div>
                 </div>
             </div>
+
+            {/* banner part */}
+            {pathname === "/catering" && pathname === "/ramadan" ?
+                "" : < DonationPopup />
+            }
         </section>
     );
 }
