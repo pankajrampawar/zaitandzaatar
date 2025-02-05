@@ -42,7 +42,7 @@ export default function Hope() {
     return (
         <div className="h-screen flex justify-center items-center bg-secondary relative">
             <div
-                className="absolute inset-0 w-full h-full"
+                className="absolute inset-0 w-full h-full z-0"
                 style={{
                     backgroundImage: "url('h4hBgPattern.png')",
                     backgroundSize: "auto",
@@ -51,7 +51,7 @@ export default function Hope() {
                 }}
             ></div>
             <div
-                className={`text-4xl leading-tight sm:text-5xl sm:leading-normal lg:text-6xl ${poppins.className} text-center text-primary lg:leading-normal flex flex-col gap-1`}
+                className={`text-4xl leading-tight sm:text-5xl sm:leading-normal lg:text-6xl ${poppins.className} text-center text-primary lg:leading-normal flex flex-col gap-1 relative z-20`}
             >
                 {/* Animated First Sentence */}
                 <div>
