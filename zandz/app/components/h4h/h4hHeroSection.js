@@ -50,7 +50,7 @@ const H4hHeroSection = () => {
                 {/* Left Section */}
                 <section className="flex-1 flex flex-col gap-4 text-center lg:text-left">
                     <motion.div
-                        className={`${poppins.className} text-4xl sm:text-5xl md:text-[64px] font-light text-primary tracking-wide leading-tight`}
+                        className={`${poppins.className} text-4xl sm:text-5xl md:text-[64px] md:leading-tight font-light text-primary tracking-wide leading-tight`}
                         variants={textVariants}
                         custom={0.5}
                     >

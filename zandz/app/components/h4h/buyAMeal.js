@@ -5,6 +5,7 @@ import UiCard from "@/app/h4h/uiCard";
 import { poppins } from "@/app/fonts";
 import { animate, motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { AnimatedArrow } from "./heart";
 
 export default function BuyAMeal() {
     const [isLargeScreen, setIsLargeScreen] = useState(false);
@@ -42,7 +43,7 @@ export default function BuyAMeal() {
     };
 
     return (
-        <div className="bg-primary text-secondary min-h-screen px-4 sm:px-6 md:px-[5%] py-8 md:py-10 leading-normal relative overflow-hidden">
+        <div className="bg-primary text-secondary h-screen px-4 sm:px-6 md:px-[5%] py-8 md:py-10 leading-normal relative overflow-hidden min-h-[1000px] min-[420px]:min-h-[1100px] lg:min-h-[700px] lg:max-h-[780px]">
             {/* Background decorations */}
             <div className="absolute top-0 right-0 -z-0">
                 <Image
@@ -99,51 +100,61 @@ export default function BuyAMeal() {
             </div>
 
             {/* Cards section */}
-            <div className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-4 mt-20 sm:mt-32 lg:mt-[200px]">
-                {[
-                    {
-                        title: "Share Your Generosity",
-                        img: "/donation.svg",
-                        alt: "hand with heart",
-                        description: "Your giving starts here, you gift a meal of your choice. Donate a meal and spread kindness",
-                        number: "1",
-                    },
-                    {
-                        title: "We serve to Those Who Need",
-                        img: "/plate.svg",
-                        alt: "hand with heart",
-                        description: "We bring food to there table, Your Meal Our Mission",
-                        number: "2",
-                    },
-                    {
-                        title: "You Make a Difference.",
-                        img: "/share.svg",
-                        alt: "hand with heart",
-                        description: "Your Contribution Their Future, Together We Make an Impact.",
-                        number: "3",
-                    },
-                ].map((card, index) => (
-                    <motion.div
-                        key={card.number}
-                        className="relative"
-                        custom={index}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
-                        variants={cardVariant}
-                        style={{
-                            bottom: index * (isLargeScreen ? 70 : 0),
-                        }}
-                    >
-                        <UiCard
-                            title={card.title}
-                            img={card.img}
-                            alt={card.alt}
-                            description={card.description}
-                            number={card.number}
-                        />
-                    </motion.div>
-                ))}
+            <div className="w-full flex justify-center">
+                <div className="flex flex-col items-center lg:flex-row justify-between gap-8 lg:gap-4 mt-20 sm:mt-32 lg:mt-[200px] max-w-[1340px] w-full">
+                    {[
+                        {
+                            title: "Share Your Generosity",
+                            img: "/donation.svg",
+                            alt: "hand with heart",
+                            description: "Your giving starts here, you gift a meal of your choice. Donate a meal and spread kindness",
+                            number: "1",
+                        },
+                        {
+                            title: "We serve to Those Who Need",
+                            img: "/plate.svg",
+                            alt: "hand with heart",
+                            description: "We bring food to there table, Your Meal Our Mission",
+                            number: "2",
+                        },
+                        {
+                            title: "You Make a Difference.",
+                            img: "/share.svg",
+                            alt: "hand with heart",
+                            description: "Your Contribution Their Future, Together We Make an Impact.",
+                            number: "3",
+                        },
+                    ].map((card, index) => (
+                        <motion.div
+                            key={card.number}
+                            className="relative"
+                            custom={index}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                            variants={cardVariant}
+                            style={{
+                                bottom: index * (isLargeScreen ? 70 : 0),
+                            }}
+                        >
+                            <UiCard
+                                title={card.title}
+                                img={card.img}
+                                alt={card.alt}
+                                description={card.description}
+                                number={card.number}
+                            />
+                            <div
+                                className={`absolute w-full justify-end  translate-x-1/3  min-[1330px]:min-w-[350px] min-[1350px]:min-w-[380px] max-[1140px]:max-w-[280px] max-[1140px]:translate-x-[50%] max-[1140px]:translate-y-[10%]  ${index === 2 ? 'hidden' : 'hidden lg:flex'}`}
+                                style={{
+                                    top: isLargeScreen ? "60%" : "100%", // Adjust arrow placement
+                                }}
+                            >
+                                <AnimatedArrow className="w-1/2" />
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
         </div>
     );
