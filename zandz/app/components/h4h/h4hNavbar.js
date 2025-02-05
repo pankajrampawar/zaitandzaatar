@@ -25,6 +25,10 @@ export default function H4hNavbar() {
                 >
                     Home
                 </button>
+
+                <button onClick={() => { router.push('/') }}>
+                    Visit Restaurant
+                </button>
                 <button
                     onClick={() => { router.push('/h4h/buyAMeal') }} className={` ${pathname === '/h4h/buyAMeal' ? "hidden" : ""} bg-primary text-secondary px-2 rounded-lg leading-none h-fit py-3`}
 

@@ -72,7 +72,7 @@ export default function BuyAMeal() {
                         opacity: 0.5,
                     }}
                 ></div>
-                <button className="flex items-center gap-2" onClick={() => { setCheckout(false) }}>
+                <button className="flex items-center gap-2 relative z-20" onClick={() => { setCheckout(false) }}>
                     <ArrowLeftIcon />
                     <span>Go Back</span>
                 </button>
