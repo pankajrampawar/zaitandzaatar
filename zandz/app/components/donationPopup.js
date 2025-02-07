@@ -51,7 +51,7 @@ export const DonationPopup = () => {
 
                             <div className="relative h-48">
                                 <img
-                                    src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+                                    src="https://images.unsplash.com/photo-1486887396153-fa416526c108?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                     alt="Helping hands"
                                     className="w-full h-full object-cover"
                                 />

@@ -33,6 +33,24 @@ export default function Footer() {
                             </li>
                         ))}
                         <li>
+                            <a href="/page/bestBreakfast">Best Breakfast</a>
+                        </li>
+                        <li>
+                            <a href="/page/breakfastCatering">Breakfast Catering</a>
+                        </li>
+                        <li>
+                            <a href="/page/falafel">Falafel</a>
+                        </li>
+                        <li>
+                            <a href="/page/foodDelivery">Food Delivery</a>
+                        </li>
+                        <li>
+                            <a href="/gyroSandwich">Gyro Sandwich</a>
+                        </li>
+                        <li>
+                            <a href="/takeOut">Take Out</a>
+                        </li>
+                        <li>
                             <a href="/privacyPolicy" className="hover:text-[#E4312B] transition">Privacy Policy</a>
                         </li>
                     </ul>
