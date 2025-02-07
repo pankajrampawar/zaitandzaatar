@@ -15,3 +15,66 @@
   scroll-margin-top: 100px;
   /* Adjust the offset as needed */
 }
+
+
+@layer utilities {
+  .scrollbar {
+    scrollbar-width: thin;
+    /* For Firefox */
+    scrollbar-color: #888 transparent;
+    /* Thumb and track color */
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 10px;
+    /* Scrollbar width */
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    background: #b47d5322;
+    /* Transparent track */
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #c77b1f;
+    /* Thumb color */
+    border-radius: 5px;
+    /* Rounded edges */
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #c77b1f;
+    /* Darker thumb on hover */
+  }
+}
+
+@layer utilities {
+  .scrollbar2 {
+    scrollbar-width: thin;
+    /* For Firefox */
+    scrollbar-color: #888 transparent;
+    /* Thumb and track color */
+  }
+
+  .scrollbar2::-webkit-scrollbar {
+    height: 8px;
+    /* Scrollbar width */
+  }
+
+  .scrollbar2::-webkit-scrollbar-track {
+    background: #b47d5322;
+    /* Transparent track */
+  }
+
+  .scrollbar2::-webkit-scrollbar-thumb {
+    background: #c77b1f;
+    /* Thumb color */
+    border-radius: 5px;
+    /* Rounded edges */
+  }
+
+  .scrollbar2::-webkit-scrollbar-thumb:hover {
+    background: #c77b1f;
+    /* Darker thumb on hover */
+  }
+}

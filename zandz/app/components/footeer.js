@@ -33,22 +33,16 @@ export default function Footer() {
                             </li>
                         ))}
                         <li>
-                            <a href="/page/bestBreakfast">Best Breakfast</a>
+                            <a href="/page/bestBreakfast">Best Breakfast in St. Paul</a>
                         </li>
                         <li>
-                            <a href="/page/breakfastCatering">Breakfast Catering</a>
+                            <a href="/page/breakfastCatering">Breakfast Catering in St. Paul</a>
                         </li>
                         <li>
-                            <a href="/page/falafel">Falafel</a>
+                            <a href="/page/foodDelivery">Food Delivery in St. Paul</a>
                         </li>
                         <li>
-                            <a href="/page/foodDelivery">Food Delivery</a>
-                        </li>
-                        <li>
-                            <a href="/gyroSandwich">Gyro Sandwich</a>
-                        </li>
-                        <li>
-                            <a href="/takeOut">Take Out</a>
+                            <a href="/takeOut">Take Out in St. Paul</a>
                         </li>
                         <li>
                             <a href="/privacyPolicy" className="hover:text-[#E4312B] transition">Privacy Policy</a>

@@ -331,7 +331,7 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
         <div className="flex flex-col items-start relative lg:justify-start w-full h-screen">
             <div className="relative top-0 pt-24 xl:pt-40 w-full z-10 xl:w-1/2 ">
                 <div
-                    className={`flex justify-between text-2xl font-semibold w-full gap-4 py-2 px-4 border-b-2 border-button max-[400px]:max-w-[320px] max-[460px]:max-w-[380px] max-[540px]:max-w-[440px] max-w-[540px] overflow-x-auto sm:max-w-[700px] mx-auto`}
+                    className={`flex justify-between text-2xl font-semibold w-full gap-4 py-2 px-4 border-b-2 border-button max-[400px]:max-w-[320px] max-[460px]:max-w-[380px] max-[540px]:max-w-[440px] max-w-[540px] overflow-x-scroll sm:max-w-[700px] mx-auto scrollbar2`}
                 >
                     {[
                         { id: "breakfastAllDay", label: "Breakfast All Day" },
@@ -358,7 +358,7 @@ export default function CateringMenu({ addItemsInCart, updateQuantity, itemsInCa
                     ))}
                 </div>
             </div>
-            <div className="flex flex-col max-h-[85vh] overflow-y-auto">
+            <div className="flex flex-col max-h-[85vh] overflow-y-scroll scrollbar">
                 {[
                     { id: "breakfastAllDay", Component: BreakfastAllDay },
                     { id: "Appetizers", Component: AppetizersList },
