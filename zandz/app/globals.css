@@ -78,3 +78,34 @@
     /* Darker thumb on hover */
   }
 }
+
+@layer utilities {
+  .scrollbar3 {
+    scrollbar-width: thin;
+    /* For Firefox */
+    scrollbar-color: #888 transparent;
+    /* Thumb and track color */
+  }
+
+  .scrollbar3::-webkit-scrollbar {
+    height: 2px;
+    /* Scrollbar width */
+  }
+
+  .scrollbar3::-webkit-scrollbar-track {
+    background: #130902;
+    /* Transparent track */
+  }
+
+  .scrollbar3::-webkit-scrollbar-thumb {
+    background: #1d0e03;
+    /* Thumb color */
+    border-radius: 5px;
+    /* Rounded edges */
+  }
+
+  .scrollbar3::-webkit-scrollbar-thumb:hover {
+    background: #c77b1f;
+    /* Darker thumb on hover */
+  }
+}

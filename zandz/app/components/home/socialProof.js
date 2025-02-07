@@ -10,7 +10,7 @@ export default function SocialProof() {
     const isInView = useInView(ref, { once: true });
 
     return (
-        <div className="max-w-screen overflow-scroll flex flex-col items-center mt-[10%] gap-20">
+        <div className="max-w-screen overflow-auto flex flex-col items-center mt-[10%] gap-20">
             <h2 className={`${anek_gujarati.className} text-5xl leading-tight  md:text-6xl md:leading-normal xl:text-7xl xl:leading-tight text-center mx-[2%] sm:mx-none w-full font-bold tracking-wide`}>
                 HEAR WHAT OUR CUSTOMERS <br />
                 <span className="text-white px-2 relative">
@@ -24,7 +24,7 @@ export default function SocialProof() {
                     />
                 </span>
             </h2>
-            <div className="flex overflow-x-scroll w-full scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 z-10 px-10">
+            <div className="flex overflow-x-scroll scrollbar2 pb-8 w-full z-10 px-10">
                 <div className="flex w-full gap-6">
                     <RatingCard
                         review="I have been wanting falafel for a long time, found this place while cruising through St Paul. I got 5 orders for my family to share. Sooooo yummy. Crispy, not too greasy at all, perfect flavor. I could’ve eaten 50 of them. Tahini sauce was delicious. This was during the virus thing so had to do a quick stop, but would love to go there again when we have more time. Cute place with middle eastern flavor."

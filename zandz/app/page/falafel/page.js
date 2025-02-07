@@ -10,7 +10,7 @@ export default function Falafel() {
     return (
         <div className="mt-[10%] mb-[5%]">
             <ImageTextCardVariant
-                imgSource="/catering.png"
+                imgSource="/falafel.jpeg"
                 altProp="Best Gyro Sandwich in Saint Paul"
                 title="DELICIOUS FALAFEL"
                 subTitle="In St. Paul, MN- Authentic Mediterranean Taste"

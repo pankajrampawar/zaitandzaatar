@@ -86,7 +86,7 @@ export default function RootLayout({ children }) {
         <div
           className="absolute inset-0 w-full z-0"
           style={{
-            backgroundImage: "url('bg-pattern-2.png')",
+            backgroundImage: "url('/bg-pattern-2.png')",
             backgroundRepeat: "repeat-y",
             backgroundPosition: "center",
             opacity: 0.04,
