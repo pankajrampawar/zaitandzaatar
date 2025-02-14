@@ -44,7 +44,7 @@ export const DonationPopup = () => {
                         >
                             <button
                                 onClick={handleClose}
-                                className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 z-10"
+                                className="absolute right-4 top-4 text-white hover:text-gray-200 z-10"
                             >
                                 <X size={24} />
                             </button>
