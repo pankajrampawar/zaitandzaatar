@@ -56,7 +56,7 @@ export default function ImageTextCardVariant({ imgSource, altProp, title, subTit
 
             <div className={`${!isImageLeft ? "md:order-1" : "md:order-2"} flex-1 flex flex-col gap-4 xl:gap-6`}>
                 {/* Title Section with Background */}
-                <h2 className={`${anek_gujarati.className} text-5xl leading-tight md:text-6xl md:leading-tight xl:text-7xl xl:leading-tight w-full tracking-wide font-bold`}>
+                <h2 className={`${anek_gujarati.className} text-5xl md:text-3xl lg:text-4xl leading-tight xl:text-5xl md:leading-tight xl:leading-tight w-full tracking-wide font-bold`}>
                     <div className="inline-block relative">
                         <motion.div
                             ref={ref}
@@ -75,13 +75,13 @@ export default function ImageTextCardVariant({ imgSource, altProp, title, subTit
                         </span>
                     </div>
 
-                    <div className="text-black text-2xl md:text-4xl mt-2">
+                    <div className="text-black text-2xl  xl:text-4xl mt-2">
                         {subTitle}
                     </div>
                 </h2>
 
                 {/* Details Section */}
-                <article className={`${lato.className} text-sm sm:text-lg xl:text-[24px] text-gray-800 max-w-[600px] xl:tracking-wide xl:leading-normal`}>
+                <article className={`${lato.className} text-sm sm:text-lg md:text-sm lg:text-base xl:text-lg min-[1340]:text-xl text-gray-800 max-w-[600px] xl:tracking-wide xl:leading-normal`}>
                     {Details}
                 </article>
 

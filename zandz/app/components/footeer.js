@@ -9,7 +9,7 @@ export default function Footer() {
 
     return (
         <footer className={`bg-[#130902] text-white pt-8 pb-2 ${raleway.className} mt-[100px] xl:mt-[120px] w-screen relative flex flex-col ${pathname === "/h4h" ? "hidden" : pathname === "/h4h/buyAMeal" ? "hidden" : ""}`}
-            style={{ backgroundImage: "url('bgPattern.png')", backgroundSize: "auto" }}
+            style={{ backgroundImage: "url('/bgPattern.png')", backgroundSize: "auto" }}
         >
             <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1240px]">
                 {/* Logo Section */}
@@ -42,7 +42,7 @@ export default function Footer() {
                             <a href="/page/foodDelivery">Food Delivery in St. Paul</a>
                         </li>
                         <li>
-                            <a href="/takeOut">Take Out in St. Paul</a>
+                            <a href="/page/takeOut">Take Out in St. Paul</a>
                         </li>
                         <li>
                             <a href="/privacyPolicy" className="hover:text-[#E4312B] transition">Privacy Policy</a>
