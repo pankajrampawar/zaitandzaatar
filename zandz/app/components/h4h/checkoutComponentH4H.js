@@ -84,6 +84,8 @@ const CheckoutPageH4h = ({ amount, userInfo, items }) => {
         );
     }
 
+    console.log(stripe)
+
     return (
         <form onSubmit={handleSubmit} className="bg-white p-2 rounded-md">
             {clientSecret && <PaymentElement />}
@@ -92,7 +94,7 @@ const CheckoutPageH4h = ({ amount, userInfo, items }) => {
 
             <button
                 disabled={!stripe || loading}
-                className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse"
+                className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse  z-50 relative"
             >
                 {!loading ? `Pay $${amount}` : "Processing..."}
             </button>
