@@ -1,8 +1,8 @@
 'use client'
 import { anek_gujarati, merienda, raleway } from "@/app/fonts";
-import CateringPricingCard from "@/app/ui/cateringPricingCard";
 import { useEffect, useState } from "react";
 import { breakfastAllDay, appetizers, plates, sandwiches, soupsAndSalads, specialty, kidsMeal, sides, desserts, drinks } from "./menuItems";
+import MenuItemCard from "@/app/ui/menuItemCard";
 
 export default function DesktopMenu() {
     const [currentItem, setCurrentItem] = useState(1);
@@ -26,7 +26,7 @@ export default function DesktopMenu() {
         switch (currentItem) {
             case 1:
                 return breakfastAllDay.map((item, index) => (
-                    <CateringPricingCard
+                    <MenuItemCard
                         key={index}
                         name={item.name}
                         price={item.price}
@@ -38,7 +38,7 @@ export default function DesktopMenu() {
                 ));
             case 2:
                 return appetizers.map((item, index) => (
-                    <CateringPricingCard
+                    <MenuItemCard
                         key={index}
                         name={item.name}
                         price={item.price}
@@ -50,7 +50,7 @@ export default function DesktopMenu() {
                 ));
             case 3:
                 return plates.map((item, index) => (
-                    <CateringPricingCard
+                    <MenuItemCard
                         key={index}
                         name={item.name}
                         price={item.price}
@@ -62,7 +62,7 @@ export default function DesktopMenu() {
                 ));
             case 4:
                 return sandwiches.map((item, index) => (
-                    <CateringPricingCard
+                    <MenuItemCard
                         key={index}
                         name={item.name}
                         price={item.price}
@@ -74,7 +74,7 @@ export default function DesktopMenu() {
                 ));
             case 5:
                 return soupsAndSalads.map((item, index) => (
-                    <CateringPricingCard
+                    <MenuItemCard
                         key={index}
                         name={item.name}
                         price={item.price}
@@ -86,7 +86,7 @@ export default function DesktopMenu() {
                 ));
             case 6:
                 return specialty.map((item, index) => (
-                    <CateringPricingCard
+                    <MenuItemCard
                         key={index}
                         name={item.name}
                         price={item.price}
@@ -98,7 +98,7 @@ export default function DesktopMenu() {
                 ));
             case 7:
                 return kidsMeal.map((item, index) => (
-                    <CateringPricingCard
+                    <MenuItemCard
                         key={index}
                         name={item.name}
                         price={item.price}
@@ -110,7 +110,7 @@ export default function DesktopMenu() {
                 ));
             case 8:
                 return sides.map((item, index) => (
-                    <CateringPricingCard
+                    <MenuItemCard
                         key={index}
                         name={item.name}
                         price={item.price}
@@ -122,7 +122,7 @@ export default function DesktopMenu() {
                 ));
             case 9:
                 return desserts.map((item, index) => (
-                    <CateringPricingCard
+                    <MenuItemCard
                         key={index}
                         name={item.name}
                         price={item.price}
@@ -142,7 +142,7 @@ export default function DesktopMenu() {
                                     <h3 className={`text-lg sm:text-[1.5rem] font-semibold ${raleway.className} tracking-wide mb-4`}>Lemonades</h3>
                                     <div className="flex flex-col gap-4">
                                         {drinks.Cold.Lemonades.map((item, index) => (
-                                            <CateringPricingCard
+                                            <MenuItemCard
                                                 key={`lemonade-${index}`}
                                                 name={item.name}
                                                 price={item.price}
@@ -158,7 +158,7 @@ export default function DesktopMenu() {
                                     <h3 className={`text-lg sm:text-[1.5rem] font-semibold ${raleway.className} tracking-wide mb-4`}>Lassi</h3>
                                     <div className="flex flex-col gap-4">
                                         {drinks.Cold.Lassi.map((item, index) => (
-                                            <CateringPricingCard
+                                            <MenuItemCard
                                                 key={`lassi-${index}`}
                                                 name={item.name}
                                                 price={item.price}
@@ -174,7 +174,7 @@ export default function DesktopMenu() {
                                     <h3 className={`text-lg sm:text-[1.5rem] font-semibold ${raleway.className} tracking-wide mb-4`}>Other Cold Drinks</h3>
                                     <div className="flex flex-col gap-4">
                                         {drinks.Cold[""]?.map((item, index) => (
-                                            <CateringPricingCard
+                                            <MenuItemCard
                                                 key={`other-${index}`}
                                                 name={item.name}
                                                 price={item.price}
@@ -192,7 +192,7 @@ export default function DesktopMenu() {
                             <h2 className="text-xl font-bold mb-4 sm:text-2xl">Hot Drinks</h2>
                             <div className="flex flex-col gap-4">
                                 {drinks.Hot.map((item, index) => (
-                                    <CateringPricingCard
+                                    <MenuItemCard
                                         key={`hot-${index}`}
                                         name={item.name}
                                         price={item.price}
