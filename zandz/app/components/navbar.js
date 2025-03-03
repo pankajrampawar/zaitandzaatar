@@ -8,6 +8,8 @@ import SignIn from "./sign-in";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { DonationPopup } from "./donationPopup";
+import { motion } from 'framer-motion';
+import { Heart } from "lucide-react";
 
 export default function Navbar() {
 
@@ -19,6 +21,10 @@ export default function Navbar() {
     const { data: session } = useSession();
     const dropdownRef = useRef(null); // Reference for dropdown
     const profileImageRef = useRef(null); // Reference for profile image
+
+    const handleMinimizedClick = () => {
+        router.push('/h4h');
+    };
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -108,6 +114,19 @@ export default function Navbar() {
             </div>
 
             <div className="hidden md:flex flex-1 justify-end items-center relative gap-2">
+                <div className="hidden 2xl:flex">
+                    <button
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        onClick={handleMinimizedClick}
+                        className=" bg-[#103A12] text-white p-4 rounded-full shadow-lg hover:bg-[#103A12]/90 transition-colors z-50 flex items-center gap-2"
+                    >
+                        <Heart size={20} className="text-white" />
+                        <span className="font-medium">Donate</span>
+                    </button>
+                </div>
+
                 <div
                     onMouseEnter={handleDrawerEnter}
                     onMouseLeave={handleDrawerLeave}
