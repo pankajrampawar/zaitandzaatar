@@ -211,7 +211,7 @@ export default function DesktopMenu() {
     };
     return (
         <div className="relative flex flex-col items-center">
-            <div className="sticky top-4 bg-background pt-28 w-full z-10">
+            <div className="sticky top-4 bg-background pt-32 w-full z-10">
                 <div className={`flex justify-between text-2xl ${anek_gujarati.className} font-semibold w-full gap-4 py-2 px-4 border-b-2 border-button max-[400px]:max-w-[320px] max-[460px]:max-w-[380px] max-[540px]:max-w-[440px] max-w-[540px] overflow-x-scroll sm:max-w-[700px] mx-auto`}>
                     <button onClick={() => toggleItem(1)} className={`whitespace-nowrap flex gap-2 items-center ${currentItem === 1 ? 'text-foreground underline' : ''}`}>Breakfast All Day</button>
                     <button onClick={() => toggleItem(2)} className={`whitespace-nowrap ${currentItem === 2 ? 'text-foreground underline' : ''}`}>Appetizers</button>
