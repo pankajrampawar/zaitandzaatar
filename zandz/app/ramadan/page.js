@@ -191,13 +191,12 @@ export default function Ramadan() {
             {/* Popup */}
             {popup && (
                 <motion.div
-                    className="fixed h-screen w-screen top-0 left-0 z-50 flex items-center justify-center"
+                    className=" h-screen w-screen top-0 left-0 z-50 flex items-center justify-center bg-black bg-opacity-50 fixed inset-0"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
                     onClick={handleBackdropClick}
-                    style={{ backgroundColor: "rgba(16, 58, 18, 0.7)" }} // Primary color with opacity
                 >
                     <motion.button
                         className="absolute top-6 right-6 md:top-10 md:right-10 p-2 rounded-full shadow-lg"
