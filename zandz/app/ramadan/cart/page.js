@@ -1,5 +1,5 @@
-'use client'
-import React, { useState } from 'react';
+'use client';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '@/app/context/cart';
 import { Trash2, Plus, Minus, ShoppingCart } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -9,7 +9,6 @@ import GuestForm from '@/app/components/ramadan/guestForm';
 import UserForm from '@/app/components/ramadan/userForm';
 
 export default function Cart() {
-
     const { data: session, status } = useSession();
     const {
         items,
@@ -20,62 +19,76 @@ export default function Cart() {
         orderType,
         setOrderType,
         finalTotal,
-        total,
+        subtotal, // Updated to use raw subtotal
+        promoDiscount, // Added for discount breakdown
         tipAmount,
         deliveryFee,
-        updateQuantity
+        updateQuantity,
+        removeFromCart,
     } = useCart();
     const router = useRouter();
 
     const [isCheckoutEnabled, setCheckoutEnabled] = useState(false);
     const [showGuestPopup, setShowGuestPopup] = useState(false);
-    const [showGuestForm, setShowGuestForm] = useState(false)
-    const [showUserForm, setShowUserForm] = useState(false)
+    const [showGuestForm, setShowGuestForm] = useState(false);
+    const [showUserForm, setShowUserForm] = useState(false);
 
     // Local state to control form inputs
     const [formTip, setFormTip] = useState(tip);
     const [formPromoCode, setFormPromoCode] = useState(promoCode);
     const [formOrderType, setFormOrderType] = useState(orderType);
 
+    // Color palette
+    const colors = {
+        background: "#FFEEE1",
+        foreground: "#149954",
+        button: "#E4312B",
+        secondary: "#F3FCF4",
+        primary: "#103A12",
+    };
+
     // Handle tip change
     const handleTipChange = (e) => {
         const newTip = Number(e.target.value);
-        setFormTip(newTip); // Update the local form state
-        setTip(newTip); // Update the global CartContext state immediately
+        setFormTip(newTip);
+        setTip(newTip);
     };
 
     // Handle promo code change
     const handlePromoCodeChange = (e) => {
         const newPromoCode = e.target.value;
-        setFormPromoCode(newPromoCode); // Update the local form state
-        setPromoCode(newPromoCode); // Update the global CartContext state immediately
+        setFormPromoCode(newPromoCode);
+        setPromoCode(newPromoCode);
     };
 
     // Handle order type change
     const handleOrderTypeChange = (e) => {
         const newOrderType = e.target.value;
-        setFormOrderType(newOrderType); // Update the local form state
-        setOrderType(newOrderType); // Update the global CartContext state immediately
+        setFormOrderType(newOrderType);
+        setOrderType(newOrderType);
     };
 
+    // Adjusted quantity handlers based on type
     const handleDecreaseQuantity = (item) => {
-        console.log(item)
-        if (item.quantity >= 50) {
-            updateQuantity(item.name, item.quantity - 50); // Decrease quantity by 1
+        const step = item.type === 'bulk' ? 50 : 1;
+        const minQuantity = item.type === 'bulk' ? 50 : 1;
+        if (item.quantity > minQuantity) {
+            updateQuantity(item.name, item.quantity - step, item.type);
+        } else {
+            removeFromCart(item.name, item.type); // Remove if below minimum
         }
     };
 
     const handleIncreaseQuantity = (item) => {
-        console.log(item)
-        if (item.quantity >= 50) {
-            updateQuantity(item.name, item.quantity + 50);
-        }
-    }
+        const step = item.type === 'bulk' ? 50 : 1;
+        updateQuantity(item.name, item.quantity + step, item.type);
+    };
 
     const taxRate = 9.875;
-    const taxAmount = (total + deliveryFee) * (taxRate / 100);
+    const taxAmount = (subtotal - promoDiscount + deliveryFee) * (taxRate / 100); // Tax on subtotal minus discount plus delivery
+    const adjustedFinalTotal = finalTotal + taxAmount; // Include tax in final total
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (items.length > 0 && (orderType === 'pickup' || (orderType === 'delivery' && deliveryFee > 0))) {
             setCheckoutEnabled(true);
         } else {
@@ -85,14 +98,15 @@ export default function Cart() {
 
     if (items.length === 0) {
         return (
-            <div className="min-h-screen bg-gradient-to-br flex items-center justify-center p-4">
+            <div className="min-h-screen flex items-center justify-center p-4" >
                 <div className="backdrop-blur-lg bg-white/30 p-8 rounded-2xl shadow-xl border border-white/20 text-center max-w-md w-full">
-                    <ShoppingCart className="w-16 h-16 mx-auto mb-4 text-gray-400" />
-                    <h2 className="text-3xl font-bold text-gray-800 mb-4">Your cart is empty</h2>
-                    <p className="text-gray-600 mb-6">Looks like you haven't added anything yet.</p>
+                    <ShoppingCart className="w-16 h-16 mx-auto mb-4" style={{ color: colors.primary }} />
+                    <h2 className="text-3xl font-bold mb-4" style={{ color: colors.primary }}>Your Cart is Empty</h2>
+                    <p className="mb-6" style={{ color: colors.primary }}>Looks like you haven't added anything yet.</p>
                     <button
                         onClick={() => router.push('/ramadan')}
-                        className="bg-gradient-to-r from-red-500 to-red-600 text-white px-8 py-3 rounded-xl hover:from-red-600 hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                        className="text-white px-8 py-3 rounded-xl hover:opacity-90 transition-all shadow-lg hover:shadow-xl"
+                        style={{ backgroundColor: colors.button }}
                     >
                         Browse Menu
                     </button>
@@ -107,62 +121,54 @@ export default function Cart() {
         } else {
             setShowUserForm(true);
         }
-    }
+    };
 
     const handleGuest = () => {
         setShowGuestPopup(false);
         setShowGuestForm(true);
-    }
+    };
 
     const handleGoogleSignIn = () => {
-        signIn("google")
-        setShowUserForm(true)
-    }
+        signIn("google");
+        setShowUserForm(true);
+    };
 
     const handleGuestSubmit = (userInfo) => {
         if (!userInfo || typeof userInfo !== 'object') {
             console.error('Invalid user info');
             return;
         }
-
-        // Store the user data as a JSON string in localStorage
         localStorage.setItem('userInfo', JSON.stringify(userInfo));
-        router.push('/ramadan/checkout')
-        console.log('User info stored in localStorage');
-    }
+        router.push('/ramadan/checkout');
+    };
 
     const handleUserSubmit = (userInfo) => {
         if (!userInfo || typeof userInfo !== 'object') {
             console.error('Invalid user info');
             return;
         }
-
-        // Add name and email from session to userInfo
         const updatedUserInfo = {
-            ...userInfo, // Spread the existing user info (e.g., phone number, address)
-            name: session?.user?.name || '', // Add name from session, fallback to empty string
-            email: session?.user?.email || '' // Add email from session, fallback to empty string
+            ...userInfo,
+            name: session?.user?.name || '',
+            email: session?.user?.email || '',
         };
-
-        // Store the updated user data as a JSON string in localStorage
         localStorage.setItem('userInfo', JSON.stringify(updatedUserInfo));
-
-        // Redirect to checkout page
         router.push('/ramadan/checkout');
-
-        console.log('User info stored in localStorage');
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br pt-40 px-4">
+        <div className="min-h-screen pt-40 px-4">
             <div className="max-w-7xl mx-auto">
-                <h1 className="text-4xl font-bold text-gray-800 mb-8">Your Cart</h1>
+                <h1 className="text-4xl font-bold mb-8" style={{ color: colors.primary }}>Your Cart</h1>
 
-                <div className="backdrop-blur-lg bg-white/80 rounded-2xl shadow-xl border border-white/20 p-8 xl:flex  gap-4">
+                <div className="backdrop-blur-lg bg-white/80 rounded-2xl shadow-xl border border-white/20 p-8 xl:flex gap-4">
                     {/* Cart Items */}
                     <div className="space-y-6 xl:border-r xl:pr-4">
-                        {items.map(item => (
-                            <div key={item.name} className="flex-col gap-4 items-start flex sm:flex-row sm:items-center justify-between py-4 border-b border-gray-200/50 xl:border-none" >
+                        {items.map((item, index) => (
+                            <div
+                                key={index}
+                                className="flex-col gap-4 items-start flex sm:flex-row sm:items-center justify-between py-4 border-b border-gray-200/50 xl:border-none"
+                            >
                                 <div className="flex items-center space-x-6">
                                     <div className="relative group">
                                         <img
@@ -173,31 +179,34 @@ export default function Cart() {
                                         <div className="absolute inset-0 rounded-xl bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-semibold text-gray-800">{item.name}</h3>
-                                        <p className="text-gray-600">${item.price} per box</p>
+                                        <h3 className="text-xl font-semibold" style={{ color: colors.primary }}>
+                                            {item.name} {item.type === 'individual' && <span className="text-sm font-normal">(Individual)</span>}
+                                        </h3>
+                                        <p style={{ color: colors.primary }}>${item.price} per box</p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center space-x-6 ">
-                                    <div className="flex items-center bg-gray-100 rounded-full p-1">
+                                <div className="flex items-center space-x-6">
+                                    <div className="flex items-center rounded-full p-1" style={{ backgroundColor: colors.secondary }}>
                                         <button
-                                            onClick={() => { handleDecreaseQuantity(item) }}
-                                            className="p-2 rounded-full hover:bg-white transition-colors"
+                                            onClick={() => handleDecreaseQuantity(item)}
+                                            className="p-2 rounded-full hover:opacity-80 transition-opacity"
                                         >
-                                            <Minus className="h-4 w-4 text-gray-600" />
+                                            <Minus className="h-4 w-4" style={{ color: colors.primary }} />
                                         </button>
-                                        <span className="text-gray-700 w-12 text-center font-medium">{item.quantity}</span>
+                                        <span className="w-12 text-center font-medium" style={{ color: colors.primary }}>{item.quantity}</span>
                                         <button
-                                            onClick={() => { handleIncreaseQuantity(item) }}
-                                            className="p-2 rounded-full hover:bg-white transition-colors"
+                                            onClick={() => handleIncreaseQuantity(item)}
+                                            className="p-2 rounded-full hover:opacity-80 transition-opacity"
                                         >
-                                            <Plus className="h-4 w-4 text-gray-600" />
+                                            <Plus className="h-4 w-4" style={{ color: colors.primary }} />
                                         </button>
                                     </div>
 
                                     <button
-                                        onClick={() => removeFromCart(item.name)}
-                                        className="p-2 rounded-full hover:bg-red-50 text-red-500 hover:text-red-600 transition-colors"
+                                        onClick={() => removeFromCart(item.name, item.type)}
+                                        className="p-2 rounded-full hover:bg-red-50 transition-colors"
+                                        style={{ color: colors.button }}
                                     >
                                         <Trash2 className="h-5 w-5" />
                                     </button>
@@ -210,22 +219,24 @@ export default function Cart() {
                     <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="space-y-6">
                             <div className="space-y-2">
-                                <label className="text-gray-700 font-medium">Promo Code</label>
+                                <label className="font-medium" style={{ color: colors.primary }}>Promo Code</label>
                                 <input
                                     type="text"
                                     value={formPromoCode}
                                     onChange={handlePromoCodeChange}
                                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all"
                                     placeholder="Enter promo code"
+                                    style={{ color: colors.primary }}
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-gray-700 font-medium">Tip Amount</label>
+                                <label className="font-medium" style={{ color: colors.primary }}>Tip Amount</label>
                                 <select
                                     value={formTip}
                                     onChange={handleTipChange}
                                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all"
+                                    style={{ color: colors.primary }}
                                 >
                                     <option value={0}>No Tip</option>
                                     <option value={10}>10% Tip</option>
@@ -235,11 +246,12 @@ export default function Cart() {
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-gray-700 font-medium">Order Type</label>
+                                <label className="font-medium" style={{ color: colors.primary }}>Order Type</label>
                                 <select
                                     value={formOrderType}
                                     onChange={handleOrderTypeChange}
                                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all"
+                                    style={{ color: colors.primary }}
                                 >
                                     <option value="pickup">Pickup</option>
                                     <option value="delivery">Delivery</option>
@@ -249,37 +261,44 @@ export default function Cart() {
 
                         {/* Total Section */}
                         <div className="backdrop-blur-md bg-white/50 rounded-xl p-6 space-y-4">
-                            <div className="flex justify-between text-gray-600">
+                            <div className="flex justify-between" style={{ color: colors.primary }}>
                                 <span>Subtotal</span>
-                                <span>${total.toFixed(2)}</span>
+                                <span>${subtotal.toFixed(2)}</span>
                             </div>
-                            <div className="flex justify-between text-gray-600">
+                            {promoDiscount > 0 && (
+                                <div className="flex justify-between" style={{ color: colors.foreground }}>
+                                    <span>Promo Discount</span>
+                                    <span>-${promoDiscount.toFixed(2)}</span>
+                                </div>
+                            )}
+                            <div className="flex justify-between" style={{ color: colors.primary }}>
                                 <span>Tax ({taxRate}%)</span>
                                 <span>${taxAmount.toFixed(2)}</span>
                             </div>
-                            <div className="flex justify-between text-gray-600">
+                            <div className="flex justify-between" style={{ color: colors.primary }}>
                                 <span>Tip</span>
                                 <span>${tipAmount.toFixed(2)}</span>
                             </div>
                             {orderType === 'delivery' && (
-                                <div className="flex justify-between text-gray-600">
+                                <div className="flex justify-between" style={{ color: colors.primary }}>
                                     <span>Delivery Fee</span>
                                     <span>${deliveryFee.toFixed(2)}</span>
                                 </div>
                             )}
-                            <div className="h-px bg-gray-200 my-4" />
+                            <div className="h-px my-4" style={{ backgroundColor: colors.foreground }} />
                             <div className="flex justify-between items-center">
-                                <span className="text-gray-800 font-medium">Total</span>
-                                <span className="text-3xl font-bold text-gray-800">${finalTotal.toFixed(2)}</span>
+                                <span className="font-medium" style={{ color: colors.primary }}>Total</span>
+                                <span className="text-3xl font-bold" style={{ color: colors.primary }}>${adjustedFinalTotal.toFixed(2)}</span>
                             </div>
 
                             <button
                                 onClick={handleCheckout}
                                 disabled={!isCheckoutEnabled}
                                 className={`w-full mt-6 py-4 rounded-xl font-medium transition-all duration-300 ${isCheckoutEnabled
-                                    ? 'bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700 shadow-lg hover:shadow-xl'
+                                    ? 'text-white hover:opacity-90 shadow-lg hover:shadow-xl'
                                     : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                                     }`}
+                                style={{ backgroundColor: isCheckoutEnabled ? colors.button : '#E5E7EB' }}
                             >
                                 Proceed to Checkout
                             </button>
@@ -288,12 +307,11 @@ export default function Cart() {
                 </div>
             </div>
 
-
             <div>
-                {showGuestPopup && <GuestPopup onClose={() => { setShowGuestPopup(false) }} onGuestClick={handleGuest} onGoogleSignIn={handleGoogleSignIn} />}
-                {showGuestForm && <GuestForm onClose={() => { setShowGuestForm(false) }} onSubmit={(formData) => { handleGuestSubmit(formData) }} />}
-                {showUserForm && <UserForm onClose={() => { setShowUserForm(false) }} onSubmit={(formData) => { handleUserSubmit(formData) }} />}
+                {showGuestPopup && <GuestPopup onClose={() => setShowGuestPopup(false)} onGuestClick={handleGuest} onGoogleSignIn={handleGoogleSignIn} />}
+                {showGuestForm && <GuestForm onClose={() => setShowGuestForm(false)} onSubmit={handleGuestSubmit} />}
+                {showUserForm && <UserForm onClose={() => setShowUserForm(false)} onSubmit={handleUserSubmit} />}
             </div>
-        </div >
+        </div>
     );
 }

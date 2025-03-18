@@ -4,35 +4,36 @@ import { Plus, Minus } from 'lucide-react';
 import { useCart } from '../context/cart';
 import Checkout from '../components/catering/checkout';
 
-export default function RamadanCard({ name, image, price, description }) {
+export default function RamadanCard({ name, id, image, price, description, type }) {
     const { items, addToCart, updateQuantity } = useCart();
 
-    const [quantity, setQuantity] = useState(50);
+    const [quantity, setQuantity] = useState(type === "bulk" ? 50 : 1);
     const [inCart, setInCart] = useState(false);
 
+
     useEffect(() => {
-        const cartItem = items.find(item => item.name === name);
+        const cartItem = items.find(item => item.name === name && item.type === type);
         if (cartItem) {
             setInCart(true);
             setQuantity(cartItem.quantity);
         } else {
             setInCart(false);
-            setQuantity(50);
+            setQuantity(type === "bulk" ? 50 : 1);
         }
     }, [items, name]);
 
     const handleQuantityChange = (increment) => {
-        const newQuantity = increment ? quantity + 50 : quantity - 50;
+        const newQuantity = type === "bulk" ? increment ? quantity + 50 : quantity - 50 : increment ? quantity + 1 : quantity - 1;
         setQuantity(newQuantity);
         if (newQuantity <= 0) {
-            updateQuantity(name, 0); // Remove item from cart
+            updateQuantity(name, 0, type); // Remove item from cart
         } else if (inCart) {
-            updateQuantity(name, newQuantity);
+            updateQuantity(name, newQuantity, type);
         }
     };
 
     const handleAddToCart = () => {
-        addToCart({ name, price, image }, quantity);
+        addToCart({ name, price, image, type }, quantity);
     };
 
     return (
@@ -50,19 +51,19 @@ export default function RamadanCard({ name, image, price, description }) {
                                 onClick={() => handleQuantityChange(false)}
                                 className="p-1 rounded-full bg-background hover:bg-background-dark"
                             >
-                                <Minus className="h-4 w-4 text-secondary" />
+                                <Minus className="h-4 w-4 text-" />
                             </button>
                             <span className="text-gray-700 w-16 text-center">{quantity}</span>
                             <button
                                 onClick={() => handleQuantityChange(true)}
                                 className="p-1 rounded-full bg-background hover:bg-background-dark"
                             >
-                                <Plus className="h-4 w-4 text-secondary" />
+                                <Plus className="h-4 w-4" />
                             </button>
                         </div>
                     ) : (
                         <button
-                            onClick={handleAddToCart}
+                            onClick={() => handleAddToCart()}
                             className="bg-button text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
                         >
                             Add to Cart

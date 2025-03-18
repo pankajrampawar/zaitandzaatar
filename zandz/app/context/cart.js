@@ -6,61 +6,60 @@ const CartContext = createContext();
 
 export function CartProvider({ children }) {
     const [items, setItems] = useState([]);
-    const [tip, setTip] = useState(0); // Tip state
-    const [promoCode, setPromoCode] = useState(''); // Promo code state
+    const [tip, setTip] = useState(15); // Tip percentage
+    const [promoCode, setPromoCode] = useState(''); // Promo code
     const [orderType, setOrderType] = useState('pickup'); // Order type (pickup or delivery)
 
+    // Load initial state from localStorage
     useEffect(() => {
         const storedCart = localStorage.getItem('cartItems');
-        if (storedCart) {
-            setItems(JSON.parse(storedCart));
-        }
-
-        // Load saved tip, promoCode, and orderType from localStorage if available
         const storedTip = localStorage.getItem('tip');
         const storedPromoCode = localStorage.getItem('promoCode');
         const storedOrderType = localStorage.getItem('orderType');
 
+        if (storedCart) setItems(JSON.parse(storedCart));
         if (storedTip) setTip(Number(storedTip));
         if (storedPromoCode) setPromoCode(storedPromoCode);
         if (storedOrderType) setOrderType(storedOrderType);
     }, []);
 
+    // Sync state to localStorage
     useEffect(() => {
-        // Save the cart items to localStorage
         localStorage.setItem('cartItems', JSON.stringify(items));
-    }, [items]);
-
-    useEffect(() => {
-        // Save tip, promoCode, and orderType to localStorage
-        localStorage.setItem('tip', tip);
+        localStorage.setItem('tip', tip.toString());
         localStorage.setItem('promoCode', promoCode);
         localStorage.setItem('orderType', orderType);
-    }, [tip, promoCode, orderType]);
+    }, [items, tip, promoCode, orderType]);
 
     const addToCart = (item, quantity) => {
         setItems(currentItems => {
-            const existingItem = currentItems.find(i => i.name === item.name);
+            const existingItem = currentItems.find(i => i.name === item.name && i.type === item.type);
             if (existingItem) {
                 return currentItems.map(i =>
-                    i.name === item.name ? { ...i, quantity: i.quantity + quantity } : i
+                    i.name === item.name && i.type === item.type
+                        ? { ...i, quantity: i.quantity + quantity }
+                        : i
                 );
             }
             return [...currentItems, { ...item, quantity }];
         });
     };
 
-    const removeFromCart = (name) => {
-        setItems(currentItems => currentItems.filter(item => item.name !== name));
+    const removeFromCart = (name, type) => {
+        setItems(currentItems =>
+            currentItems.filter(item => !(item.name === name && item.type === type))
+        );
     };
 
-    const updateQuantity = (name, quantity) => {
+    const updateQuantity = (name, quantity, type) => {
         setItems(currentItems => {
             if (quantity <= 0) {
-                return currentItems.filter(item => item.name !== name); // Remove if quantity is 0 or less
+                return currentItems.filter(item => !(item.name === name && item.type === type));
             }
             return currentItems.map(item =>
-                item.name === name ? { ...item, quantity } : item
+                item.name === name && item.type === type
+                    ? { ...item, quantity }
+                    : item
             );
         });
     };
@@ -69,19 +68,24 @@ export function CartProvider({ children }) {
         setItems([]);
     }, []);
 
-    // Calculate the subtotal
-    const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    // Calculate subtotal (convert price to number)
+    const subtotal = items.reduce((sum, item) => {
+        const price = parseFloat(item.price); // Ensure price is a number
+        return sum + (price * item.quantity);
+    }, 0);
 
-    // Apply promo code (dummy logic, you can replace it with real logic)
+    // Apply promo code discount (example logic)
     const promoDiscount = promoCode === 'DISCOUNT10' ? subtotal * 0.1 : 0;
 
-    // Calculate the total with tip, promo code discount, and any other applicable fees
-    const total = subtotal - promoDiscount;
-    const tipAmount = (total * tip) / 100;
-    const deliveryFee = orderType === 'delivery' ? 50 : 0; // Assuming delivery fee is 5
+    // Base total after discount
+    const baseTotal = subtotal - promoDiscount;
 
-    // Final total with delivery fee and tip
-    const finalTotal = total + tipAmount + deliveryFee;
+    // Additional fees
+    const tipAmount = (baseTotal * tip) / 100;
+    const deliveryFee = orderType === 'delivery' ? 50 : 0; // Fixed at $5 for delivery (not 50)
+
+    // Final total including all fees
+    const finalTotal = baseTotal + tipAmount + deliveryFee;
 
     return (
         <CartContext.Provider value={{
@@ -90,8 +94,9 @@ export function CartProvider({ children }) {
             removeFromCart,
             updateQuantity,
             clearCart,
-            total,
-            finalTotal,
+            subtotal, // Raw subtotal before discounts/fees
+            baseTotal, // Total after promo discount
+            finalTotal, // Total with tip and delivery
             tip,
             setTip,
             promoCode,
@@ -99,7 +104,8 @@ export function CartProvider({ children }) {
             orderType,
             setOrderType,
             deliveryFee,
-            tipAmount
+            tipAmount,
+            promoDiscount,
         }}>
             {children}
         </CartContext.Provider>
