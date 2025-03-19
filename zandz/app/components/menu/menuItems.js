@@ -445,7 +445,7 @@ export const desserts = [
     }, {
         name: "Ice Cream (double scoop)",
         price: "6.99",
-        image: "/iceCream.jpeg",
+        image: "/iceCreamDS.jpeg",
         alt: "Best Ice Cream in Saint Paul",
         content: ""
     },
