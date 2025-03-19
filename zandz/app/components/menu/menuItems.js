@@ -290,7 +290,7 @@ export const specialty = [
     , {
         name: "Chaat",
         price: "14.99",
-        image: "/dahipuri.jpeg",
+        image: "/chaat.jpeg",
         alt: "Best Chaat in Saint Paul",
         content: "Samosa with lentil patty crushed puris, chickpeas, yogurt sauce, tamarind sauce, jalapeno sauce, herbs and spices."
     }, {
@@ -439,7 +439,7 @@ export const desserts = [
     }, {
         name: "Ice cream (single scoop)",
         price: "4.99",
-        image: "/iceCream.jpeg",
+        image: "/iceCreamss.jpeg",
         alt: "Best Ice cream in Saint Paul",
         content: ""
     }, {
